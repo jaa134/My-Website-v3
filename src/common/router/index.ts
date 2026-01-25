@@ -14,17 +14,17 @@ interface ComponentRegistry {
 }
 
 const mobileComponentRegistry: ComponentRegistry = {
-  home: () => import('@/mobile/pages/Home.vue'),
-  about: () => import('@/mobile/pages/About.vue'),
-  experience: () => import('@/mobile/pages/Experience.vue'),
-  contact: () => import('@/mobile/pages/Contact.vue'),
+  home: () => import('@/mobile/pages/HomePage.vue'),
+  about: () => import('@/mobile/pages/AboutPage.vue'),
+  experience: () => import('@/mobile/pages/ExperiencePage.vue'),
+  contact: () => import('@/mobile/pages/ContactPage.vue'),
 };
 
 const desktopComponentRegistry: ComponentRegistry = {
-  home: () => import('@/desktop/pages/Home.vue'),
-  about: () => import('@/desktop/pages/About.vue'),
-  experience: () => import('@/desktop/pages/Experience.vue'),
-  contact: () => import('@/desktop/pages/Contact.vue'),
+  home: () => import('@/desktop/pages/HomePage.vue'),
+  about: () => import('@/desktop/pages/AboutPage.vue'),
+  experience: () => import('@/desktop/pages/ExperiencePage.vue'),
+  contact: () => import('@/desktop/pages/ContactPage.vue'),
 };
 
 const componentRegistry = mobile() ? mobileComponentRegistry : desktopComponentRegistry;

@@ -1,7 +1,6 @@
+import vue from '@vitejs/plugin-vue';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-
-import vue from '@vitejs/plugin-vue';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
@@ -10,9 +9,9 @@ export default defineConfig({
   publicDir: resolve(__dirname, 'src/common/public'),
   resolve: {
     alias: [
-      { 
-        find: '@', 
-        replacement: fileURLToPath(new URL('./src', import.meta.url)) 
+      {
+        find: '@',
+        replacement: fileURLToPath(new URL('./src', import.meta.url)),
       },
     ],
   },
