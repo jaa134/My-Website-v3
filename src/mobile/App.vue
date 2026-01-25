@@ -1,6 +1,8 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
+  import '@/mobile/styles/index.css';
+
   import { RouterView } from 'vue-router';
 </script>
 
