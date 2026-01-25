@@ -1,0 +1,14 @@
+## Dependency directories
+node_modules
+
+## Build output
+dist
+
+## TypeScript cache
+*.tsbuildinfo
+
+## ESLint cache
+.eslintcache
+
+## OS specific files
+.DS_Store

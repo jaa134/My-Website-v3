@@ -1,0 +1,49 @@
+{
+  "private": true,
+  "name": "my-website",
+  "description": "My personal website.",
+  "version": "3.0.0",
+  "author": "Jacob Alspaw <dev@jacob-alspaw.com>",
+  "packageManager": "npm@10.9.0",
+  "engines": {
+    "node": ">=22.12.0 < 23"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "",
+    "build": "vite build",
+    "lint:ts": "eslint . --ext .js,.ts,.vue --quiet --cache",
+    "lint:style": "stylelint \"src/**/*.{css,vue}\" --fix",
+    "lint": "npm run lint:ts && npm run lint:style",
+    "format": "prettier --write \"src/**/*.{js,ts,vue,css}\"",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "vue": "^3.5.27",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.3.1",
+    "@commitlint/config-conventional": "^20.3.1",
+    "@typescript-eslint/eslint-plugin": "^8.53.1",
+    "@typescript-eslint/parser": "^8.53.1",
+    "@vitejs/plugin-vue": "^6.0.3",
+    "commitlint": "^20.3.1",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-unused-imports": "^4.3.0",
+    "eslint-plugin-vue": "^10.7.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "postcss-html": "^1.8.1",
+    "prettier": "^3.8.1",
+    "stylelint": "^17.0.0",
+    "stylelint-config-recommended": "^18.0.0",
+    "stylelint-config-recommended-vue": "^1.6.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vue-tsc": "^3.2.3"
+  }
+}
