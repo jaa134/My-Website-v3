@@ -10,8 +10,9 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "",
+    "dev": "vite",
     "build": "vite build",
+    "preview": "vite preview",
     "lint:ts": "eslint . --ext .js,.ts,.vue --quiet --cache",
     "lint:style": "stylelint \"src/**/*.{css,vue}\" --fix",
     "lint": "npm run lint:ts && npm run lint:style",
