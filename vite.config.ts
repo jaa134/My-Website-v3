@@ -6,7 +6,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   plugins: [vue()],
   root: 'src',
-  publicDir: resolve(__dirname, 'src/public'),
+  publicDir: resolve(__dirname, 'src/common/public'),
   resolve: {
     alias: [
       { 
