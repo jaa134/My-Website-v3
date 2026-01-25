@@ -1,9 +1,5 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
-<template>
-  Desktop App
-</template>
+<template>Desktop App</template>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

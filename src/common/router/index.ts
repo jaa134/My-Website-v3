@@ -1,15 +1,16 @@
 /* Imports ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 import mobile from 'is-mobile';
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { AsyncComponentLoader } from 'vue';
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
 /* Components /////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 interface ComponentRegistry {
-  home: () => Promise<typeof import('*.vue')>;
-  about: () => Promise<typeof import('*.vue')>;
-  experience: () => Promise<typeof import('*.vue')>;
-  contact: () => Promise<typeof import('*.vue')>;
+  home: AsyncComponentLoader;
+  about: AsyncComponentLoader;
+  experience: AsyncComponentLoader;
+  contact: AsyncComponentLoader;
 }
 
 const mobileComponentRegistry: ComponentRegistry = {
@@ -17,14 +18,14 @@ const mobileComponentRegistry: ComponentRegistry = {
   about: () => import('@/mobile/pages/About.vue'),
   experience: () => import('@/mobile/pages/Experience.vue'),
   contact: () => import('@/mobile/pages/Contact.vue'),
-}
+};
 
 const desktopComponentRegistry: ComponentRegistry = {
   home: () => import('@/desktop/pages/Home.vue'),
   about: () => import('@/desktop/pages/About.vue'),
   experience: () => import('@/desktop/pages/Experience.vue'),
   contact: () => import('@/desktop/pages/Contact.vue'),
-}
+};
 
 const componentRegistry = mobile() ? mobileComponentRegistry : desktopComponentRegistry;
 
@@ -56,7 +57,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'NotFound',
     redirect: '/',
   },
-]
+];
 
 /* Router /////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -66,11 +67,11 @@ const router = createRouter({
   scrollBehavior(_to, _from, savedPosition) {
     // Scroll to top on route change
     if (savedPosition) {
-      return savedPosition
+      return savedPosition;
     } else {
-      return { top: 0 }
+      return { top: 0 };
     }
   },
-})
+});
 
-export default router
+export default router;

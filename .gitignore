@@ -7,8 +7,5 @@ dist
 ## TypeScript cache
 *.tsbuildinfo
 
-## ESLint cache
-.eslintcache
-
 ## OS specific files
 .DS_Store

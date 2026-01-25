@@ -1,12 +1,11 @@
 import eslintJS from '@eslint/js'
+import tsPlugin from '@typescript-eslint/eslint-plugin'
 import tsParser from '@typescript-eslint/parser'
 import prettier from 'eslint-config-prettier'
-
-import tsPlugin from '@typescript-eslint/eslint-plugin'
-import vuePlugin from 'eslint-plugin-vue'
 import importPlugin from 'eslint-plugin-import'
 import simpleImportSortPlugin from 'eslint-plugin-simple-import-sort'
 import unusedImportsPlugin from 'eslint-plugin-unused-imports'
+import vuePlugin from 'eslint-plugin-vue'
 
 export default [
   eslintJS.configs.recommended,

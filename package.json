@@ -10,14 +10,18 @@
   },
   "type": "module",
   "scripts": {
+    "prepare": "husky install",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint:ts": "eslint . --ext .js,.ts,.vue --quiet --cache",
-    "lint:style": "stylelint \"src/**/*.{css,vue}\" --fix",
+    "lint:ts": "eslint . --ext .js,.ts,.vue --quiet",
+    "lint:ts:fix": "eslint . --ext .js,.ts,.vue --quiet --fix",
+    "lint:style": "stylelint \"src/**/*.{css,vue}\"",
+    "lint:style:fix": "stylelint \"src/**/*.{css,vue}\" --fix",
     "lint": "npm run lint:ts && npm run lint:style",
-    "format": "prettier --write \"src/**/*.{js,ts,vue,css}\"",
-    "prepare": "husky install"
+    "lint:fix": "npm run lint:ts:fix && npm run lint:style:fix",
+    "format": "prettier \"src/**/*.{js,ts,vue,css}\"",
+    "format:fix": "prettier --write \"src/**/*.{js,ts,vue,css}\" --fix"
   },
   "dependencies": {
     "is-mobile": "^5.0.0",
