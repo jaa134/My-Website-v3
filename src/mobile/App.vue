@@ -1,5 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-<template>Mobile App</template>
+  import { RouterView } from 'vue-router';
+</script>
+
+<template>
+  <div>Mobile App</div>
+  <RouterView />
+</template>
 
 <style scoped lang="scss"></style>

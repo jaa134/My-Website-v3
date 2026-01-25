@@ -1,5 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-<template>Desktop App</template>
+  import { RouterView } from 'vue-router';
+</script>
+
+<template>
+  <div>Desktop App</div>
+  <RouterView />
+</template>
 
 <style scoped lang="scss"></style>
