@@ -1,8 +1,9 @@
 /* Imports ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
+import mobile from 'is-mobile';
 import { createApp } from 'vue'
 
-import mobile from 'is-mobile';
+import router from '@/common/router/index.js';
 
 /* Initialize application /////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -12,6 +13,8 @@ async function bootstrap() {
     : await import('@/desktop/App.vue')
 
   const app = createApp(RootApp)
+
+  app.use(router);
 
   app.mount('body');
 }
