@@ -6,6 +6,10 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   plugins: [vue()],
   root: 'src',
+  build: {
+    outDir: '../dist',
+    emptyOutDir: true,
+  },
   publicDir: resolve(__dirname, 'src/public'),
   resolve: {
     alias: [
