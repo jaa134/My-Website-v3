@@ -39,11 +39,10 @@ export default defineConfig([
             ['^@?\\w'],
 
             // Internal modules.
-            ['^@/common/types(/|\\.|$)'],
-            ['^@/common/utilities(/|\\.|$)'],
-            ['^@/common/router(/|\\.|$)'],
-            ['^@/common/desktop(/|\\.|$)'],
-            ['^@/common/mobile(/|\\.|$)'],
+            ['^@/types(/|\\.|$)'],
+            ['^@/utilities(/|\\.|$)'],
+            ['^@/router(/|\\.|$)'],
+            ['^@/components(/|\\.|$)'],
 
             // Absolute imports and other imports such as `@/foo`.
             // Anything not matched in another group.

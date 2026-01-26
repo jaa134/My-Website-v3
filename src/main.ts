@@ -1,18 +1,16 @@
 /* Imports ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-import '@/common/styles/index.css';
+import '@/styles/index.css';
 
-import mobile from 'is-mobile';
 import { createApp } from 'vue';
 
-import router from '@/common/router/index.js';
+import router from '@/router/index.js';
+
+import App from '@/App.vue';
 
 /* Initialize application /////////////////////////////////////////////////////////////////////////////////////////// */
-
 async function bootstrap() {
-  const { default: RootApp } = mobile() ? await import('@/mobile/App.vue') : await import('@/desktop/App.vue');
-
-  const app = createApp(RootApp);
+  const app = createApp(App);
 
   app.use(router);
 

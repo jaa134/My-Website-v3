@@ -1,13 +1,11 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import '@/mobile/styles/index.css';
-
   import { RouterView } from 'vue-router';
 </script>
 
 <template>
-  <div>Mobile App</div>
+  <div>App</div>
   <RouterView />
 </template>
 
