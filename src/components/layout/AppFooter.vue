@@ -4,4 +4,4 @@
   <div>App Footer</div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped></style>

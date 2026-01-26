@@ -4,4 +4,4 @@
   <div>Experience Page</div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped></style>

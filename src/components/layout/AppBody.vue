@@ -4,4 +4,4 @@
   <div>App Body</div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped></style>
