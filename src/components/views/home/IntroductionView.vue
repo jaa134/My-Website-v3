@@ -3,24 +3,22 @@
 <template>
   <section class="introduction-view">
     <div class="hero-section">
-      <div class="hero-content">
-        <div class="hero-text">
-          <div class="status-indicator">
-            <span class="status-dot"></span>
-            <span class="status-text">ONLINE</span>
-          </div>
-          <h1 class="hero-title">
-            <span class="title-name">Jacob Alspaw</span>
-            <span class="title-divider"></span>
-            <span class="title-roles"> Frontend Developer · Frontend Lead · Satellite Operator </span>
-          </h1>
-          <p class="hero-subtitle">Building digital experiences on Earth and monitoring systems in orbit</p>
+      <div class="hero-text">
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span class="status-text">ONLINE</span>
         </div>
-        <div class="hero-photo">
-          <!-- Photo placeholder - add your image here -->
-          <div class="photo-placeholder">
-            <div class="photo-frame"></div>
-          </div>
+        <h1 class="hero-title">
+          <span class="title-name">Jacob Alspaw</span>
+          <span class="title-divider"></span>
+          <span class="title-roles"> Frontend Developer · Frontend Lead · Satellite Operator </span>
+        </h1>
+        <p class="hero-subtitle">Building digital experiences on Earth and monitoring systems in orbit</p>
+      </div>
+      <div class="hero-photo">
+        <!-- Photo placeholder - add your image here -->
+        <div class="photo-placeholder">
+          <div class="photo-frame"></div>
         </div>
       </div>
     </div>
@@ -69,22 +67,77 @@
   }
 
   .hero-section {
-    padding: var(--ja-spacing-4x-large) 0;
-    border-bottom: 1px solid color-mix(in srgb, var(--ja-color-violet-400) 10%, transparent);
-  }
-
-  .hero-content {
-    max-width: 1000px;
-    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 300px;
-    gap: var(--ja-spacing-4x-large);
     align-items: center;
+    gap: var(--ja-spacing-4x-large);
+    margin: 0 auto;
+    padding: var(--ja-spacing-4x-large) 0;
+    max-width: 1000px;
   }
 
   .hero-text {
     display: flex;
     flex-direction: column;
+  }
+
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: var(--ja-spacing-small);
+    margin-bottom: var(--ja-spacing-2x-large);
+    font-family: var(--ja-font-mono);
+    font-size: var(--ja-font-size-small);
+    letter-spacing: var(--ja-letter-spacing-loose);
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ja-color-emerald-400);
+    animation: pulse 2s ease-in-out infinite;
+    margin-bottom: var(--ja-spacing-3x-small);
+  }
+
+  .status-text {
+    color: var(--ja-color-emerald-300);
+    opacity: 0.8;
+  }
+
+  .hero-title {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ja-spacing-medium);
+    margin-bottom: var(--ja-spacing-large);
+    font-size: var(--ja-font-size-3x-large);
+    font-weight: var(--ja-font-weight-light);
+    line-height: var(--ja-line-height-dense);
+    color: var(--ja-color-neutral-100);
+  }
+
+  .title-name {
+    font-family: var(--ja-font-mono);
+  }
+
+  .title-divider {
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(to right, var(--ja-color-violet-700), transparent);
+    margin: var(--ja-spacing-small) 0;
+  }
+
+  .title-roles {
+    font-family: var(--ja-font-mono);
+    font-size: var(--ja-font-size-large);
+    font-weight: var(--ja-font-weight-light);
+    color: var(--ja-color-violet-300);
+  }
+
+  .hero-subtitle {
+    font-size: var(--ja-font-size-medium);
+    font-weight: var(--ja-font-weight-light);
+    color: var(--ja-color-neutral-300);
   }
 
   .hero-photo {
@@ -134,70 +187,9 @@
     border: 2px solid color-mix(in srgb, var(--ja-color-violet-400) 20%, transparent);
   }
 
-  .status-indicator {
-    display: flex;
-    align-items: center;
-    gap: var(--ja-spacing-small);
-    margin-bottom: var(--ja-spacing-2x-large);
-    font-family: var(--ja-font-mono);
-    font-size: var(--ja-font-size-small);
-    letter-spacing: var(--ja-letter-spacing-loose);
-  }
-
-  .status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--ja-color-emerald-400);
-    animation: pulse 2s ease-in-out infinite;
-    margin-bottom: var(--ja-spacing-3x-small);
-  }
-
-  .status-text {
-    color: var(--ja-color-emerald-300);
-    opacity: 0.8;
-  }
-
-  .hero-title {
-    display: flex;
-    flex-direction: column;
-    gap: var(--ja-spacing-medium);
-    margin-bottom: var(--ja-spacing-large);
-    font-size: var(--ja-font-size-3x-large);
-    font-weight: var(--ja-font-weight-light);
-    line-height: var(--ja-line-height-dense);
-    color: var(--ja-color-neutral-100);
-  }
-
-  .title-name {
-    font-family: var(--ja-font-mono);
-  }
-
-  .title-divider {
-    width: 60px;
-    height: 1px;
-    background: linear-gradient(to right, color-mix(in srgb, var(--ja-color-violet-400) 50%, transparent), transparent);
-    margin: var(--ja-spacing-small) 0;
-  }
-
-  .title-roles {
-    font-family: var(--ja-font-mono);
-    font-size: var(--ja-font-size-large);
-    font-weight: var(--ja-font-weight-light);
-    color: var(--ja-color-violet-300);
-    opacity: 0.8;
-  }
-
-  .hero-subtitle {
-    font-size: var(--ja-font-size-medium);
-    font-weight: var(--ja-font-weight-light);
-    color: var(--ja-color-neutral-300);
-    opacity: 0.7;
-  }
-
   .roles-section {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--ja-spacing-3x-large);
   }
 
@@ -220,7 +212,7 @@
       background: linear-gradient(
         to right,
         transparent,
-        color-mix(in srgb, var(--ja-color-violet-400) 30%, transparent),
+        color-mix(in srgb, var(--ja-color-violet-400) 90%, transparent),
         transparent
       );
       opacity: 0;

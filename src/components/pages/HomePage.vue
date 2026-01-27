@@ -18,6 +18,6 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: var(--ja-spacing-4x-large) var(--ja-spacing-x-large);
+    padding: var(--ja-spacing-4x-large) 0 var(--ja-spacing-5x-large) 0;
   }
 </style>

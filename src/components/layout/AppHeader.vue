@@ -15,21 +15,6 @@
   const fullColorScrollDistance = 300;
   const scrollProgress = computed(() => Math.min(scrollY.value / fullColorScrollDistance, 1));
 
-  const backgroundColor = computed(() => {
-    const percentage = scrollProgress.value * 100; // 0 to 100%
-    return `color-mix(in srgb, var(--ja-color-purple-900) ${percentage}%, transparent)`;
-  });
-
-  const backdropFilter = computed(() => {
-    const blur = scrollProgress.value * 10; // 0 to 10px
-    return `blur(${blur}px)`;
-  });
-
-  const borderBottomColor = computed(() => {
-    const percentage = scrollProgress.value * 20; // 0 to 20%
-    return `color-mix(in srgb, var(--ja-color-violet-400) ${percentage}%, transparent)`;
-  });
-
   onMounted(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
@@ -38,23 +23,33 @@
   onUnmounted(() => {
     window.removeEventListener('scroll', handleScroll);
   });
+
+  /* Styling //////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+  const appHeaderStyles = computed(() => {
+    return {
+      backgroundColor: `color-mix(in srgb, var(--ja-color-purple-900) ${scrollProgress.value * 100}%, transparent)`,
+      borderBottomColor: `color-mix(in srgb, var(--ja-color-violet-400) ${scrollProgress.value * 20}%, transparent)`,
+      backdropFilter: `blur(${scrollProgress.value * 10}px)`,
+    };
+  });
+
+  const callToActionButtonStyles = computed(() => {
+    return {
+      borderColor: `color-mix(in srgb, var(--ja-color-purple-600) ${100 - scrollProgress.value * 100}%, var(--ja-color-neutral-300) ${scrollProgress.value * 100}%)`,
+      borderColorHover: `color-mix(in srgb, var(--ja-color-purple-400) ${100 - scrollProgress.value * 100}%, var(--ja-color-neutral-0) ${scrollProgress.value * 100}%)`,
+    };
+  });
 </script>
 
 <template>
-  <div
-    class="app-header"
-    :style="{
-      backgroundColor,
-      backdropFilter,
-      borderBottomColor,
-    }"
-  >
+  <div class="app-header">
     <div class="section title">
       <img
         class="logo"
         src="/assets/images/logo.svg"
       />
-      <div class="name">J. Alspaw</div>
+      <h1 class="name">J. Alspaw</h1>
     </div>
     <div class="section navigation">
       <RouterLink :to="{ name: Route.Home }">Home</RouterLink>
@@ -82,7 +77,9 @@
     grid-template-rows: 1fr;
     gap: var(--ja-spacing-x-large);
     padding: 0 var(--ja-spacing-x-large);
-    border-bottom: 1px solid transparent;
+    border-bottom: 1px solid v-bind('appHeaderStyles.borderBottomColor');
+    background-color: v-bind('appHeaderStyles.backgroundColor');
+    backdrop-filter: v-bind('appHeaderStyles.backdropFilter');
     transition:
       background-color var(--ja-transition-fast) ease,
       backdrop-filter var(--ja-transition-fast) ease,
@@ -116,6 +113,7 @@
 
     .name {
       font-size: var(--ja-font-size-x-large);
+      font-weight: var(--ja-font-weight-normal);
       font-family: var(--ja-font-mono);
     }
   }
@@ -134,14 +132,14 @@
     button {
       padding: var(--ja-spacing-x-small) var(--ja-spacing-x-large);
       background: transparent;
-      border: 1px solid var(--ja-color-purple-600);
+      border: 1px solid v-bind('callToActionButtonStyles.borderColor');
       border-radius: var(--ja-border-radius-pill);
       font-size: var(--ja-font-size-large);
       font-weight: var(--ja-font-weight-semibold);
       font-family: var(--ja-font-mono);
 
       &:hover {
-        border-color: var(--ja-color-purple-400);
+        border-color: v-bind('callToActionButtonStyles.borderColorHover');
       }
     }
   }
