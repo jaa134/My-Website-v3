@@ -2,11 +2,13 @@
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   import IntroductionView from '@/components/views/home/IntroductionView.vue';
+  import GlobeView from '@/components/views/home/GlobeView.vue';
 </script>
 
 <template>
   <div class="home-page">
     <IntroductionView />
+    <GlobeView />
   </div>
 </template>
 
