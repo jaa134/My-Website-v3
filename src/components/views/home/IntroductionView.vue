@@ -16,10 +16,10 @@
         <p class="hero-subtitle">Building digital experiences on Earth and monitoring systems in orbit</p>
       </div>
       <div class="hero-photo">
-        <!-- Photo placeholder - add your image here -->
-        <div class="photo-placeholder">
-          <div class="photo-frame"></div>
-        </div>
+        <img
+          src="/assets/images/me.webp"
+          alt="Jacob Alspaw"
+        />
       </div>
     </div>
 
@@ -68,7 +68,7 @@
 
   .hero-section {
     display: grid;
-    grid-template-columns: 1fr 300px;
+    grid-template-columns: 1fr 400px;
     align-items: center;
     gap: var(--ja-spacing-4x-large);
     margin: 0 auto;
@@ -144,24 +144,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+    height: 300px;
 
-  .photo-placeholder {
-    width: 100%;
-    aspect-ratio: 1;
-    max-width: 300px;
-    position: relative;
-  }
-
-  .photo-frame {
-    width: 100%;
-    height: 100%;
-    border: 2px solid color-mix(in srgb, var(--ja-color-violet-400) 20%, transparent);
-    border-radius: var(--ja-border-radius-large);
-    background: color-mix(in srgb, var(--ja-color-violet-950) 20%, transparent);
-    backdrop-filter: blur(10px);
-    position: relative;
-    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 2px solid color-mix(in srgb, var(--ja-color-violet-400) 20%, transparent);
+      border-radius: var(--ja-border-radius-large);
+      background: color-mix(in srgb, var(--ja-color-violet-950) 20%, transparent);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+    }
 
     &::before {
       content: '';
@@ -194,7 +188,7 @@
   }
 
   .role-card {
-    background: color-mix(in srgb, var(--ja-color-violet-900) 75%, transparent);
+    background: color-mix(in srgb, var(--ja-color-violet-800) 50%, transparent);
     border: 1px solid color-mix(in srgb, var(--ja-color-violet-400) 15%, transparent);
     border-radius: var(--ja-border-radius-large);
     padding: var(--ja-spacing-3x-large);
