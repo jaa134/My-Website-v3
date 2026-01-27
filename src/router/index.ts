@@ -4,30 +4,38 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
 /* Routes /////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
+export enum Route {
+  Home = 'Home',
+  About = 'About',
+  Experience = 'Experience',
+  Contact = 'Contact',
+  NotFound = 'NotFound',
+}
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
+    name: Route.Home,
     component: () => import('@/components/pages/HomePage.vue'),
   },
   {
     path: '/about',
-    name: 'About',
+    name: Route.About,
     component: () => import('@/components/pages/AboutPage.vue'),
   },
   {
     path: '/experience',
-    name: 'Experience',
+    name: Route.Experience,
     component: () => import('@/components/pages/ExperiencePage.vue'),
   },
   {
     path: '/contact',
-    name: 'Contact',
+    name: Route.Contact,
     component: () => import('@/components/pages/ContactPage.vue'),
   },
   {
     path: '/:pathMatch(.*)*',
-    name: 'NotFound',
+    name: Route.NotFound,
     redirect: '/',
   },
 ];

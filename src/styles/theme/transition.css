@@ -1,0 +1,7 @@
+:root {
+  --ja-transition-x-slow: 1000ms;
+  --ja-transition-slow: 500ms;
+  --ja-transition-medium: 250ms;
+  --ja-transition-fast: 150ms;
+  --ja-transition-x-fast: 50ms;
+}

@@ -1,7 +1,13 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>App Footer</div>
+  <div class="app-footer"></div>
 </template>
 
-<style scoped></style>
+<style scoped>
+  .app-footer {
+    height: 260px;
+    min-height: 260px;
+    background: yellow;
+  }
+</style>

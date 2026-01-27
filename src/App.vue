@@ -1,12 +1,25 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import { RouterView } from 'vue-router';
+  import AppHeader from '@/components/layout/AppHeader.vue';
+  import AppBody from '@/components/layout/AppBody.vue';
+  import AppFooter from '@/components/layout/AppFooter.vue';
 </script>
 
 <template>
-  <div>App</div>
-  <RouterView />
+  <div class="app">
+    <AppHeader />
+    <AppBody />
+    <AppFooter />
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+  .app {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+</style>
