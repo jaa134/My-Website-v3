@@ -57,8 +57,8 @@
   };
 
   onMounted(() => {
-    generateStars();
     window.addEventListener('resize', handleResize);
+    generateStars();
   });
 
   onUnmounted(() => {
@@ -106,12 +106,12 @@
 
   .star {
     position: absolute;
-    background-color: white;
+    background-color: var(--ja-color-neutral-0);
     border-radius: 50%;
     box-shadow:
-      0 0 2px rgba(255, 255, 255, 0.8),
-      0 0 4px rgba(255, 255, 255, 0.6),
-      0 0 6px rgba(255, 255, 255, 0.4);
+      0 0 2px color-mix(in srgb, var(--ja-color-neutral-0) 80%, transparent),
+      0 0 4px color-mix(in srgb, var(--ja-color-neutral-0) 60%, transparent),
+      0 0 6px color-mix(in srgb, var(--ja-color-neutral-0) 40%, transparent);
     animation: twinkle infinite ease-in-out;
     transform: translate(-50%, -50%);
   }
@@ -130,27 +130,27 @@
 
   /* Add some variety with different star intensities */
   .star:nth-child(3n) {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: color-mix(in srgb, var(--ja-color-neutral-0) 90%, transparent);
     box-shadow:
-      0 0 3px rgba(255, 255, 255, 0.9),
-      0 0 6px rgba(255, 255, 255, 0.7),
-      0 0 9px rgba(255, 255, 255, 0.5);
+      0 0 3px color-mix(in srgb, var(--ja-color-neutral-0) 90%, transparent),
+      0 0 6px color-mix(in srgb, var(--ja-color-neutral-0) 70%, transparent),
+      0 0 9px color-mix(in srgb, var(--ja-color-neutral-0) 50%, transparent);
   }
 
   .star:nth-child(3n + 1) {
-    background-color: rgba(200, 220, 255, 0.8);
+    background-color: color-mix(in srgb, var(--ja-color-sky-100) 80%, transparent);
     box-shadow:
-      0 0 2px rgba(200, 220, 255, 0.8),
-      0 0 4px rgba(200, 220, 255, 0.6),
-      0 0 6px rgba(200, 220, 255, 0.4);
+      0 0 2px color-mix(in srgb, var(--ja-color-sky-100) 80%, transparent),
+      0 0 4px color-mix(in srgb, var(--ja-color-sky-100) 60%, transparent),
+      0 0 6px color-mix(in srgb, var(--ja-color-sky-100) 40%, transparent);
   }
 
   .star:nth-child(3n + 2) {
-    background-color: rgba(255, 255, 240, 0.7);
+    background-color: color-mix(in srgb, var(--ja-color-yellow-50) 70%, transparent);
     box-shadow:
-      0 0 2px rgba(255, 255, 240, 0.7),
-      0 0 4px rgba(255, 255, 240, 0.5),
-      0 0 6px rgba(255, 255, 240, 0.3);
+      0 0 2px color-mix(in srgb, var(--ja-color-yellow-50) 70%, transparent),
+      0 0 4px color-mix(in srgb, var(--ja-color-yellow-50) 50%, transparent),
+      0 0 6px color-mix(in srgb, var(--ja-color-yellow-50) 30%, transparent);
   }
 
   /* Fade-in-out transition */

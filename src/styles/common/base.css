@@ -25,10 +25,11 @@ a {
   }
 }
 
-
 button {
   color: var(--ja-color-neutral-200);
-  transition: color var(--ja-transition-fast) ease-in-out, border-color var(--ja-transition-fast) ease-in-out;
+  transition:
+    color var(--ja-transition-fast) ease-in-out,
+    border-color var(--ja-transition-fast) ease-in-out;
   cursor: pointer;
 
   &:hover {
