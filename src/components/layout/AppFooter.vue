@@ -8,6 +8,5 @@
   .app-footer {
     height: 260px;
     min-height: 260px;
-    background: yellow;
   }
 </style>

@@ -20,7 +20,9 @@
       <RouterLink :to="{ name: Route.Contact }">Contact</RouterLink>
     </div>
     <div class="section call-to-action">
-      <button>Let's work together</button>
+      <RouterLink :to="{ name: Route.Contact }">
+        <button>Let's work together</button>
+      </RouterLink>
     </div>
   </div>
 </template>
@@ -31,9 +33,8 @@
     top: 0;
     height: 100px;
     min-height: 100px;
-    background: red;
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
     grid-template-rows: 1fr;
     gap: var(--ja-spacing-x-large);
     padding: 0 var(--ja-spacing-x-large);
@@ -50,7 +51,7 @@
 
     &.navigation {
       justify-content: center;
-      gap: var(--ja-spacing-x-large);
+      gap: var(--ja-spacing-3x-large);
     }
 
     &.call-to-action {
@@ -58,8 +59,41 @@
     }
   }
 
-  .logo {
-    width: 60px;
-    height: 60px;
+  .title {
+    .logo {
+      width: 60px;
+      height: 60px;
+    }
+
+    .name {
+      font-size: var(--ja-font-size-x-large);
+      font-family: var(--ja-font-mono);
+    }
+  }
+
+  .navigation {
+    a {
+      display: inline-block;
+      padding: var(--ja-spacing-small) var(--ja-spacing-medium);
+      font-size: var(--ja-font-size-large);
+      font-weight: var(--ja-font-weight-semibold);
+      font-family: var(--ja-font-mono);
+    }
+  }
+
+  .call-to-action {
+    button {
+      padding: var(--ja-spacing-x-small) var(--ja-spacing-x-large);
+      background: transparent;
+      border: 1px solid var(--ja-color-purple-600);
+      border-radius: var(--ja-border-radius-pill);
+      font-size: var(--ja-font-size-large);
+      font-weight: var(--ja-font-weight-semibold);
+      font-family: var(--ja-font-mono);
+
+      &:hover {
+        border-color: var(--ja-color-purple-400);
+      }
+    }
   }
 </style>
