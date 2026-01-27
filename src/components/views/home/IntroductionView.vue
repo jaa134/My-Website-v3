@@ -147,6 +147,7 @@
     height: 300px;
 
     img {
+      position: relative;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -155,21 +156,21 @@
       background: color-mix(in srgb, var(--ja-color-violet-950) 20%, transparent);
       backdrop-filter: blur(10px);
       overflow: hidden;
-    }
 
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(
-        135deg,
-        color-mix(in srgb, var(--ja-color-violet-400) 5%, transparent) 0%,
-        transparent 50%,
-        color-mix(in srgb, var(--ja-color-purple-500) 5%, transparent) 100%
-      );
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          color-mix(in srgb, var(--ja-color-violet-400) 5%, transparent) 0%,
+          transparent 50%,
+          color-mix(in srgb, var(--ja-color-purple-500) 5%, transparent) 100%
+        );
+      }
     }
   }
 

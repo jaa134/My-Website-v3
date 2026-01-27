@@ -9,7 +9,6 @@ body {
   font-family: var(--ja-font-sans);
   font-size: var(--ja-font-size-medium);
   line-height: var(--ja-line-height-normal);
-  color: var(--ja-color-gray-900);
   background-color: var(--ja-color-neutral-900);
   color: var(--ja-color-neutral-100);
   overscroll-behavior: none;
