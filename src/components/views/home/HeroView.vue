@@ -1,4 +1,34 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+  import { onMounted, onUnmounted, ref } from 'vue';
+
+  /* Slideshow ////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+  const photos = [
+    '/assets/images/profiles/1.webp',
+    '/assets/images/profiles/2.webp',
+    '/assets/images/profiles/3.webp',
+    '/assets/images/profiles/4.webp',
+    '/assets/images/profiles/5.webp',
+  ];
+
+  const currentIndex = ref(0);
+
+  let slideshowInterval: ReturnType<typeof setInterval> | null = null;
+
+  onMounted(() => {
+    slideshowInterval = setInterval(() => {
+      currentIndex.value = (currentIndex.value + 1) % photos.length;
+    }, 10000);
+  });
+
+  onUnmounted(() => {
+    if (slideshowInterval) {
+      clearInterval(slideshowInterval);
+    }
+  });
+</script>
 
 <template>
   <div class="hero-view">
@@ -17,7 +47,10 @@
     </div>
     <div class="hero-photo">
       <img
-        src="/assets/images/me.webp"
+        v-for="(photo, index) in photos"
+        :key="index"
+        :class="[{ active: index === currentIndex }]"
+        :src="photo"
         alt="Jacob Alspaw"
       />
     </div>
@@ -98,36 +131,51 @@
   }
 
   .hero-photo {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 300px;
+    overflow: hidden;
 
-    img {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border: 2px solid color-mix(in srgb, var(--ja-color-violet-400) 20%, transparent);
-      border-radius: var(--ja-border-radius-large);
-      background: color-mix(in srgb, var(--ja-color-violet-950) 20%, transparent);
-      backdrop-filter: blur(10px);
-      overflow: hidden;
+    * {
+      pointer-events: none;
+      user-select: none;
+    }
+  }
 
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-          135deg,
-          color-mix(in srgb, var(--ja-color-violet-400) 5%, transparent) 0%,
-          transparent 50%,
-          color-mix(in srgb, var(--ja-color-purple-500) 5%, transparent) 100%
-        );
-      }
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 2px solid color-mix(in srgb, var(--ja-color-violet-400) 20%, transparent);
+    border-radius: var(--ja-border-radius-large);
+    background: color-mix(in srgb, var(--ja-color-violet-950) 20%, transparent);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity var(--ja-transition-slow) ease-in-out;
+
+    &.active {
+      opacity: 1;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--ja-color-violet-400) 5%, transparent) 0%,
+        transparent 50%,
+        color-mix(in srgb, var(--ja-color-purple-500) 5%, transparent) 100%
+      );
     }
   }
 
