@@ -122,7 +122,7 @@
 
   /* Helpers //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  function createSatelliteMesh(): Group {
+  const createSatelliteMesh = (): Group => {
     const group = new Group();
 
     const satelliteGeometry = new SphereGeometry(satelliteSize);
@@ -144,9 +144,9 @@
     group.add(hoverMesh);
 
     return group;
-  }
+  };
 
-  function parseTleText(tleText: string): Satellite[] {
+  const parseTleText = (tleText: string): Satellite[] => {
     const parsedTleData = tleText
       .replace(/\r/g, '')
       .split(/\n(?=[^12])/)
@@ -177,12 +177,12 @@
         };
       })
       .filter((satellite): satellite is Satellite => !!satellite);
-  }
+  };
 
-  function animateSatellites(satellites: Satellite[]) {
+  const animateSatellites = (satellites: Satellite[]) => {
     let time = new Date();
 
-    function _animateSatellites() {
+    const _animateSatellites = () => {
       if (!globeInstance) {
         console.error('Globe instance is not initialized.');
         return;
@@ -210,10 +210,10 @@
           };
         }),
       );
-    }
+    };
 
     _animateSatellites();
-  }
+  };
 </script>
 
 <template>
