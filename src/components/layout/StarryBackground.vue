@@ -21,7 +21,7 @@
 
   const calculateStaticStarCount = (): number => {
     const area = window.innerWidth * window.innerHeight;
-    const density = 0.0001;
+    const density = 0.00015;
     return Math.floor(area * density);
   };
 
@@ -261,12 +261,9 @@
     position: absolute;
     background-color: var(--ja-color-neutral-0);
     border-radius: 50%;
-    box-shadow:
-      0 0 2px color-mix(in srgb, var(--ja-color-neutral-0) 80%, transparent),
-      0 0 4px color-mix(in srgb, var(--ja-color-neutral-0) 60%, transparent),
-      0 0 6px color-mix(in srgb, var(--ja-color-neutral-0) 40%, transparent);
     animation: twinkle infinite ease-in-out;
     transform: translate(-50%, -50%);
+    will-change: opacity, transform;
 
     &:nth-child(3n) {
       background-color: color-mix(in srgb, var(--ja-color-neutral-0) 90%, transparent);
@@ -302,7 +299,7 @@
     filter: drop-shadow(0 0 6px color-mix(in srgb, var(--ja-color-sky-200) 60%, transparent));
     transform: translate(var(--start-x), var(--start-y)) rotate(var(--angle));
     animation: shooting-star-move var(--duration) ease-out forwards;
-    will-change: transform, opacity;
+    will-change: opacity, transform;
   }
 
   .fade-in-out-enter-active {
