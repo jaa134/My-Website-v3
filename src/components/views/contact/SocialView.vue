@@ -3,5 +3,3 @@
 <template>
   <div>Social View</div>
 </template>
-
-<style scoped></style>

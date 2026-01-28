@@ -3,5 +3,3 @@
 <template>
   <div>Education View</div>
 </template>
-
-<style scoped></style>

@@ -3,5 +3,3 @@
 <template>
   <div>Form View</div>
 </template>
-
-<style scoped></style>

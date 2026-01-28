@@ -3,5 +3,3 @@
 <template>
   <div>Experience Page</div>
 </template>
-
-<style scoped></style>

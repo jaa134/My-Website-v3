@@ -1,21 +1,17 @@
-import eslintJS from '@eslint/js'
-import tsPlugin from '@typescript-eslint/eslint-plugin'
-import tsParser from '@typescript-eslint/parser'
-import { defineConfig, globalIgnores } from "eslint/config";
-import prettier from 'eslint-config-prettier'
-import importPlugin from 'eslint-plugin-import'
-import simpleImportSortPlugin from 'eslint-plugin-simple-import-sort'
-import unusedImportsPlugin from 'eslint-plugin-unused-imports'
-import vuePlugin from 'eslint-plugin-vue'
+import eslint from '@eslint/js';
+import { defineConfig, globalIgnores } from 'eslint/config';
+import eslintPrettierConfig from 'eslint-config-prettier';
+import importPlugin from 'eslint-plugin-import';
+import simpleImportSortPlugin from 'eslint-plugin-simple-import-sort';
+import unusedImportsPlugin from 'eslint-plugin-unused-imports';
+import vuePlugin from 'eslint-plugin-vue';
+import globals from 'globals';
+import typescriptEslint from 'typescript-eslint';
 
 export default defineConfig([
-  globalIgnores([
-    'node_modules',
-    'dist',
-    '*.config.*{js,ts}',
-  ]),
+  globalIgnores(['node_modules', 'dist']),
 
-  eslintJS.configs.recommended,
+  eslint.configs.recommended,
 
   {
     plugins: {
@@ -70,25 +66,24 @@ export default defineConfig([
   },
 
   {
-    files: ['**/*.ts'],
+    extends: [
+      eslint.configs.recommended,
+      ...typescriptEslint.configs.recommended,
+      ...vuePlugin.configs['flat/recommended-error'],
+    ],
+    files: ['**/*.{ts,vue}'],
     languageOptions: {
-      parser: tsParser,
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: globals.browser,
       parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
+        parser: typescriptEslint.parser,
       },
-    },
-    plugins: {
-      '@typescript-eslint': tsPlugin,
     },
     rules: {
       '@typescript-eslint/no-unused-vars': 'off',
-      '@typescript-eslint/consistent-type-imports': 'warn',
-      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
 
-  ...vuePlugin.configs['flat/recommended-error'],
-
-  prettier,
-])
+  eslintPrettierConfig,
+]);

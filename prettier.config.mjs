@@ -7,4 +7,3 @@ export default {
   trailingComma: 'all',
   vueIndentScriptAndStyle: true,
 };
-  

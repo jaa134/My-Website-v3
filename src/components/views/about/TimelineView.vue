@@ -3,5 +3,3 @@
 <template>
   <div>Timeline View</div>
 </template>
-
-<style scoped></style>

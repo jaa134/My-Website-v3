@@ -1,11 +1,15 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import { onMounted, onUnmounted, ref } from 'vue';
-  import Globe, { GlobeInstance } from 'globe.gl';
+  import type { GeoJsonProperties } from 'geojson';
+  import type { GlobeInstance } from 'globe.gl';
+  import Globe from 'globe.gl';
+  import type { SatRec } from 'satellite.js';
+  import { eciToGeodetic, gstime, propagate, radiansToDegrees, twoline2satrec } from 'satellite.js';
   import { Group, Mesh, MeshLambertMaterial, SphereGeometry } from 'three';
   import { feature } from 'topojson-client';
-  import { twoline2satrec, propagate, SatRec, gstime, eciToGeodetic, radiansToDegrees } from 'satellite.js';
+  import type { Objects, Topology } from 'topojson-specification';
+  import { onMounted, onUnmounted, ref } from 'vue';
 
   /* Types ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -75,7 +79,7 @@
       },
     })
       .then((response) => response.json())
-      .then((landTopo: TopoJSON.Topology<TopoJSON.Objects<GeoJSON.GeoJsonProperties>>) => {
+      .then((landTopo: Topology<Objects<GeoJsonProperties>>) => {
         if (!globeInstance) {
           console.error('Globe instance is not initialized.');
           return;
@@ -222,83 +226,83 @@
       <div class="tech-blurb">Delivering satellites to space with modern tech stacks</div>
       <div class="tech-card">
         <img
+          v-tooltip="'TypeScript'"
           src="@/assets/icons/skills/typescript.svg"
           alt="TypeScript"
-          v-tooltip="'TypeScript'"
         />
         <img
+          v-tooltip="'HTML'"
           src="@/assets/icons/skills/html.svg"
           alt="HTML"
-          v-tooltip="'HTML'"
         />
         <img
+          v-tooltip="'CSS'"
           src="@/assets/icons/skills/css.svg"
           alt="CSS"
-          v-tooltip="'CSS'"
         />
         <img
+          v-tooltip="'Vue'"
           src="@/assets/icons/skills/vue.svg"
           alt="Vue"
-          v-tooltip="'Vue'"
         />
         <img
+          v-tooltip="'React'"
           src="@/assets/icons/skills/react.svg"
           alt="React"
-          v-tooltip="'React'"
         />
       </div>
       <div class="tech-card">
         <img
+          v-tooltip="'Vite'"
           src="@/assets/icons/skills/vite.svg"
           alt="Vite"
-          v-tooltip="'Vite'"
         />
         <img
+          v-tooltip="'Vitest'"
           src="@/assets/icons/skills/vitest.svg"
           alt="Vitest"
-          v-tooltip="'Vitest'"
         />
         <img
+          v-tooltip="'GraphQL'"
           src="@/assets/icons/skills/graphql.svg"
           alt="GraphQL"
-          v-tooltip="'GraphQL'"
         />
         <img
+          v-tooltip="'Apollo'"
           src="@/assets/icons/skills/apollo.svg"
           alt="Apollo"
-          v-tooltip="'Apollo'"
         />
         <img
+          v-tooltip="'Pinia'"
           src="@/assets/icons/skills/pinia.svg"
           alt="Pinia"
-          v-tooltip="'Pinia'"
         />
       </div>
       <div class="tech-card">
         <img
+          v-tooltip="'Git'"
           src="@/assets/icons/skills/git.svg"
           alt="Git"
-          v-tooltip="'Git'"
         />
         <img
+          v-tooltip="'Docker'"
           src="@/assets/icons/skills/docker.svg"
           alt="Docker"
-          v-tooltip="'Docker'"
         />
         <img
+          v-tooltip="'Cursor'"
           src="@/assets/icons/skills/cursor.svg"
           alt="Cursor"
-          v-tooltip="'Cursor'"
         />
         <img
+          v-tooltip="'Figma'"
           src="@/assets/icons/skills/figma.svg"
           alt="Figma"
-          v-tooltip="'Figma'"
         />
         <img
+          v-tooltip="'Jira'"
           src="@/assets/icons/skills/jira.svg"
           alt="Jira"
-          v-tooltip="'Jira'"
         />
       </div>
     </div>

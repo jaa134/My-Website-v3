@@ -3,5 +3,3 @@
 <template>
   <div>Gallery View</div>
 </template>
-
-<style scoped></style>

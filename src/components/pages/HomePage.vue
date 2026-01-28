@@ -1,9 +1,9 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import RolesView from '@/components/views/home/RolesView.vue';
-  import HeroView from '@/components/views/home/HeroView.vue';
   import GlobeView from '@/components/views/home/GlobeView.vue';
+  import HeroView from '@/components/views/home/HeroView.vue';
+  import RolesView from '@/components/views/home/RolesView.vue';
 </script>
 
 <template>
