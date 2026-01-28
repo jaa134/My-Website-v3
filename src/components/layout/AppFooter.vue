@@ -1,12 +1,4 @@
-<script setup lang="ts">
-  /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
-
-  import linkedinIcon from '@/assets/icons/linkedin.svg';
-  import githubIcon from '@/assets/icons/github.svg';
-  import facebookIcon from '@/assets/icons/facebook.svg';
-  import instagramIcon from '@/assets/icons/instagram.svg';
-  import twitterIcon from '@/assets/icons/twitter.svg';
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <footer class="app-footer">
@@ -120,7 +112,7 @@
               aria-label="LinkedIn"
             >
               <img
-                :src="linkedinIcon"
+                src="@/assets/icons/socials/linkedin.svg"
                 alt="LinkedIn"
               />
             </a>
@@ -132,7 +124,7 @@
               aria-label="GitHub"
             >
               <img
-                :src="githubIcon"
+                src="@/assets/icons/socials/github.svg"
                 alt="GitHub"
               />
             </a>
@@ -144,7 +136,7 @@
               aria-label="Facebook"
             >
               <img
-                :src="facebookIcon"
+                src="@/assets/icons/socials/facebook.svg"
                 alt="Facebook"
               />
             </a>
@@ -156,7 +148,7 @@
               aria-label="Instagram"
             >
               <img
-                :src="instagramIcon"
+                src="@/assets/icons/socials/instagram.svg"
                 alt="Instagram"
               />
             </a>
@@ -168,7 +160,7 @@
               aria-label="Twitter"
             >
               <img
-                :src="twitterIcon"
+                src="@/assets/icons/socials/twitter.svg"
                 alt="Twitter"
               />
             </a>
@@ -206,7 +198,7 @@
   .column-title {
     font-size: var(--ja-font-size-medium);
     font-weight: var(--ja-font-weight-bold);
-    letter-spacing: var(--ja-letter-spacing-loose);
+    letter-spacing: var(--ja-letter-spacing-looser);
     text-transform: uppercase;
     color: var(--ja-color-neutral-0);
     padding-bottom: var(--ja-spacing-2x-small);

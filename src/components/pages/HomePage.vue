@@ -1,13 +1,15 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import IntroductionView from '@/components/views/home/IntroductionView.vue';
+  import RolesView from '@/components/views/home/RolesView.vue';
+  import HeroView from '@/components/views/home/HeroView.vue';
   import GlobeView from '@/components/views/home/GlobeView.vue';
 </script>
 
 <template>
   <div class="home-page">
-    <IntroductionView />
+    <HeroView />
+    <RolesView />
     <GlobeView />
   </div>
 </template>
@@ -16,10 +18,9 @@
   .home-page {
     display: flex;
     flex-direction: column;
-    gap: var(--ja-spacing-4x-large);
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: var(--ja-spacing-4x-large) 0 var(--ja-spacing-5x-large) 0;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ja-spacing-6x-large);
+    padding: var(--ja-spacing-6x-large) var(--ja-spacing-2x-large);
   }
 </style>

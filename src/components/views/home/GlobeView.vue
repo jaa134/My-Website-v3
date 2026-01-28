@@ -19,7 +19,7 @@
 
   /* Constants ////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  const globeSize = 800;
+  const globeSize = 600;
   const satelliteSize = 1;
   const satelliteHoverSize = 10;
   const timeStep = 1000;
@@ -59,7 +59,7 @@
     globeInstance.backgroundColor('rgba(0,0,0,0)');
 
     // Configure POV
-    globeInstance.pointOfView({ lat: 39.6, lng: -98.5, altitude: 2 });
+    globeInstance.pointOfView({ lat: 39.6, lng: -98.5, altitude: 1.45 });
 
     // Configure atmosphere
     globeInstance.showAtmosphere(true);
@@ -218,6 +218,30 @@
 
 <template>
   <div class="globe-view">
+    <div class="summary">
+      <div class="title">Delivering satellites to space with modern tech stacks</div>
+      <div class="tech-card">
+        <img src="@/assets/icons/skills/typescript.svg" alt="TypeScript" />
+        <img src="@/assets/icons/skills/html.svg" alt="HTML" />
+        <img src="@/assets/icons/skills/css.svg" alt="CSS" />
+        <img src="@/assets/icons/skills/vue.svg" alt="Vue" />
+        <img src="@/assets/icons/skills/react.svg" alt="React" />
+      </div>
+      <div class="tech-card">
+        <img src="@/assets/icons/skills/vite.svg" alt="Vite" />
+        <img src="@/assets/icons/skills/vitest.svg" alt="Vitest" />
+        <img src="@/assets/icons/skills/graphql.svg" alt="GraphQL" />
+        <img src="@/assets/icons/skills/apollo.svg" alt="Apollo" />
+        <img src="@/assets/icons/skills/pinia.svg" alt="Pinia" />
+      </div>
+      <div class="tech-card">
+        <img src="@/assets/icons/skills/git.svg" alt="Git" />
+        <img src="@/assets/icons/skills/docker.svg" alt="Docker" />
+        <img src="@/assets/icons/skills/cursor.svg" alt="Cursor" />
+        <img src="@/assets/icons/skills/figma.svg" alt="Figma" />
+        <img src="@/assets/icons/skills/jira.svg" alt="Jira" />
+      </div>
+    </div>
     <div
       ref="globeContainer"
       class="globe-container"
@@ -226,9 +250,76 @@
 </template>
 
 <style scoped>
-  .globe-container {
+  .globe-view {
+    display: flex;
+    align-items: center;
+    gap: var(--ja-spacing-4x-large);
+  }
+
+  .summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ja-spacing-x-large);
+  }
+
+  .title {
+    font-size: var(--ja-font-size-x-large);
+    font-weight: var(--ja-font-weight-light);
+    line-height: var(--ja-line-height-dense);
+    color: var(--ja-color-neutral-300);
+    text-align: center;
+    width: 400px;
+  }
+
+  .tech-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--ja-spacing-small);
+    width: 400px;
+    height: 100px;
     position: relative;
-    margin: 0 auto;
+    background: color-mix(in srgb, var(--ja-color-violet-800) 50%, transparent);
+    backdrop-filter: blur(10px);
+    border: 1px solid color-mix(in srgb, var(--ja-color-violet-400) 15%, transparent);
+    border-radius: var(--ja-border-radius-large);
+    transition: all var(--ja-transition-fast) ease;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        color-mix(in srgb, var(--ja-color-violet-400) 90%, transparent),
+        transparent
+      );
+      opacity: 0;
+      transition: opacity var(--ja-transition-fast) ease;
+    }
+
+    &:hover {
+      border-color: color-mix(in srgb, var(--ja-color-violet-400) 30%, transparent);
+      background: color-mix(in srgb, var(--ja-color-violet-950) 40%, transparent);
+
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    img {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  .globe-container {
     width: v-bind('globeSize + "px"');
     height: v-bind('globeSize + "px"');
     overflow: hidden;

@@ -23,8 +23,8 @@
   --ja-letter-spacing-denser: -0.03em;
   --ja-letter-spacing-dense: -0.015em;
   --ja-letter-spacing-normal: normal;
-  --ja-letter-spacing-loose: 0.075em;
-  --ja-letter-spacing-looser: 0.15em;
+  --ja-letter-spacing-loose: 0.0375em;
+  --ja-letter-spacing-looser: 0.075em;
 
   --ja-line-height-denser: 1;
   --ja-line-height-dense: 1.4;
