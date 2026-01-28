@@ -11,6 +11,8 @@
   import type { Objects, Topology } from 'topojson-specification';
   import { onMounted, onUnmounted, ref } from 'vue';
 
+  import BasicCard from '@/components/common/BasicCard.vue';
+
   import ApolloIcon from '@/assets/icons/skills/apollo.svg';
   import CssIcon from '@/assets/icons/skills/css.svg';
   import CursorIcon from '@/assets/icons/skills/cursor.svg';
@@ -235,33 +237,55 @@
 
     _animateSatellites();
   };
+
+  /* Tools ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+  interface Tool {
+    name: string;
+    icon: string;
+  }
+
+  const toolGroups: Tool[][] = [
+    [
+      { name: 'TypeScript', icon: TypescriptIcon },
+      { name: 'HTML', icon: HtmlIcon },
+      { name: 'CSS', icon: CssIcon },
+      { name: 'Vue', icon: VueIcon },
+      { name: 'React', icon: ReactIcon },
+    ],
+    [
+      { name: 'Vite', icon: ViteIcon },
+      { name: 'Vitest', icon: VitestIcon },
+      { name: 'GraphQL', icon: GraphqlIcon },
+      { name: 'Apollo', icon: ApolloIcon },
+      { name: 'Pinia', icon: PiniaIcon },
+    ],
+    [
+      { name: 'Git', icon: GitIcon },
+      { name: 'Docker', icon: DockerIcon },
+      { name: 'Cursor', icon: CursorIcon },
+      { name: 'Figma', icon: FigmaIcon },
+      { name: 'Jira', icon: JiraIcon },
+    ],
+  ];
 </script>
 
 <template>
   <div class="globe-view">
     <div class="tech-section">
       <div class="tech-blurb">Delivering satellites to space with modern tech stacks</div>
-      <div class="tech-card">
-        <TypescriptIcon v-tooltip="'TypeScript'" />
-        <HtmlIcon v-tooltip="'HTML'" />
-        <CssIcon v-tooltip="'CSS'" />
-        <VueIcon v-tooltip="'Vue'" />
-        <ReactIcon v-tooltip="'React'" />
-      </div>
-      <div class="tech-card">
-        <ViteIcon v-tooltip="'Vite'" />
-        <VitestIcon v-tooltip="'Vitest'" />
-        <GraphqlIcon v-tooltip="'GraphQL'" />
-        <ApolloIcon v-tooltip="'Apollo'" />
-        <PiniaIcon v-tooltip="'Pinia'" />
-      </div>
-      <div class="tech-card">
-        <GitIcon v-tooltip="'Git'" />
-        <DockerIcon v-tooltip="'Docker'" />
-        <CursorIcon v-tooltip="'Cursor'" />
-        <FigmaIcon v-tooltip="'Figma'" />
-        <JiraIcon v-tooltip="'Jira'" />
-      </div>
+      <BasicCard
+        v-for="(toolGroup, index) in toolGroups"
+        :key="index"
+        class="tech-card"
+      >
+        <component
+          :is="tool.icon"
+          v-for="tool in toolGroup"
+          :key="tool.name"
+          v-tooltip="tool.name"
+        />
+      </BasicCard>
     </div>
     <div class="globe-section">
       <div class="count-container">
@@ -311,38 +335,7 @@
     gap: var(--ja-spacing-small);
     width: 400px;
     height: 100px;
-    position: relative;
-    background: color-mix(in srgb, var(--ja-color-violet-800) 50%, transparent);
-    backdrop-filter: blur(10px);
-    border: 1px solid color-mix(in srgb, var(--ja-color-violet-400) 15%, transparent);
-    border-radius: var(--ja-border-radius-large);
-    transition: all var(--ja-transition-fast) ease;
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(
-        to right,
-        transparent,
-        color-mix(in srgb, var(--ja-color-violet-400) 90%, transparent),
-        transparent
-      );
-      opacity: 0;
-      transition: opacity var(--ja-transition-fast) ease;
-    }
-
-    &:hover {
-      border-color: color-mix(in srgb, var(--ja-color-violet-400) 30%, transparent);
-      background: color-mix(in srgb, var(--ja-color-violet-950) 40%, transparent);
-
-      &::before {
-        opacity: 1;
-      }
-    }
+    padding: var(--ja-spacing-3x-large);
 
     svg {
       width: 60px;

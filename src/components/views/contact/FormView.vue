@@ -232,9 +232,12 @@
     background: linear-gradient(135deg, var(--ja-color-purple-600), var(--ja-color-violet-600));
     color: var(--ja-color-neutral-0);
     font-size: var(--ja-font-size-medium);
-    transition: box-shadow var(--ja-transition-fast) ease;
+    transition:
+      box-shadow var(--ja-transition-fast) ease,
+      border-color var(--ja-transition-fast) ease;
 
     &:hover {
+      border-color: color-mix(in srgb, var(--ja-color-purple-300) 65%, transparent);
       box-shadow: 0 0 16px color-mix(in srgb, var(--ja-color-purple-400) 50%, transparent);
     }
 

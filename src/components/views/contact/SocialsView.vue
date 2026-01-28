@@ -1,6 +1,8 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
+  import BasicCard from '@/components/common/BasicCard.vue';
+
   import FacebookIcon from '@/assets/icons/socials/facebook.svg';
   import GithubIcon from '@/assets/icons/socials/github.svg';
   import InstagramIcon from '@/assets/icons/socials/instagram.svg';
@@ -60,17 +62,20 @@
       <a
         v-for="social in socials"
         :key="social.name"
-        class="social-card"
         :href="social.url"
-        :aria-label="social.name"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <component
-          :is="social.icon"
-          class="social-icon"
-        />
-        <span class="social-handle">{{ social.handle }}</span>
+        <BasicCard
+          class="social-card"
+          interactive
+        >
+          <component
+            :is="social.icon"
+            class="social-icon"
+          />
+          <span class="social-handle">{{ social.handle }}</span>
+        </BasicCard>
       </a>
     </div>
   </div>
@@ -116,19 +121,6 @@
     justify-content: center;
     gap: var(--ja-spacing-small);
     padding: var(--ja-spacing-x-large);
-    border: 1px solid color-mix(in srgb, var(--ja-color-purple-400) 35%, transparent);
-    border-radius: var(--ja-border-radius-x-large);
-    background: linear-gradient(135deg, var(--ja-color-violet-950), var(--ja-color-purple-900));
-    box-shadow: 0 0 20px color-mix(in srgb, var(--ja-color-purple-400) 15%, transparent);
-    color: var(--ja-color-neutral-100);
-    transition:
-      box-shadow var(--ja-transition-fast) ease,
-      border-color var(--ja-transition-fast) ease;
-
-    &:hover {
-      border-color: color-mix(in srgb, var(--ja-color-purple-300) 55%, transparent);
-      box-shadow: 0 0 28px color-mix(in srgb, var(--ja-color-purple-300) 25%, transparent);
-    }
   }
 
   .social-icon {

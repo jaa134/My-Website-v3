@@ -1,6 +1,8 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
+  import BasicCard from '@/components/common/BasicCard.vue';
+
   import EmailIcon from '@/assets/icons/contacts/email.svg';
   import LocationIcon from '@/assets/icons/contacts/location.svg';
   import PhoneIcon from '@/assets/icons/contacts/phone.svg';
@@ -46,19 +48,23 @@
       <a
         v-for="option in options"
         :key="option.label"
-        class="option-card"
         :href="option.link"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <component
-          :is="option.icon"
-          class="option-icon"
-        />
-        <div class="option-text">
-          <h4 class="option-label">{{ option.label }}</h4>
-          <span class="option-value">{{ option.value }}</span>
-        </div>
+        <BasicCard
+          class="option-card"
+          interactive
+        >
+          <component
+            :is="option.icon"
+            class="option-icon"
+          />
+          <div class="option-text">
+            <h4 class="option-label">{{ option.label }}</h4>
+            <span class="option-value">{{ option.value }}</span>
+          </div>
+        </BasicCard>
       </a>
     </div>
   </div>
@@ -102,18 +108,6 @@
     align-items: center;
     gap: var(--ja-spacing-medium);
     padding: var(--ja-spacing-large) var(--ja-spacing-x-large);
-    border-radius: var(--ja-border-radius-x-large);
-    background: linear-gradient(135deg, var(--ja-color-violet-950), var(--ja-color-purple-900));
-    border: 1px solid color-mix(in srgb, var(--ja-color-purple-400) 35%, transparent);
-    box-shadow: 0 0 20px color-mix(in srgb, var(--ja-color-purple-400) 15%, transparent);
-    transition:
-      box-shadow var(--ja-transition-fast) ease,
-      border-color var(--ja-transition-fast) ease;
-
-    &:hover {
-      border-color: color-mix(in srgb, var(--ja-color-purple-300) 55%, transparent);
-      box-shadow: 0 0 28px color-mix(in srgb, var(--ja-color-purple-300) 25%, transparent);
-    }
   }
 
   .option-icon {
@@ -143,6 +137,6 @@
 
   .option-value {
     font-size: var(--ja-font-size-medium);
-    color: var(--ja-color-neutral-100);
+    color: var(--ja-color-neutral-200);
   }
 </style>
