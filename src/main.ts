@@ -2,6 +2,7 @@
 
 import '@/styles/index.css';
 
+import FloatingVue from 'floating-vue';
 import { createApp } from 'vue';
 
 import router from '@/router/index.js';
@@ -13,6 +14,7 @@ async function bootstrap() {
   const app = createApp(App);
 
   app.use(router);
+  app.use(FloatingVue);
 
   app.mount('body');
 }

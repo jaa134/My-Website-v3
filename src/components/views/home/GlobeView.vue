@@ -221,25 +221,85 @@
     <div class="summary">
       <div class="title">Delivering satellites to space with modern tech stacks</div>
       <div class="tech-card">
-        <img src="@/assets/icons/skills/typescript.svg" alt="TypeScript" />
-        <img src="@/assets/icons/skills/html.svg" alt="HTML" />
-        <img src="@/assets/icons/skills/css.svg" alt="CSS" />
-        <img src="@/assets/icons/skills/vue.svg" alt="Vue" />
-        <img src="@/assets/icons/skills/react.svg" alt="React" />
+        <img
+          src="@/assets/icons/skills/typescript.svg"
+          alt="TypeScript"
+          v-tooltip="'TypeScript'"
+        />
+        <img
+          src="@/assets/icons/skills/html.svg"
+          alt="HTML"
+          v-tooltip="'HTML'"
+        />
+        <img
+          src="@/assets/icons/skills/css.svg"
+          alt="CSS"
+          v-tooltip="'CSS'"
+        />
+        <img
+          src="@/assets/icons/skills/vue.svg"
+          alt="Vue"
+          v-tooltip="'Vue'"
+        />
+        <img
+          src="@/assets/icons/skills/react.svg"
+          alt="React"
+          v-tooltip="'React'"
+        />
       </div>
       <div class="tech-card">
-        <img src="@/assets/icons/skills/vite.svg" alt="Vite" />
-        <img src="@/assets/icons/skills/vitest.svg" alt="Vitest" />
-        <img src="@/assets/icons/skills/graphql.svg" alt="GraphQL" />
-        <img src="@/assets/icons/skills/apollo.svg" alt="Apollo" />
-        <img src="@/assets/icons/skills/pinia.svg" alt="Pinia" />
+        <img
+          src="@/assets/icons/skills/vite.svg"
+          alt="Vite"
+          v-tooltip="'Vite'"
+        />
+        <img
+          src="@/assets/icons/skills/vitest.svg"
+          alt="Vitest"
+          v-tooltip="'Vitest'"
+        />
+        <img
+          src="@/assets/icons/skills/graphql.svg"
+          alt="GraphQL"
+          v-tooltip="'GraphQL'"
+        />
+        <img
+          src="@/assets/icons/skills/apollo.svg"
+          alt="Apollo"
+          v-tooltip="'Apollo'"
+        />
+        <img
+          src="@/assets/icons/skills/pinia.svg"
+          alt="Pinia"
+          v-tooltip="'Pinia'"
+        />
       </div>
       <div class="tech-card">
-        <img src="@/assets/icons/skills/git.svg" alt="Git" />
-        <img src="@/assets/icons/skills/docker.svg" alt="Docker" />
-        <img src="@/assets/icons/skills/cursor.svg" alt="Cursor" />
-        <img src="@/assets/icons/skills/figma.svg" alt="Figma" />
-        <img src="@/assets/icons/skills/jira.svg" alt="Jira" />
+        <img
+          src="@/assets/icons/skills/git.svg"
+          alt="Git"
+          v-tooltip="'Git'"
+        />
+        <img
+          src="@/assets/icons/skills/docker.svg"
+          alt="Docker"
+          v-tooltip="'Docker'"
+        />
+        <img
+          src="@/assets/icons/skills/cursor.svg"
+          alt="Cursor"
+          v-tooltip="'Cursor'"
+        />
+        <img
+          src="@/assets/icons/skills/figma.svg"
+          alt="Figma"
+          v-tooltip="'Figma'"
+        />
+        <img
+          src="@/assets/icons/skills/jira.svg"
+          alt="Jira"
+          v-tooltip="'Jira'"
+        />
       </div>
     </div>
     <div

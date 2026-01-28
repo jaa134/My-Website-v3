@@ -24,6 +24,7 @@
     "format:fix": "prettier \"src/**/*.{js,ts,vue,css}\" --write"
   },
   "dependencies": {
+    "floating-vue": "^5.2.2",
     "globe.gl": "^2.45.0",
     "satellite.js": "^6.0.2",
     "three": "^0.182.0",
