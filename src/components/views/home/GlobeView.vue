@@ -218,8 +218,8 @@
 
 <template>
   <div class="globe-view">
-    <div class="summary">
-      <div class="title">Delivering satellites to space with modern tech stacks</div>
+    <div class="tech-section">
+      <div class="tech-blurb">Delivering satellites to space with modern tech stacks</div>
       <div class="tech-card">
         <img
           src="@/assets/icons/skills/typescript.svg"
@@ -302,10 +302,20 @@
         />
       </div>
     </div>
-    <div
-      ref="globeContainer"
-      class="globe-container"
-    ></div>
+    <div class="globe-section">
+      <div class="count-container">
+        <div class="count-dashed-arm angled"></div>
+        <div class="count-dashed-arm vertical"></div>
+        <div class="count-text">
+          <div>15+ satellites</div>
+          <div>and counting...</div>
+        </div>
+      </div>
+      <div
+        ref="globeContainer"
+        class="globe-container"
+      ></div>
+    </div>
   </div>
 </template>
 
@@ -316,7 +326,7 @@
     gap: var(--ja-spacing-4x-large);
   }
 
-  .summary {
+  .tech-section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -324,7 +334,7 @@
     gap: var(--ja-spacing-x-large);
   }
 
-  .title {
+  .tech-blurb {
     font-size: var(--ja-font-size-x-large);
     font-weight: var(--ja-font-weight-light);
     line-height: var(--ja-line-height-dense);
@@ -379,9 +389,63 @@
     }
   }
 
-  .globe-container {
+  .globe-section {
+    position: relative;
     width: v-bind('globeSize + "px"');
     height: v-bind('globeSize + "px"');
-    overflow: hidden;
+  }
+
+  .count-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 135px;
+    height: 100px;
+  }
+
+  .count-dashed-arm {
+    position: absolute;
+    border: 1px dashed var(--ja-color-neutral-400);
+
+    &.angled {
+      bottom: 0;
+      left: 10px;
+      width: 65px;
+      height: 1px;
+      transform: rotate(-40deg);
+    }
+
+    &.vertical {
+      position: absolute;
+      bottom: 25px;
+      left: calc(50% - 0.5px);
+      width: 1px;
+      height: 25px;
+      border: 1px dashed var(--ja-color-neutral-400);
+    }
+  }
+
+  .count-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--ja-font-mono);
+    font-size: var(--ja-font-size-medium);
+    font-weight: var(--ja-font-weight-light);
+    line-height: var(--ja-line-height-dense);
+    text-align: center;
+
+    & > :first-child {
+      font-size: var(--ja-font-size-medium);
+      color: var(--ja-color-neutral-300);
+    }
+
+    & > :last-child {
+      font-size: var(--ja-font-size-x-small);
+      color: var(--ja-color-neutral-300);
+      text-decoration: underline var(--ja-color-neutral-400);
+      text-underline-offset: var(--ja-spacing-small);
+    }
   }
 </style>
