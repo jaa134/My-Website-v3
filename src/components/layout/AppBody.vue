@@ -16,7 +16,7 @@
   .app-body {
     flex: 1;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
   }
 </style>

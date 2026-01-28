@@ -7,5 +7,6 @@
 @import '@/styles/theme/typography.css';
 
 @import '@/styles/common/base.css';
+@import '@/styles/common/notifications.css';
 
 @import 'floating-vue/dist/style.css';

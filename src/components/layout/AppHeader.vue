@@ -5,6 +5,8 @@
 
   import { Route } from '@/router/index.js';
 
+  import LogoIcon from '@/assets/icons/logos/main.svg';
+
   /* Scroll tracking //////////////////////////////////////////////////////////////////////////////////////////////// */
 
   const scrollY = ref(0);
@@ -46,10 +48,7 @@
 <template>
   <div class="app-header">
     <div class="section title">
-      <img
-        class="logo"
-        src="/assets/images/logo.svg"
-      />
+      <LogoIcon class="logo" />
       <h1 class="name">J. Alspaw</h1>
     </div>
     <div class="section navigation">

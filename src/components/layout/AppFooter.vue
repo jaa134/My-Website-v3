@@ -1,4 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+  import FacebookIcon from '@/assets/icons/socials/facebook.svg';
+  import GithubIcon from '@/assets/icons/socials/github.svg';
+  import InstagramIcon from '@/assets/icons/socials/instagram.svg';
+  import LinkedinIcon from '@/assets/icons/socials/linkedin.svg';
+  import TwitterIcon from '@/assets/icons/socials/twitter.svg';
+</script>
 
 <template>
   <footer class="app-footer">
@@ -109,60 +117,40 @@
               href="https://www.linkedin.com/in/jacob-alspaw"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn"
             >
-              <img
-                src="@/assets/icons/socials/linkedin.svg"
-                alt="LinkedIn"
-              />
+              <LinkedinIcon />
             </a>
             <a
               class="social-icon"
               href="https://github.com/jaa134"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="GitHub"
             >
-              <img
-                src="@/assets/icons/socials/github.svg"
-                alt="GitHub"
-              />
+              <GithubIcon />
             </a>
             <a
               class="social-icon"
               href="https://www.facebook.com/jacobalexander.alspaw"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Facebook"
             >
-              <img
-                src="@/assets/icons/socials/facebook.svg"
-                alt="Facebook"
-              />
+              <FacebookIcon />
             </a>
             <a
               class="social-icon"
               href="https://www.instagram.com/jacobalspaw/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Instagram"
             >
-              <img
-                src="@/assets/icons/socials/instagram.svg"
-                alt="Instagram"
-              />
+              <InstagramIcon />
             </a>
             <a
               class="social-icon"
               href="https://twitter.com/JacobAlspaw"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Twitter"
             >
-              <img
-                src="@/assets/icons/socials/twitter.svg"
-                alt="Twitter"
-              />
+              <TwitterIcon />
             </a>
           </div>
         </div>
@@ -227,13 +215,14 @@
     font-size: var(--ja-font-size-small);
     line-height: var(--ja-line-height-dense);
     color: var(--ja-color-neutral-300);
-    margin-bottom: var(--ja-spacing-large);
+    padding-bottom: var(--ja-spacing-large);
   }
 
   .social-icons {
     display: flex;
     flex-wrap: wrap;
     gap: var(--ja-spacing-medium);
+    padding-top: var(--ja-spacing-2x-small);
   }
 
   .social-icon {
@@ -254,10 +243,10 @@
       border-color: color-mix(in srgb, var(--ja-color-neutral-0) 20%, transparent);
     }
 
-    img {
+    svg {
       width: 22px;
       height: 22px;
-      filter: brightness(0) invert(1);
+      color: var(--ja-color-neutral-0);
     }
   }
 </style>

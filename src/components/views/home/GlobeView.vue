@@ -11,6 +11,22 @@
   import type { Objects, Topology } from 'topojson-specification';
   import { onMounted, onUnmounted, ref } from 'vue';
 
+  import ApolloIcon from '@/assets/icons/skills/apollo.svg';
+  import CssIcon from '@/assets/icons/skills/css.svg';
+  import CursorIcon from '@/assets/icons/skills/cursor.svg';
+  import DockerIcon from '@/assets/icons/skills/docker.svg';
+  import FigmaIcon from '@/assets/icons/skills/figma.svg';
+  import GitIcon from '@/assets/icons/skills/git.svg';
+  import GraphqlIcon from '@/assets/icons/skills/graphql.svg';
+  import HtmlIcon from '@/assets/icons/skills/html.svg';
+  import JiraIcon from '@/assets/icons/skills/jira.svg';
+  import PiniaIcon from '@/assets/icons/skills/pinia.svg';
+  import ReactIcon from '@/assets/icons/skills/react.svg';
+  import TypescriptIcon from '@/assets/icons/skills/typescript.svg';
+  import ViteIcon from '@/assets/icons/skills/vite.svg';
+  import VitestIcon from '@/assets/icons/skills/vitest.svg';
+  import VueIcon from '@/assets/icons/skills/vue.svg';
+
   /* Types ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   interface Satellite {
@@ -63,7 +79,7 @@
     globeInstance.backgroundColor('rgba(0,0,0,0)');
 
     // Configure POV
-    globeInstance.pointOfView({ lat: 39.6, lng: -98.5, altitude: 1.45 });
+    globeInstance.pointOfView({ lat: 39.6, lng: -98.5, altitude: 1.5 });
 
     // Configure atmosphere
     globeInstance.showAtmosphere(true);
@@ -103,6 +119,7 @@
 
     // Configure satellites
     globeInstance.objectThreeObject(() => createSatelliteMesh());
+    globeInstance.objectAltitude(0.05);
     fetch('/data/satellites-tle.txt', {
       method: 'GET',
       headers: {
@@ -225,85 +242,25 @@
     <div class="tech-section">
       <div class="tech-blurb">Delivering satellites to space with modern tech stacks</div>
       <div class="tech-card">
-        <img
-          v-tooltip="'TypeScript'"
-          src="@/assets/icons/skills/typescript.svg"
-          alt="TypeScript"
-        />
-        <img
-          v-tooltip="'HTML'"
-          src="@/assets/icons/skills/html.svg"
-          alt="HTML"
-        />
-        <img
-          v-tooltip="'CSS'"
-          src="@/assets/icons/skills/css.svg"
-          alt="CSS"
-        />
-        <img
-          v-tooltip="'Vue'"
-          src="@/assets/icons/skills/vue.svg"
-          alt="Vue"
-        />
-        <img
-          v-tooltip="'React'"
-          src="@/assets/icons/skills/react.svg"
-          alt="React"
-        />
+        <TypescriptIcon v-tooltip="'TypeScript'" />
+        <HtmlIcon v-tooltip="'HTML'" />
+        <CssIcon v-tooltip="'CSS'" />
+        <VueIcon v-tooltip="'Vue'" />
+        <ReactIcon v-tooltip="'React'" />
       </div>
       <div class="tech-card">
-        <img
-          v-tooltip="'Vite'"
-          src="@/assets/icons/skills/vite.svg"
-          alt="Vite"
-        />
-        <img
-          v-tooltip="'Vitest'"
-          src="@/assets/icons/skills/vitest.svg"
-          alt="Vitest"
-        />
-        <img
-          v-tooltip="'GraphQL'"
-          src="@/assets/icons/skills/graphql.svg"
-          alt="GraphQL"
-        />
-        <img
-          v-tooltip="'Apollo'"
-          src="@/assets/icons/skills/apollo.svg"
-          alt="Apollo"
-        />
-        <img
-          v-tooltip="'Pinia'"
-          src="@/assets/icons/skills/pinia.svg"
-          alt="Pinia"
-        />
+        <ViteIcon v-tooltip="'Vite'" />
+        <VitestIcon v-tooltip="'Vitest'" />
+        <GraphqlIcon v-tooltip="'GraphQL'" />
+        <ApolloIcon v-tooltip="'Apollo'" />
+        <PiniaIcon v-tooltip="'Pinia'" />
       </div>
       <div class="tech-card">
-        <img
-          v-tooltip="'Git'"
-          src="@/assets/icons/skills/git.svg"
-          alt="Git"
-        />
-        <img
-          v-tooltip="'Docker'"
-          src="@/assets/icons/skills/docker.svg"
-          alt="Docker"
-        />
-        <img
-          v-tooltip="'Cursor'"
-          src="@/assets/icons/skills/cursor.svg"
-          alt="Cursor"
-        />
-        <img
-          v-tooltip="'Figma'"
-          src="@/assets/icons/skills/figma.svg"
-          alt="Figma"
-        />
-        <img
-          v-tooltip="'Jira'"
-          src="@/assets/icons/skills/jira.svg"
-          alt="Jira"
-        />
+        <GitIcon v-tooltip="'Git'" />
+        <DockerIcon v-tooltip="'Docker'" />
+        <CursorIcon v-tooltip="'Cursor'" />
+        <FigmaIcon v-tooltip="'Figma'" />
+        <JiraIcon v-tooltip="'Jira'" />
       </div>
     </div>
     <div class="globe-section">
@@ -387,7 +344,7 @@
       }
     }
 
-    img {
+    svg {
       width: 60px;
       height: 60px;
     }

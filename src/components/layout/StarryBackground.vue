@@ -72,8 +72,8 @@
   };
 
   const scheduleShootingStar = () => {
-    const minDelay = 10000;
-    const maxDelay = 20000;
+    const minDelay = 15000;
+    const maxDelay = 30000;
     const delay = minDelay + Math.random() * (maxDelay - minDelay);
 
     shootingStarSschedulingTimeout = setTimeout(() => {
