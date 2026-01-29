@@ -1,14 +1,9 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import type { GeoJsonProperties } from 'geojson';
-  import type { GlobeInstance } from 'globe.gl';
-  import Globe from 'globe.gl';
   import type { SatRec } from 'satellite.js';
   import { eciToGeodetic, gstime, propagate, radiansToDegrees, twoline2satrec } from 'satellite.js';
   import { Group, Mesh, MeshLambertMaterial, SphereGeometry } from 'three';
-  import { feature } from 'topojson-client';
-  import type { Objects, Topology } from 'topojson-specification';
   import { onMounted, onUnmounted, ref } from 'vue';
 
   import BasicCard from '@/components/common/BasicCard.vue';
@@ -28,8 +23,40 @@
   import ViteIcon from '@/assets/icons/skills/vite.svg';
   import VitestIcon from '@/assets/icons/skills/vitest.svg';
   import VueIcon from '@/assets/icons/skills/vue.svg';
+  import { useGlobe } from '@/composables/useGlobe.js';
 
-  /* Types ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+  /* Tools ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+  interface Tool {
+    name: string;
+    icon: string;
+  }
+
+  const toolGroups: Tool[][] = [
+    [
+      { name: 'TypeScript', icon: TypescriptIcon },
+      { name: 'HTML', icon: HtmlIcon },
+      { name: 'CSS', icon: CssIcon },
+      { name: 'Vue', icon: VueIcon },
+      { name: 'React', icon: ReactIcon },
+    ],
+    [
+      { name: 'Vite', icon: ViteIcon },
+      { name: 'Vitest', icon: VitestIcon },
+      { name: 'GraphQL', icon: GraphqlIcon },
+      { name: 'Apollo', icon: ApolloIcon },
+      { name: 'Pinia', icon: PiniaIcon },
+    ],
+    [
+      { name: 'Git', icon: GitIcon },
+      { name: 'Docker', icon: DockerIcon },
+      { name: 'Cursor', icon: CursorIcon },
+      { name: 'Figma', icon: FigmaIcon },
+      { name: 'Jira', icon: JiraIcon },
+    ],
+  ];
+
+  /* Globe ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   interface Satellite {
     satrec: SatRec;
@@ -39,89 +66,34 @@
     alt: number;
   }
 
-  /* Constants ////////////////////////////////////////////////////////////////////////////////////////////////////// */
-
   const globeSize = 600;
   const satelliteSize = 1;
   const satelliteHoverSize = 10;
   const timeStep = 1000;
 
-  /* Globe instance ////////////////////////////////////////////////////////////////////////////////////////////////// */
+  const { globeInstance, initializeGlobe, destroyGlobe } = useGlobe();
 
-  const globeContainer = ref<HTMLDivElement | null>(null);
-  let globeInstance: GlobeInstance | null = null;
-
-  /* Initialize globe ////////////////////////////////////////////////////////////////////////////////////////////// */
+  const globeContainer = ref<HTMLDivElement>();
 
   onMounted(() => {
     if (!globeContainer.value) {
       return;
     }
 
-    // Create globe instance with transparent background
-    globeInstance = new Globe(globeContainer.value, {
-      rendererConfig: {
-        alpha: true,
-        antialias: true,
-      },
+    initializeGlobe(globeContainer.value, {
+      width: globeSize,
+      height: globeSize,
+      pov: { lat: 39.6, lng: -98.5, altitude: 1.5 },
+      autoRotate: true,
     });
 
-    // Configure interactions and controls
-    globeInstance.enablePointerInteraction(true);
-    const controls = globeInstance.controls();
-    controls.enableZoom = false;
-    controls.enablePan = false;
-    controls.enableRotate = true;
-    controls.autoRotate = true;
-    controls.autoRotateSpeed = 0.3;
-
-    // Configure scene
-    globeInstance.width(globeSize);
-    globeInstance.height(globeSize);
-    globeInstance.backgroundColor('rgba(0,0,0,0)');
-
-    // Configure POV
-    globeInstance.pointOfView({ lat: 39.6, lng: -98.5, altitude: 1.5 });
-
-    // Configure atmosphere
-    globeInstance.showAtmosphere(true);
-    globeInstance.atmosphereColor('rgba(100,13,247,1)');
-    globeInstance.atmosphereAltitude(0.1);
-
-    // Configure globe appearance
-    globeInstance.globeMaterial(new MeshLambertMaterial({ color: 0x140231 }));
-    fetch('/data/globe-topology.json', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => response.json())
-      .then((landTopo: Topology<Objects<GeoJsonProperties>>) => {
-        if (!globeInstance) {
-          console.error('Globe instance is not initialized.');
-          return;
-        }
-
-        if (!landTopo.objects.land) {
-          console.error('Globe topology is malformed.');
-          return;
-        }
-
-        const geoJSON = feature(landTopo, landTopo.objects.land);
-        if (!('features' in geoJSON)) {
-          console.error('Globe GeoJSON is malformed.');
-          return;
-        }
-
-        globeInstance.polygonsData(geoJSON.features);
-        globeInstance.polygonCapMaterial(new MeshLambertMaterial({ color: 0x6055c9 }));
-        globeInstance.polygonSideColor(() => 'rgba(0,0,0,0)');
-      });
+    if (!globeInstance.value) {
+      return;
+    }
 
     // Configure satellites
-    globeInstance.objectThreeObject(() => createSatelliteMesh());
-    globeInstance.objectAltitude(0.05);
+    globeInstance.value.objectThreeObject(() => createSatelliteMesh());
+    globeInstance.value.objectAltitude(0.05);
     fetch('/data/satellites-tle.txt', {
       method: 'GET',
       headers: {
@@ -135,15 +107,9 @@
       });
   });
 
-  /* Tear down globe //////////////////////////////////////////////////////////////////////////////////////////////// */
-
   onUnmounted(() => {
-    if (globeInstance) {
-      globeInstance._destructor();
-    }
+    destroyGlobe();
   });
-
-  /* Helpers //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   const createSatelliteMesh = (): Group => {
     const group = new Group();
@@ -205,18 +171,17 @@
   const animateSatellites = (satellites: Satellite[]) => {
     let time = new Date();
 
-    const _animateSatellites = () => {
-      if (!globeInstance) {
-        console.error('Globe instance is not initialized.');
+    const updateSatellitesFrame = () => {
+      requestAnimationFrame(updateSatellitesFrame);
+
+      if (!globeInstance.value) {
         return;
       }
-
-      requestAnimationFrame(_animateSatellites);
 
       time = new Date(time.getTime() + timeStep);
       const gmst = gstime(time);
 
-      globeInstance.objectsData(
+      globeInstance.value.objectsData(
         satellites.map((satellite) => {
           const data = { ...satellite };
           const eci = propagate(data.satrec, time);
@@ -235,39 +200,8 @@
       );
     };
 
-    _animateSatellites();
+    updateSatellitesFrame();
   };
-
-  /* Tools ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-
-  interface Tool {
-    name: string;
-    icon: string;
-  }
-
-  const toolGroups: Tool[][] = [
-    [
-      { name: 'TypeScript', icon: TypescriptIcon },
-      { name: 'HTML', icon: HtmlIcon },
-      { name: 'CSS', icon: CssIcon },
-      { name: 'Vue', icon: VueIcon },
-      { name: 'React', icon: ReactIcon },
-    ],
-    [
-      { name: 'Vite', icon: ViteIcon },
-      { name: 'Vitest', icon: VitestIcon },
-      { name: 'GraphQL', icon: GraphqlIcon },
-      { name: 'Apollo', icon: ApolloIcon },
-      { name: 'Pinia', icon: PiniaIcon },
-    ],
-    [
-      { name: 'Git', icon: GitIcon },
-      { name: 'Docker', icon: DockerIcon },
-      { name: 'Cursor', icon: CursorIcon },
-      { name: 'Figma', icon: FigmaIcon },
-      { name: 'Jira', icon: JiraIcon },
-    ],
-  ];
 </script>
 
 <template>

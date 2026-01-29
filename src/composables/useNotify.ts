@@ -47,6 +47,8 @@ const notify = (type: NotifyType, message: string) => {
   }, showDuration);
 };
 
+/* Compose ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
 export const useNotify = () => ({
   notify,
 });

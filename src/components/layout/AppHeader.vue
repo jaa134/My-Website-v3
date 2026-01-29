@@ -69,7 +69,7 @@
   .app-header {
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 999;
     height: 100px;
     min-height: 100px;
     display: grid;
