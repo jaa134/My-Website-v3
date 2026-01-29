@@ -49,7 +49,7 @@
   .roles-view {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--ja-spacing-3x-large);
+    gap: var(--ja-spacing-2x-large) var(--ja-spacing-3x-large);
     max-width: 1400px;
   }
 
