@@ -2,7 +2,7 @@
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   import { CylinderGeometry, Group, Mesh, MeshLambertMaterial, SphereGeometry } from 'three';
-  import { onMounted, onUnmounted, ref } from 'vue';
+  import { onBeforeUnmount, onMounted, ref } from 'vue';
 
   import { useGlobe } from '@/composables/useGlobe.js';
 
@@ -52,7 +52,7 @@
       .htmlElement(() => createLabel());
   });
 
-  onUnmounted(() => {
+  onBeforeUnmount(() => {
     destroyGlobe();
   });
 

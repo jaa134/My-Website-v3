@@ -1,14 +1,21 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import '@/styles/index.css';
-
   import { RouterView } from 'vue-router';
+
+  import PlanetLoadingIndicator from '@/components/common/PlanetLoadingIndicator.vue';
 </script>
 
 <template>
   <div class="app-body">
-    <RouterView />
+    <Suspense>
+      <RouterView />
+      <template #fallback>
+        <div class="router-loading-container">
+          <PlanetLoadingIndicator />
+        </div>
+      </template>
+    </Suspense>
   </div>
 </template>
 
@@ -18,5 +25,12 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
+  }
+
+  .router-loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
   }
 </style>

@@ -4,7 +4,7 @@
   import type { SatRec } from 'satellite.js';
   import { eciToGeodetic, gstime, propagate, radiansToDegrees, twoline2satrec } from 'satellite.js';
   import { Group, Mesh, MeshLambertMaterial, SphereGeometry } from 'three';
-  import { onMounted, onUnmounted, ref } from 'vue';
+  import { onBeforeUnmount, onMounted, ref } from 'vue';
 
   import BasicCard from '@/components/common/BasicCard.vue';
 
@@ -107,7 +107,7 @@
       });
   });
 
-  onUnmounted(() => {
+  onBeforeUnmount(() => {
     destroyGlobe();
   });
 

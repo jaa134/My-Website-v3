@@ -1,7 +1,7 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import { computed, onMounted, onUnmounted, ref } from 'vue';
+  import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 
   import { Route } from '@/router/index.js';
 
@@ -23,7 +23,7 @@
     handleScroll();
   });
 
-  onUnmounted(() => {
+  onBeforeUnmount(() => {
     window.removeEventListener('scroll', handleScroll);
   });
 

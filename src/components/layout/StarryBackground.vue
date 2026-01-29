@@ -1,7 +1,7 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import { onMounted, onUnmounted, ref } from 'vue';
+  import { onBeforeUnmount, onMounted, ref } from 'vue';
 
   /* Static star generation ///////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -152,7 +152,7 @@
     scheduleShootingStar();
   });
 
-  onUnmounted(() => {
+  onBeforeUnmount(() => {
     window.removeEventListener('resize', handleResize);
     if (resizeTimeout) {
       clearTimeout(resizeTimeout);

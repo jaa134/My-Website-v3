@@ -1,7 +1,7 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import { onMounted, onUnmounted, ref } from 'vue';
+  import { onBeforeUnmount, onMounted, ref } from 'vue';
 
   /* Slideshow ////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -23,7 +23,7 @@
     }, 10000);
   });
 
-  onUnmounted(() => {
+  onBeforeUnmount(() => {
     if (slideshowInterval) {
       clearInterval(slideshowInterval);
     }
