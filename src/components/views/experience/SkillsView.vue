@@ -341,20 +341,25 @@
       subtitle="The tools and technologies I've used"
     />
     <div class="skills-content">
-      <BasicCard class="navigation-panel">
-        <button
-          v-for="skillGroup in skillGroups"
-          :key="skillGroup.name"
-          :class="['navigation-item', { active: selectedSkillGroup.name === skillGroup.name }]"
-          @click="selectSkillGroup(skillGroup)"
-        >
-          <div class="selection-indicator">
-            <div class="selection-indicator-fill"></div>
-          </div>
-          <span class="selection-text">{{ skillGroup.name }}</span>
-        </button>
+      <BasicCard>
+        <div class="navigation-items">
+          <button
+            v-for="skillGroup in skillGroups"
+            :key="skillGroup.name"
+            :class="['navigation-item', { active: selectedSkillGroup.name === skillGroup.name }]"
+            @click="selectSkillGroup(skillGroup)"
+          >
+            <div class="selection-indicator">
+              <div class="selection-indicator-fill"></div>
+            </div>
+            <span class="selection-text">{{ skillGroup.name }}</span>
+          </button>
+        </div>
       </BasicCard>
-      <BasicCard class="skills-panel">
+      <BasicCard
+        min-height="384px"
+        max-height="525px"
+      >
         <div class="skills-grid">
           <a
             v-for="skill in selectedSkillGroup.skills"
@@ -392,7 +397,7 @@
     width: 100%;
   }
 
-  .navigation-panel {
+  .navigation-items {
     display: flex;
     flex-direction: column;
     gap: var(--ja-spacing-3x-small);
@@ -456,16 +461,12 @@
     transition: color var(--ja-transition-fast) ease;
   }
 
-  .skills-panel {
-    padding: var(--ja-spacing-x-large) var(--ja-spacing-large);
-    min-height: 400px;
-  }
-
   .skills-grid {
     display: grid;
     justify-content: space-between;
     grid-template-columns: repeat(auto-fill, 130px);
     gap: var(--ja-spacing-x-small);
+    padding: var(--ja-spacing-x-large) var(--ja-spacing-large);
   }
 
   .skill-item {

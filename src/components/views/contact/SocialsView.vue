@@ -72,11 +72,13 @@
           class="social-card"
           interactive
         >
-          <component
-            :is="social.icon"
-            class="social-icon"
-          />
-          <span class="social-handle">{{ social.handle }}</span>
+          <div class="social">
+            <component
+              :is="social.icon"
+              class="social-icon"
+            />
+            <span class="social-handle">{{ social.handle }}</span>
+          </div>
         </BasicCard>
       </a>
     </div>
@@ -91,7 +93,7 @@
     max-width: 1400px;
   }
 
-  .social-card {
+  .social {
     display: flex;
     flex-direction: column;
     align-items: center;

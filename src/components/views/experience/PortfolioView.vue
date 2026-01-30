@@ -1,7 +1,7 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import { nextTick, onBeforeUnmount, onMounted, ref, shallowRef } from 'vue';
+  import { nextTick, ref, shallowRef } from 'vue';
 
   import ClickIcon from '@/assets/icons/actions/click.svg';
   import ExpandIcon from '@/assets/icons/actions/expand.svg';
@@ -132,60 +132,17 @@
     },
   ];
 
+  /* Accordion ////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+  const portfolioCard = ref<InstanceType<typeof BasicCard>>();
+
   const expandedProject = shallowRef<Project | null>(null);
 
   const expandProject = async (project: Project) => {
     expandedProject.value = expandedProject.value?.name === project.name ? null : project;
     await nextTick();
-    calculateScrollPosition();
-    scrollToExpandedContent();
+    portfolioCard.value?.scrollTo('.expanded-content');
   };
-
-  /* Scrolling ////////////////////////////////////////////////////////////////////////////////////////////////////// */
-
-  const scrollingElement = ref<HTMLElement>();
-
-  enum ScrollPosition {
-    Top = 'Top',
-    Middle = 'Middle',
-    Bottom = 'Bottom',
-  }
-
-  const scrollPosition = ref<ScrollPosition | null>(ScrollPosition.Top);
-
-  const calculateScrollPosition = () => {
-    if (!scrollingElement.value) {
-      scrollPosition.value = null;
-      return;
-    }
-
-    const { scrollTop, scrollHeight, clientHeight } = scrollingElement.value;
-
-    if (scrollTop === 0) {
-      scrollPosition.value = ScrollPosition.Top;
-    } else if (Math.abs(scrollHeight - clientHeight - scrollTop) <= 1) {
-      scrollPosition.value = ScrollPosition.Bottom;
-    } else {
-      scrollPosition.value = ScrollPosition.Middle;
-    }
-  };
-
-  const scrollToExpandedContent = () => {
-    const expandedContentElement = scrollingElement.value?.querySelector('.expanded-content');
-    expandedContentElement?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'nearest',
-    });
-  };
-
-  onMounted(() => {
-    scrollingElement.value?.addEventListener('scroll', calculateScrollPosition);
-  });
-
-  onBeforeUnmount(() => {
-    scrollingElement.value?.removeEventListener('scroll', calculateScrollPosition);
-  });
 </script>
 
 <template>
@@ -205,12 +162,12 @@
         </ActionButton>
       </a>
     </SectionHeader>
-    <BasicCard class="portfolio-card">
-      <div :class="['card-shadow', { active: scrollPosition && scrollPosition !== ScrollPosition.Top }]"></div>
-      <div
-        ref="scrollingElement"
-        class="card-scroller"
-      >
+    <BasicCard
+      ref="portfolioCard"
+      class="portfolio-card"
+      height="525px"
+    >
+      <div class="accordion-items">
         <template
           v-for="(project, projectIndex) in projects"
           :key="project.name"
@@ -258,7 +215,6 @@
           ></div>
         </template>
       </div>
-      <div :class="['card-shadow', { active: scrollPosition && scrollPosition !== ScrollPosition.Bottom }]"></div>
     </BasicCard>
   </div>
 </template>
@@ -272,48 +228,11 @@
   }
 
   .portfolio-card {
-    position: relative;
     width: 100%;
-    overflow: hidden;
   }
 
-  .card-shadow {
-    position: absolute;
-    left: -20px;
-    right: -20px;
-    height: 0;
-    transition:
-      top var(--ja-transition-medium) ease,
-      bottom var(--ja-transition-medium) ease;
-
-    &:first-child {
-      top: 0;
-      box-shadow: 0 0 65px 20px var(--ja-color-neutral-1000);
-    }
-
-    &:last-child {
-      bottom: 0;
-      box-shadow: 0 0 65px 20px var(--ja-color-neutral-1000);
-    }
-
-    &:not(.active) {
-      &:first-child {
-        top: -70px;
-      }
-
-      &:last-child {
-        bottom: -70px;
-      }
-    }
-  }
-
-  .card-scroller {
+  .accordion-items {
     padding: var(--ja-spacing-small) var(--ja-spacing-large);
-    width: 100%;
-    height: 500px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    scrollbar-width: none;
   }
 
   .project {

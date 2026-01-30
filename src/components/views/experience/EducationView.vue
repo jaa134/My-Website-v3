@@ -69,19 +69,21 @@
           class="education-card"
           interactive
         >
-          <component
-            :is="education.icon"
-            class="education-logo"
-          />
-          <ul class="description-list">
-            <li
-              v-for="(item, index) in education.description"
-              :key="index"
-              class="description-item"
-            >
-              {{ item }}
-            </li>
-          </ul>
+          <div class="education-content">
+            <component
+              :is="education.icon"
+              class="education-logo"
+            />
+            <ul class="description-list">
+              <li
+                v-for="(item, index) in education.description"
+                :key="index"
+                class="description-item"
+              >
+                {{ item }}
+              </li>
+            </ul>
+          </div>
         </BasicCard>
       </a>
     </div>
@@ -104,11 +106,14 @@
   }
 
   .education-card {
+    height: 100%;
+  }
+
+  .education-content {
     display: flex;
     flex-direction: column;
     gap: var(--ja-spacing-x-large);
     padding: var(--ja-spacing-2x-large);
-    height: 100%;
   }
 
   .education-logo {
@@ -119,6 +124,7 @@
   .description-list {
     display: flex;
     flex-direction: column;
+    gap: var(--ja-spacing-2x-small);
     list-style: none;
   }
 

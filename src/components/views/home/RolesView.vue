@@ -33,14 +33,13 @@
     <BasicCard
       v-for="role in roles"
       :key="role.title"
-      class="role-card"
     >
-      <div class="role-header">
-        <h3 class="role-title">{{ role.title }}</h3>
+      <div class="role">
+        <h3 class="title">{{ role.title }}</h3>
+        <p class="description">
+          {{ role.description }}
+        </p>
       </div>
-      <p class="role-description">
-        {{ role.description }}
-      </p>
     </BasicCard>
   </div>
 </template>
@@ -53,25 +52,19 @@
     max-width: 1400px;
   }
 
-  .role-card {
+  .role {
     padding: var(--ja-spacing-3x-large);
   }
 
-  .role-header {
-    display: flex;
-    align-items: center;
-    gap: var(--ja-spacing-medium);
-    margin-bottom: var(--ja-spacing-large);
-  }
-
-  .role-title {
+  .title {
     font-family: var(--ja-font-mono);
     font-size: var(--ja-font-size-large);
     font-weight: var(--ja-font-weight-semibold);
     color: var(--ja-color-violet-200);
+    margin-bottom: var(--ja-spacing-large);
   }
 
-  .role-description {
+  .description {
     font-size: var(--ja-font-size-medium);
     font-weight: var(--ja-font-weight-light);
     color: var(--ja-color-neutral-200);

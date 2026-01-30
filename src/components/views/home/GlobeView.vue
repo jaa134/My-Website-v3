@@ -212,14 +212,15 @@
       <BasicCard
         v-for="(toolGroup, index) in toolGroups"
         :key="index"
-        class="tech-card"
       >
-        <component
-          :is="tool.icon"
-          v-for="tool in toolGroup"
-          :key="tool.name"
-          v-tooltip="tool.name"
-        />
+        <div class="tech-icons">
+          <component
+            :is="tool.icon"
+            v-for="tool in toolGroup"
+            :key="tool.name"
+            v-tooltip="tool.name"
+          />
+        </div>
       </BasicCard>
     </div>
     <div class="globe-section">
@@ -263,14 +264,14 @@
     width: 400px;
   }
 
-  .tech-card {
+  .tech-icons {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: var(--ja-spacing-small);
     width: 400px;
     height: 100px;
-    padding: var(--ja-spacing-3x-large);
+    padding: 0 var(--ja-spacing-2x-large);
 
     svg {
       width: 60px;

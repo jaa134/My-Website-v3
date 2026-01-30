@@ -104,35 +104,39 @@
       </a>
     </SectionHeader>
     <div class="career-content">
-      <BasicCard class="navigation-panel">
-        <button
-          v-for="experience in experiences"
-          :key="experience.company"
-          :class="['navigation-item', { active: selectedExperience.company === experience.company }]"
-          @click="selectExperience(experience)"
-        >
-          <div class="selection-indicator">
-            <div class="selection-indicator-fill"></div>
-          </div>
-          <span class="selection-text">{{ experience.company }}</span>
-        </button>
-      </BasicCard>
-      <BasicCard class="details-panel">
-        <div class="time">
-          <span class="date-range">{{ selectedExperience.dateRange }}</span>
-          <span class="duration">({{ selectedExperience.duration }})</span>
-        </div>
-        <h3 class="company-name">{{ selectedExperience.company }}</h3>
-        <p class="roles">{{ selectedExperience.roles.join(' · ') }}</p>
-        <ul class="description-list">
-          <li
-            v-for="(item, index) in selectedExperience.description"
-            :key="index"
-            class="description-item"
+      <BasicCard>
+        <div class="navigation-items">
+          <button
+            v-for="experience in experiences"
+            :key="experience.company"
+            :class="['navigation-item', { active: selectedExperience.company === experience.company }]"
+            @click="selectExperience(experience)"
           >
-            {{ item }}
-          </li>
-        </ul>
+            <div class="selection-indicator">
+              <div class="selection-indicator-fill"></div>
+            </div>
+            <span class="selection-text">{{ experience.company }}</span>
+          </button>
+        </div>
+      </BasicCard>
+      <BasicCard max-height="525px">
+        <div class="details">
+          <div class="time">
+            <span class="date-range">{{ selectedExperience.dateRange }}</span>
+            <span class="duration">({{ selectedExperience.duration }})</span>
+          </div>
+          <h3 class="company-name">{{ selectedExperience.company }}</h3>
+          <p class="roles">{{ selectedExperience.roles.join(' · ') }}</p>
+          <ul class="description-list">
+            <li
+              v-for="(item, index) in selectedExperience.description"
+              :key="index"
+              class="description-item"
+            >
+              {{ item }}
+            </li>
+          </ul>
+        </div>
       </BasicCard>
     </div>
   </div>
@@ -154,7 +158,7 @@
     width: 100%;
   }
 
-  .navigation-panel {
+  .navigation-items {
     display: flex;
     flex-direction: column;
     gap: var(--ja-spacing-3x-small);
@@ -218,9 +222,8 @@
     transition: color var(--ja-transition-fast) ease;
   }
 
-  .details-panel {
+  .details {
     padding: var(--ja-spacing-3x-large);
-    min-height: 400px;
   }
 
   .time {

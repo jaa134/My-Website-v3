@@ -54,17 +54,16 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <BasicCard
-          class="option-card"
-          interactive
-        >
-          <component
-            :is="option.icon"
-            class="option-icon"
-          />
-          <div class="option-text">
-            <h4 class="option-label">{{ option.label }}</h4>
-            <span class="option-value">{{ option.value }}</span>
+        <BasicCard interactive>
+          <div class="option">
+            <component
+              :is="option.icon"
+              class="icon"
+            />
+            <div class="text">
+              <h4 class="label">{{ option.label }}</h4>
+              <span class="value">{{ option.value }}</span>
+            </div>
           </div>
         </BasicCard>
       </a>
@@ -80,14 +79,14 @@
     max-width: 1400px;
   }
 
-  .option-card {
+  .option {
     display: flex;
     align-items: center;
     gap: var(--ja-spacing-medium);
     padding: var(--ja-spacing-large) var(--ja-spacing-x-large);
   }
 
-  .option-icon {
+  .icon {
     width: var(--ja-spacing-3x-large);
     height: var(--ja-spacing-3x-large);
     display: block;
@@ -99,20 +98,20 @@
     box-shadow: inset 0 0 10px color-mix(in srgb, var(--ja-color-purple-400) 20%, transparent);
   }
 
-  .option-text {
+  .text {
     display: flex;
     flex-direction: column;
     gap: var(--ja-spacing-3x-small);
   }
 
-  .option-label {
+  .label {
     font-size: var(--ja-font-size-medium);
     font-weight: var(--ja-font-weight-semibold);
     letter-spacing: var(--ja-letter-spacing-loose);
     color: var(--ja-color-purple-300);
   }
 
-  .option-value {
+  .value {
     font-size: var(--ja-font-size-medium);
     color: var(--ja-color-neutral-200);
   }

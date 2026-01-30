@@ -31,7 +31,7 @@
     },
     {
       date: '2024-2026',
-      summary: 'Vue 2 -> Vue 3 Migration',
+      summary: 'Vue Migration',
       description: 'Migrated 650+ components from Vue 2 to Vue 3, modernizing tooling and reducing maintenance risk.',
     },
     {
