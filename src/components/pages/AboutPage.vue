@@ -4,12 +4,10 @@
   import GalleryView from '@/components/views/about/GalleryView.vue';
   import HobbiesView from '@/components/views/about/HobbiesView.vue';
   import PlacesView from '@/components/views/about/PlacesView.vue';
-  import TimelineView from '@/components/views/about/TimelineView.vue';
 </script>
 
 <template>
   <div class="about-page">
-    <TimelineView />
     <HobbiesView />
     <PlacesView />
     <GalleryView />
