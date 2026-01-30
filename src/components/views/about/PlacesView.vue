@@ -301,6 +301,38 @@
       lat: 49.9167,
       lng: -122.75,
     },
+    {
+      name: 'Bus Tour',
+      location: 'Porto',
+      date: 'Spring of 2025',
+      image: '/assets/images/places/porto.webp',
+      lat: 41.1496,
+      lng: -8.6109,
+    },
+    {
+      name: 'Good Eats',
+      location: 'Lisbon',
+      date: 'Spring of 2025',
+      image: '/assets/images/places/lisbon.webp',
+      lat: 38.7071,
+      lng: -9.1355,
+    },
+    {
+      name: 'Mountain Concerts',
+      location: 'Geneva',
+      date: 'Spring of 2025',
+      image: '/assets/images/places/geneva.webp',
+      lat: 46.2044,
+      lng: 6.1432,
+    },
+    {
+      name: 'Italian Tour Guide',
+      location: 'Vencie',
+      date: 'Summer of 2025',
+      image: '/assets/images/places/venice.webp',
+      lat: 45.4408,
+      lng: 12.3155,
+    },
   ];
 
   /* Globe ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
