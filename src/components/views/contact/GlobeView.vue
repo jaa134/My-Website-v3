@@ -118,6 +118,10 @@
   .subtitle {
     font-size: var(--ja-font-size-medium);
   }
+
+  .globe-container {
+    cursor: grab;
+  }
 </style>
 
 <style>

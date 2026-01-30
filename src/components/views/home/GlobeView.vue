@@ -336,4 +336,8 @@
       text-underline-offset: var(--ja-spacing-small);
     }
   }
+
+  .globe-container {
+    cursor: grab;
+  }
 </style>
