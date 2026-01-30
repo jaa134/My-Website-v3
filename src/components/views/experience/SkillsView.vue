@@ -5,6 +5,7 @@
 
   import BasicCard from '@/components/common/BasicCard.vue';
   import SectionHeader from '@/components/common/SectionHeader.vue';
+  import SelectionMenu from '@/components/common/SelectionMenu.vue';
 
   /* Skills ///////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -15,13 +16,13 @@
   }
 
   interface SkillGroup {
-    name: string;
+    id: string;
     skills: Skill[];
   }
 
   const skillGroups: SkillGroup[] = [
     {
-      name: 'Languages',
+      id: 'Languages',
       skills: [
         {
           name: 'Bash',
@@ -96,7 +97,7 @@
       ],
     },
     {
-      name: 'Technologies',
+      id: 'Technologies',
       skills: [
         {
           name: 'Ant',
@@ -271,7 +272,7 @@
       ],
     },
     {
-      name: 'Services',
+      id: 'Services',
       skills: [
         {
           name: 'Confluence',
@@ -327,11 +328,9 @@
     },
   ];
 
-  const selectedSkillGroup = shallowRef<SkillGroup>(skillGroups[0]!);
+  /* Selection ////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  const selectSkillGroup = (skillGroup: SkillGroup) => {
-    selectedSkillGroup.value = skillGroup;
-  };
+  const selectedSkillGroup = shallowRef<SkillGroup>(skillGroups[0]!);
 </script>
 
 <template>
@@ -341,21 +340,10 @@
       subtitle="The tools and technologies I've used"
     />
     <div class="skills-content">
-      <BasicCard>
-        <div class="navigation-items">
-          <button
-            v-for="skillGroup in skillGroups"
-            :key="skillGroup.name"
-            :class="['navigation-item', { active: selectedSkillGroup.name === skillGroup.name }]"
-            @click="selectSkillGroup(skillGroup)"
-          >
-            <div class="selection-indicator">
-              <div class="selection-indicator-fill"></div>
-            </div>
-            <span class="selection-text">{{ skillGroup.name }}</span>
-          </button>
-        </div>
-      </BasicCard>
+      <SelectionMenu
+        v-model="selectedSkillGroup"
+        :options="skillGroups"
+      />
       <BasicCard
         min-height="384px"
         max-height="525px"
@@ -395,70 +383,6 @@
     align-items: flex-start;
     gap: var(--ja-spacing-2x-large);
     width: 100%;
-  }
-
-  .navigation-items {
-    display: flex;
-    flex-direction: column;
-    gap: var(--ja-spacing-3x-small);
-    padding: var(--ja-spacing-large);
-  }
-
-  .navigation-item {
-    display: flex;
-    align-items: center;
-    gap: var(--ja-spacing-medium);
-    padding: var(--ja-spacing-medium) var(--ja-spacing-small) var(--ja-spacing-medium) var(--ja-spacing-medium);
-    border: none;
-    border-radius: var(--ja-border-radius-x-large);
-    background: transparent;
-    color: var(--ja-color-neutral-100);
-    transition: background-color var(--ja-transition-fast) ease;
-
-    &:hover,
-    &.active {
-      background-color: color-mix(in srgb, var(--ja-color-purple-400) 15%, transparent);
-    }
-
-    &.active {
-      .selection-indicator {
-        border-color: var(--ja-color-purple-400);
-      }
-
-      .selection-indicator-fill {
-        opacity: 1;
-      }
-
-      .selection-text {
-        color: var(--ja-color-neutral-0);
-      }
-    }
-  }
-
-  .selection-indicator {
-    width: 20px;
-    height: 20px;
-    border-radius: var(--ja-border-radius-circle);
-    border: 2px solid var(--ja-color-neutral-400);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: border-color var(--ja-transition-fast) ease;
-  }
-
-  .selection-indicator-fill {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: var(--ja-color-purple-400);
-    opacity: 0;
-    transition: opacity var(--ja-transition-fast) ease;
-  }
-
-  .selection-text {
-    font-size: var(--ja-font-size-medium);
-    color: var(--ja-color-neutral-300);
-    transition: color var(--ja-transition-fast) ease;
   }
 
   .skills-grid {

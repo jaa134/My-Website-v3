@@ -8,11 +8,12 @@
   import ActionButton from '@/components/common/ActionButton.vue';
   import BasicCard from '@/components/common/BasicCard.vue';
   import SectionHeader from '@/components/common/SectionHeader.vue';
+  import SelectionMenu from '@/components/common/SelectionMenu.vue';
 
   /* Experience ///////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   interface Experience {
-    company: string;
+    id: string;
     roles: string[];
     dateRange: string;
     duration: string;
@@ -27,7 +28,7 @@
 
   const experiences: Experience[] = [
     {
-      company: 'Loft Orbital',
+      id: 'Loft Orbital',
       roles: ['Staff Frontend Developer', 'Satellite Operator'],
       dateRange: 'Jan 2022 - Present',
       duration: createDurationString(new Date('2022-01-01'), new Date()),
@@ -41,7 +42,7 @@
       ],
     },
     {
-      company: 'IBM - UrbanCode',
+      id: 'IBM - UrbanCode',
       roles: ['Frontend Lead', 'Full-Stack Software Engineer'],
       dateRange: 'May 2019 - Jan 2022',
       duration: createDurationString(new Date('2019-05-01'), new Date('2022-01-01')),
@@ -54,7 +55,7 @@
       ],
     },
     {
-      company: 'Matrix Pointe',
+      id: 'Matrix Pointe',
       roles: ['Full-Stack Software Engineer'],
       dateRange: 'May 2016 - May 2019',
       duration: createDurationString(new Date('2016-05-01'), new Date('2019-05-15')),
@@ -67,7 +68,7 @@
       ],
     },
     {
-      company: 'CWRU',
+      id: 'CWRU',
       roles: ['Teaching Assistant', 'Peer Tutor'],
       dateRange: 'August 2016 - May 2019',
       duration: createDurationString(new Date('2016-08-01'), new Date('2019-05-15')),
@@ -80,11 +81,9 @@
     },
   ];
 
-  const selectedExperience = shallowRef<Experience>(experiences[0]!);
+  /* Selection ////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  const selectExperience = (experience: Experience) => {
-    selectedExperience.value = experience;
-  };
+  const selectedExperience = shallowRef<Experience>(experiences[0]!);
 </script>
 
 <template>
@@ -104,28 +103,17 @@
       </a>
     </SectionHeader>
     <div class="career-content">
-      <BasicCard>
-        <div class="navigation-items">
-          <button
-            v-for="experience in experiences"
-            :key="experience.company"
-            :class="['navigation-item', { active: selectedExperience.company === experience.company }]"
-            @click="selectExperience(experience)"
-          >
-            <div class="selection-indicator">
-              <div class="selection-indicator-fill"></div>
-            </div>
-            <span class="selection-text">{{ experience.company }}</span>
-          </button>
-        </div>
-      </BasicCard>
+      <SelectionMenu
+        v-model="selectedExperience"
+        :options="experiences"
+      />
       <BasicCard max-height="525px">
         <div class="details">
           <div class="time">
             <span class="date-range">{{ selectedExperience.dateRange }}</span>
             <span class="duration">({{ selectedExperience.duration }})</span>
           </div>
-          <h3 class="company-name">{{ selectedExperience.company }}</h3>
+          <h3 class="company-name">{{ selectedExperience.id }}</h3>
           <p class="roles">{{ selectedExperience.roles.join(' · ') }}</p>
           <ul class="description-list">
             <li
@@ -156,70 +144,6 @@
     align-items: flex-start;
     gap: var(--ja-spacing-2x-large);
     width: 100%;
-  }
-
-  .navigation-items {
-    display: flex;
-    flex-direction: column;
-    gap: var(--ja-spacing-3x-small);
-    padding: var(--ja-spacing-large);
-  }
-
-  .navigation-item {
-    display: flex;
-    align-items: center;
-    gap: var(--ja-spacing-medium);
-    padding: var(--ja-spacing-medium) var(--ja-spacing-small) var(--ja-spacing-medium) var(--ja-spacing-medium);
-    border: none;
-    border-radius: var(--ja-border-radius-x-large);
-    background: transparent;
-    color: var(--ja-color-neutral-100);
-    transition: background-color var(--ja-transition-fast) ease;
-
-    &:hover,
-    &.active {
-      background-color: color-mix(in srgb, var(--ja-color-purple-400) 15%, transparent);
-    }
-
-    &.active {
-      .selection-indicator {
-        border-color: var(--ja-color-purple-400);
-      }
-
-      .selection-indicator-fill {
-        opacity: 1;
-      }
-
-      .selection-text {
-        color: var(--ja-color-neutral-0);
-      }
-    }
-  }
-
-  .selection-indicator {
-    width: 20px;
-    height: 20px;
-    border-radius: var(--ja-border-radius-circle);
-    border: 2px solid var(--ja-color-neutral-400);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: border-color var(--ja-transition-fast) ease;
-  }
-
-  .selection-indicator-fill {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: var(--ja-color-purple-400);
-    opacity: 0;
-    transition: opacity var(--ja-transition-fast) ease;
-  }
-
-  .selection-text {
-    font-size: var(--ja-font-size-medium);
-    color: var(--ja-color-neutral-300);
-    transition: color var(--ja-transition-fast) ease;
   }
 
   .details {

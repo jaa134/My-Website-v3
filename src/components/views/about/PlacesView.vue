@@ -8,12 +8,13 @@
 
   import BasicCard from '@/components/common/BasicCard.vue';
   import SectionHeader from '@/components/common/SectionHeader.vue';
+  import SelectionMenu from '@/components/common/SelectionMenu.vue';
 
   /* Places ///////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   interface Place {
-    name: string;
-    location: string;
+    id: string;
+    title: string;
     date: string;
     image: string;
     lat: number;
@@ -22,312 +23,312 @@
 
   const places: Place[] = [
     {
-      name: 'Hot Air Balloon Festival',
-      location: 'Albuquerque',
+      id: 'Albuquerque',
+      title: 'Hot Air Balloon Festival',
       date: 'Summer of 2022',
       image: '/assets/images/places/albuquerque.webp',
       lat: 35.0844,
       lng: -106.6504,
     },
     {
-      name: 'Extreme Boat Tour',
-      location: 'Antigua',
+      id: 'Antigua',
+      title: 'Extreme Boat Tour',
       date: 'Summer of 2019',
       image: '/assets/images/places/antigua.webp',
       lat: 17.0747,
       lng: -61.8175,
     },
     {
-      name: 'Family Vacation',
-      location: "Barry's Bay",
+      id: "Barry's Bay",
+      title: 'Family Vacation',
       date: 'Summer of 2014',
       image: '/assets/images/places/barrysBay.webp',
       lat: 45.4884,
       lng: -77.6784,
     },
     {
-      name: 'Beach Work Retreat',
-      location: 'Cancún',
+      id: 'Cancún',
+      title: 'Beach Work Retreat',
       date: 'Winter of 2022',
       image: '/assets/images/places/cancun.webp',
       lat: 21.1619,
       lng: -86.8515,
     },
     {
-      name: 'Sky Diving',
-      location: 'Cape Town',
+      id: 'Cape Town',
+      title: 'Sky Diving',
       date: 'Spring of 2017',
       image: '/assets/images/places/capeTown.webp',
       lat: -31.9249,
       lng: 17.4241,
     },
     {
-      name: 'Safari Trip',
-      location: 'Chobe National Park',
+      id: 'Chobe National Park',
+      title: 'Safari Trip',
       date: 'Spring of 2017',
       image: '/assets/images/places/chobe.webp',
       lat: -18.4256,
       lng: 24.7143,
     },
     {
-      name: 'College Graduation',
-      location: 'Cleveland',
+      id: 'Cleveland',
+      title: 'College Graduation',
       date: 'Spring of 2019',
       image: '/assets/images/places/cleveland.webp',
       lat: 41.4993,
       lng: -81.6944,
     },
     {
-      name: 'Rock Climbing',
-      location: 'Denver',
+      id: 'Denver',
+      title: 'Rock Climbing',
       date: 'Summer of 2022',
       image: '/assets/images/places/denver.webp',
       lat: 39.7392,
       lng: -104.9903,
     },
     {
-      name: 'Wine Tasting',
-      location: 'Florence',
+      id: 'Florence',
+      title: 'Wine Tasting',
       date: 'Fall of 2023',
       image: '/assets/images/places/florence.webp',
       lat: 43.7538,
       lng: 11.2194,
     },
     {
-      name: 'Hiking',
-      location: 'Garibaldi Provincial Park',
+      id: 'Garibaldi Provincial Park',
+      title: 'Hiking',
       date: 'Summer of 2022',
       image: '/assets/images/places/garibaldi.webp',
       lat: 48.9167,
       lng: -118.5,
     },
     {
-      name: 'Baking in the Heat',
-      location: 'Grand Canyon',
+      id: 'Grand Canyon',
+      title: 'Baking in the Heat',
       date: 'Summer of 2018',
       image: '/assets/images/places/grandCanyon.webp',
       lat: 36.0544,
       lng: -112.1401,
     },
     {
-      name: 'Hiking',
-      location: 'Grand Tetons',
+      id: 'Grand Tetons',
+      title: 'Hiking',
       date: 'Summer of 2020',
       image: '/assets/images/places/grandTeton.webp',
       lat: 43.7904,
       lng: -110.6818,
     },
     {
-      name: '30th Bithdays',
-      location: 'Joshua Tree',
+      id: 'Joshua Tree',
+      title: '30th Bithdays',
       date: 'Winter of 2025',
       image: '/assets/images/places/joshuaTree.webp',
       lat: 36.5323,
       lng: -116.3125,
     },
     {
-      name: '5k Open Water Swimming',
-      location: 'Kenosha',
+      id: 'Kenosha',
+      title: '5k Open Water Swimming',
       date: 'Summer of 2014',
       image: '/assets/images/places/kenosha.webp',
       lat: 42.5847,
       lng: -87.8212,
     },
     {
-      name: 'Shark Cage Diving',
-      location: 'Kleinbaai Harbor',
+      id: 'Kleinbaai Harbor',
+      title: 'Shark Cage Diving',
       date: 'Spring of 2017',
       image: '/assets/images/places/kleinbaai.webp',
       lat: -33.6158,
       lng: 20,
     },
     {
-      name: 'Safari Trip',
-      location: 'Krueger National Park',
+      id: 'Krueger National Park',
+      title: 'Safari Trip',
       date: 'Spring of 2017',
       image: '/assets/images/places/kruger.webp',
       lat: -23.9884,
       lng: 31.5547,
     },
     {
-      name: 'Fall Kayaking',
-      location: 'Lake Tahoe',
+      id: 'Lake Tahoe',
+      title: 'Fall Kayaking',
       date: 'Fall of 2021',
       image: '/assets/images/places/lakeTahoe.webp',
       lat: 39.2,
       lng: -119.5,
     },
     {
-      name: 'Scaling mountains',
-      location: 'El Potrero Chico',
+      id: 'El Potrero Chico',
+      title: 'Scaling mountains',
       date: 'Spring of 2024',
       image: '/assets/images/places/elPotreroChico.webp',
       lat: 25.9512,
       lng: -100.4766,
     },
     {
-      name: 'Family Vacation',
-      location: 'Mount Rushmore',
+      id: 'Mount Rushmore',
+      title: 'Family Vacation',
       date: 'Summer of 2015',
       image: '/assets/images/places/mounthRushmore.webp',
       lat: 43.8803,
       lng: -103.4538,
     },
     {
-      name: "Getting Lost in the M&M's Store",
-      location: 'New York City',
+      id: 'New York City',
+      title: "Getting Lost in the M&M's Store",
       date: 'Summer of 2018',
       image: '/assets/images/places/newYork.webp',
       lat: 40.7128,
       lng: -74.006,
     },
     {
-      name: 'Squaring Up With Grandma',
-      location: 'Pflugerville',
+      id: 'Pflugerville',
+      title: 'Squaring Up With Grandma',
       date: 'Summer of 2022',
       image: '/assets/images/places/pflugerville.webp',
       lat: 30.4548,
       lng: -97.6223,
     },
     {
-      name: 'Parasailing',
-      location: 'Punta Cana',
+      id: 'Punta Cana',
+      title: 'Parasailing',
       date: 'Winter of 2023',
       image: '/assets/images/places/puntaCana.webp',
       lat: 18.5601,
       lng: -68.3725,
     },
     {
-      name: 'Sky Ponies',
-      location: 'Pyrenees',
+      id: 'Pyrenees',
+      title: 'Sky Ponies',
       date: 'Fall of 2023',
       image: '/assets/images/places/pyrenees.webp',
       lat: 42.6682,
       lng: 1.4461,
     },
     {
-      name: 'The Colosseum',
-      location: 'Rome',
+      id: 'Rome',
+      title: 'The Colosseum',
       date: 'Fall of 2023',
       image: '/assets/images/places/rome.webp',
       lat: 41.5871,
       lng: 13.3192,
     },
     {
-      name: 'Walking Downtown',
-      location: 'San Francisco',
+      id: 'San Francisco',
+      title: 'Walking Downtown',
       date: 'Fall of 2022',
       image: '/assets/images/places/sanFrancisco.webp',
       lat: 37.7749,
       lng: -122.4194,
     },
     {
-      name: 'Surf Lessons',
-      location: 'Sayulita',
+      id: 'Sayulita',
+      title: 'Surf Lessons',
       date: 'Spring of 2025',
       image: '/assets/images/places/sayulita.webp',
       lat: 20.7157,
       lng: -105.2167,
     },
     {
-      name: 'Fishing',
-      location: 'Smith Lake',
+      id: 'Smith Lake',
+      title: 'Fishing',
       date: 'Summer of 2017',
       image: '/assets/images/places/smithLake.webp',
       lat: 34.0478,
       lng: -87.0249,
     },
     {
-      name: 'Company Retreat',
-      location: 'Split',
+      id: 'Split',
+      title: 'Company Retreat',
       date: 'Summer of 2025',
       image: '/assets/images/places/split.webp',
       lat: 43.5089,
       lng: 16.4414,
     },
     {
-      name: 'Thanksgiving Day',
-      location: 'St. Louis',
+      id: 'St. Louis',
+      title: 'Thanksgiving Day',
       date: 'Fall of 2021',
       image: '/assets/images/places/stLouis.webp',
       lat: 38.627,
       lng: -90.1994,
     },
     {
-      name: 'Starfish Whisperer',
-      location: 'Stone Town',
+      id: 'Stone Town',
+      title: 'Starfish Whisperer',
       date: 'Spring of 2017',
       image: '/assets/images/places/zanzibar.webp',
       lat: -6.1622,
       lng: 39.1921,
     },
     {
-      name: 'Honeymoon',
-      location: 'Tamarindo',
+      id: 'Tamarindo',
+      title: 'Honeymoon',
       date: 'Fall of 2024',
       image: '/assets/images/places/tamarindo.webp',
       lat: 10.2667,
       lng: -85.6667,
     },
     {
-      name: 'Morning Baguettes',
-      location: 'Toulouse',
+      id: 'Toulouse',
+      title: 'Morning Baguettes',
       date: 'Spring of 2022',
       image: '/assets/images/places/toulouse.webp',
       lat: 45.6047,
       lng: 1.4442,
     },
     {
-      name: 'Skiing',
-      location: 'Vail',
+      id: 'Vail',
+      title: 'Skiing',
       date: 'Winter of 2023',
       image: '/assets/images/places/vail.webp',
       lat: 39.6433,
       lng: -108.3781,
     },
     {
-      name: 'Peaking Over the Edge',
-      location: 'Victoria Falls',
+      id: 'Victoria Falls',
+      title: 'Peaking Over the Edge',
       date: 'Spring of 2017',
       image: '/assets/images/places/victoriaFalls.webp',
       lat: -17.9257,
       lng: 27.8625,
     },
     {
-      name: 'Skiing',
-      location: 'Whistler',
+      id: 'Whistler',
+      title: 'Skiing',
       date: 'Winter of 2023',
       image: '/assets/images/places/whistler.webp',
       lat: 49.9167,
       lng: -122.75,
     },
     {
-      name: 'Bus Tour',
-      location: 'Porto',
+      id: 'Porto',
+      title: 'Bus Tour',
       date: 'Spring of 2025',
       image: '/assets/images/places/porto.webp',
       lat: 41.1496,
       lng: -8.6109,
     },
     {
-      name: 'Good Eats',
-      location: 'Lisbon',
+      id: 'Lisbon',
+      title: 'Good Eats',
       date: 'Spring of 2025',
       image: '/assets/images/places/lisbon.webp',
       lat: 38.7071,
       lng: -9.1355,
     },
     {
-      name: 'Mountain Concerts',
-      location: 'Geneva',
+      id: 'Geneva',
+      title: 'Mountain Concerts',
       date: 'Spring of 2025',
       image: '/assets/images/places/geneva.webp',
       lat: 46.2044,
       lng: 6.1432,
     },
     {
-      name: 'Italian Tour Guide',
-      location: 'Vencie',
+      id: 'Vencie',
+      title: 'Italian Tour Guide',
       date: 'Summer of 2025',
       image: '/assets/images/places/venice.webp',
       lat: 45.4408,
@@ -393,7 +394,7 @@
   });
 
   const createPin = (place: Place) => {
-    const color = place.location === selectedPlace.value.location ? selectedPinColor : defaultPinColor;
+    const color = place.id === selectedPlace.value.id ? selectedPinColor : defaultPinColor;
     const pinMaterial = new MeshLambertMaterial({ color });
 
     const stemHeight = 8;
@@ -411,7 +412,7 @@
 
   const updatePlacePinColor = (place: Place, color: number | string) => {
     const objects = globeInstance.value?.objectsData();
-    const pin = objects?.find((d) => (d as Place).location === place.location) as Place & {
+    const pin = objects?.find((d) => (d as Place).id === place.id) as Place & {
       __threeObjObject?: Object3D;
     };
     if (pin) {
@@ -430,7 +431,7 @@
   const handleAnyGlobeClick = (lat: number, lng: number) => {
     const { place, distance } = findClosestPlace(lat, lng);
     if (distance < 2000) {
-      selectPlace(place);
+      selectedPlace.value = place;
     }
   };
 
@@ -471,10 +472,6 @@
 
   const selectedPlace = ref<Place>(places[0]!);
 
-  const selectPlace = (place: Place) => {
-    selectedPlace.value = place;
-  };
-
   watch(selectedPlace, (newPlace, oldPlace) => {
     if (oldPlace) {
       updatePlacePinColor(oldPlace, defaultPinColor);
@@ -496,21 +493,12 @@
       <div class="connection-line"></div>
       <div class="navigation-list">
         <div class="navigation-list-header">Select a place</div>
-        <BasicCard height="300px">
-          <div class="navigation-items">
-            <button
-              v-for="place in places"
-              :key="place.location"
-              :class="['navigation-item', { active: selectedPlace.location === place.location }]"
-              @click="selectPlace(place)"
-            >
-              <div class="selection-indicator">
-                <div class="selection-indicator-fill"></div>
-              </div>
-              <span class="selection-text">{{ place.location }}</span>
-            </button>
-          </div>
-        </BasicCard>
+        <SelectionMenu
+          v-model="selectedPlace"
+          class="wing"
+          :options="places"
+          height="300px"
+        />
       </div>
       <div
         ref="globeContainer"
@@ -522,22 +510,25 @@
           mode="out-in"
         >
           <div
-            :key="selectedPlace.location"
+            :key="selectedPlace.id"
             class="place-header"
           >
-            {{ selectedPlace.name }}
+            {{ selectedPlace.title }}
           </div>
         </Transition>
-        <BasicCard height="300px">
+        <BasicCard
+          class="wing"
+          height="300px"
+        >
           <Transition
             name="place-fade"
             mode="out-in"
           >
             <img
-              :key="selectedPlace.location"
+              :key="selectedPlace.id"
               class="place-image"
               :src="selectedPlace.image"
-              :alt="selectedPlace.name"
+              :alt="selectedPlace.title"
             />
           </Transition>
         </BasicCard>
@@ -546,10 +537,10 @@
           mode="out-in"
         >
           <div
-            :key="selectedPlace.location"
+            :key="selectedPlace.id"
             class="place-footer"
           >
-            {{ selectedPlace.location }} ({{ selectedPlace.date }})
+            {{ selectedPlace.id }} ({{ selectedPlace.date }})
           </div>
         </Transition>
       </div>
@@ -582,7 +573,7 @@
     border: 1px dashed var(--ja-color-neutral-400);
   }
 
-  .basic-card {
+  .wing {
     width: 300px;
   }
 
@@ -603,70 +594,6 @@
     font-size: var(--ja-font-size-small);
     font-weight: var(--ja-font-weight-light);
     color: var(--ja-color-neutral-300);
-  }
-
-  .navigation-items {
-    display: flex;
-    flex-direction: column;
-    gap: var(--ja-spacing-3x-small);
-    padding: var(--ja-spacing-large);
-  }
-
-  .navigation-item {
-    display: flex;
-    align-items: center;
-    gap: var(--ja-spacing-medium);
-    padding: var(--ja-spacing-medium) var(--ja-spacing-small) var(--ja-spacing-medium) var(--ja-spacing-medium);
-    border: none;
-    border-radius: var(--ja-border-radius-x-large);
-    background: transparent;
-    color: var(--ja-color-neutral-100);
-    transition: background-color var(--ja-transition-fast) ease;
-
-    &:hover,
-    &.active {
-      background-color: color-mix(in srgb, var(--ja-color-purple-400) 15%, transparent);
-    }
-
-    &.active {
-      .selection-indicator {
-        border-color: var(--ja-color-purple-400);
-      }
-
-      .selection-indicator-fill {
-        opacity: 1;
-      }
-
-      .selection-text {
-        color: var(--ja-color-neutral-0);
-      }
-    }
-  }
-
-  .selection-indicator {
-    width: 20px;
-    height: 20px;
-    border-radius: var(--ja-border-radius-circle);
-    border: 2px solid var(--ja-color-neutral-400);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: border-color var(--ja-transition-fast) ease;
-  }
-
-  .selection-indicator-fill {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: var(--ja-color-purple-400);
-    opacity: 0;
-    transition: opacity var(--ja-transition-fast) ease;
-  }
-
-  .selection-text {
-    font-size: var(--ja-font-size-medium);
-    color: var(--ja-color-neutral-300);
-    transition: color var(--ja-transition-fast) ease;
   }
 
   .place {
