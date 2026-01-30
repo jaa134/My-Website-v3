@@ -6,6 +6,8 @@
 
   import { useNotify } from '@/composables/useNotify.js';
 
+  import ActionButton from '@/components/common/ActionButton.vue';
+
   /* Common ///////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   const { notify } = useNotify();
@@ -117,13 +119,13 @@
         required
         :disabled="loading"
       ></textarea>
-      <button
-        class="submit-button"
+      <ActionButton
         type="submit"
+        :loading="loading"
         :disabled="loading"
       >
         {{ loading ? 'Sending...' : 'Send' }}
-      </button>
+      </ActionButton>
     </form>
   </div>
 </template>
@@ -206,6 +208,10 @@
     &::placeholder {
       color: var(--ja-color-neutral-400);
     }
+
+    &:disabled {
+      cursor: progress;
+    }
   }
 
   .input:-webkit-autofill,
@@ -223,34 +229,5 @@
   .textarea {
     resize: vertical;
     min-height: 180px;
-  }
-
-  .submit-button {
-    padding: var(--ja-spacing-x-small) var(--ja-spacing-2x-large);
-    border: 1px solid color-mix(in srgb, var(--ja-color-purple-400) 35%, transparent);
-    border-radius: var(--ja-border-radius-pill);
-    background: linear-gradient(135deg, var(--ja-color-purple-600), var(--ja-color-violet-600));
-    color: var(--ja-color-neutral-0);
-    font-size: var(--ja-font-size-medium);
-    transition:
-      box-shadow var(--ja-transition-fast) ease,
-      border-color var(--ja-transition-fast) ease;
-
-    &:hover {
-      border-color: color-mix(in srgb, var(--ja-color-purple-300) 65%, transparent);
-      box-shadow: 0 0 16px color-mix(in srgb, var(--ja-color-purple-400) 50%, transparent);
-    }
-
-    &:disabled {
-      box-shadow: none;
-    }
-  }
-
-  .input,
-  .textarea,
-  .submit-button {
-    &:disabled {
-      cursor: progress;
-    }
   }
 </style>

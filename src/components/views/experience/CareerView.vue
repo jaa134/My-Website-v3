@@ -5,6 +5,7 @@
 
   import DownloadIcon from '@/assets/icons/actions/download.svg';
 
+  import ActionButton from '@/components/common/ActionButton.vue';
   import BasicCard from '@/components/common/BasicCard.vue';
 
   /* Experience ///////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -97,10 +98,10 @@
           href="/documents/Alspaw-Jacob-Resume.pdf"
           download
         >
-          <button class="action-button">
-            <DownloadIcon class="action-button-icon" />
+          <ActionButton>
+            <DownloadIcon />
             <span>Download Resume</span>
-          </button>
+          </ActionButton>
         </a>
       </div>
     </div>
@@ -173,31 +174,6 @@
 
   .subtitle {
     font-size: var(--ja-font-size-medium);
-  }
-
-  .action-button {
-    display: flex;
-    align-items: center;
-    gap: var(--ja-spacing-small);
-    padding: var(--ja-spacing-x-small) var(--ja-spacing-2x-large);
-    border: 1px solid color-mix(in srgb, var(--ja-color-purple-400) 35%, transparent);
-    border-radius: var(--ja-border-radius-pill);
-    background: linear-gradient(135deg, var(--ja-color-purple-600), var(--ja-color-violet-600));
-    color: var(--ja-color-neutral-0);
-    font-size: var(--ja-font-size-medium);
-    transition:
-      box-shadow var(--ja-transition-fast) ease,
-      border-color var(--ja-transition-fast) ease;
-
-    &:hover {
-      border-color: color-mix(in srgb, var(--ja-color-purple-300) 65%, transparent);
-      box-shadow: 0 0 16px color-mix(in srgb, var(--ja-color-purple-400) 50%, transparent);
-    }
-  }
-
-  .action-button-icon {
-    width: 20px;
-    height: 20px;
   }
 
   .career-content {
