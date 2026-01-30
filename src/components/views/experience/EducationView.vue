@@ -25,7 +25,7 @@
         'B.S. in Computer Science',
         'August 2014 - May 2019',
         'GPA: 3.63 / 4.00 - Cum Laude',
-        'Awarded best senior project by faculty',
+        'Awarded best capstone project by faculty',
       ],
     },
     {
