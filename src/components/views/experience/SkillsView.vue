@@ -4,6 +4,7 @@
   import { defineAsyncComponent, shallowRef } from 'vue';
 
   import BasicCard from '@/components/common/BasicCard.vue';
+  import SectionHeader from '@/components/common/SectionHeader.vue';
 
   /* Skills ///////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -335,12 +336,10 @@
 
 <template>
   <div class="skills-view">
-    <div class="header">
-      <div class="header-text">
-        <h2 class="title">Skills</h2>
-        <h3 class="subtitle">The tools and technologies I've used</h3>
-      </div>
-    </div>
+    <SectionHeader
+      title="Skills"
+      subtitle="The tools and technologies I've used"
+    />
     <div class="skills-content">
       <BasicCard class="navigation-panel">
         <button
@@ -383,34 +382,6 @@
     flex-direction: column;
     align-items: center;
     width: 1100px;
-  }
-
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: 100%;
-    margin-bottom: var(--ja-spacing-x-large);
-  }
-
-  .header-text {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .title,
-  .subtitle {
-    font-weight: var(--ja-font-weight-light);
-    line-height: var(--ja-line-height-dense);
-    color: var(--ja-color-neutral-300);
-  }
-
-  .title {
-    font-size: var(--ja-font-size-x-large);
-  }
-
-  .subtitle {
-    font-size: var(--ja-font-size-medium);
   }
 
   .skills-content {

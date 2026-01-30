@@ -8,6 +8,7 @@
   import TwitterIcon from '@/assets/icons/socials/twitter.svg';
 
   import BasicCard from '@/components/common/BasicCard.vue';
+  import SectionHeader from '@/components/common/SectionHeader.vue';
 
   /* Socials //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -54,10 +55,11 @@
 
 <template>
   <div class="socials-view">
-    <div class="header">
-      <h2 class="title">Wondering what I'm up to?</h2>
-      <h3 class="subtitle">Follow me to receive updates on a regular basis.</h3>
-    </div>
+    <SectionHeader
+      title="Wondering what I'm up to?"
+      subtitle="Follow me to receive updates on a regular basis."
+      alignment="center"
+    />
     <div class="socials-grid">
       <a
         v-for="social in socials"
@@ -82,31 +84,6 @@
 </template>
 
 <style scoped>
-  .header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-bottom: var(--ja-spacing-2x-large);
-  }
-
-  .title,
-  .subtitle {
-    font-weight: var(--ja-font-weight-light);
-    line-height: var(--ja-line-height-dense);
-    color: var(--ja-color-neutral-300);
-    text-align: center;
-  }
-
-  .title {
-    font-size: var(--ja-font-size-x-large);
-  }
-
-  .subtitle {
-    font-size: var(--ja-font-size-medium);
-  }
-
   .socials-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));

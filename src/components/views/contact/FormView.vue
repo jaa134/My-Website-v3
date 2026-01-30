@@ -7,6 +7,7 @@
   import { useNotify } from '@/composables/useNotify.js';
 
   import ActionButton from '@/components/common/ActionButton.vue';
+  import SectionHeader from '@/components/common/SectionHeader.vue';
 
   /* Common ///////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -70,10 +71,11 @@
 
 <template>
   <div class="form-view">
-    <div class="header">
-      <h2 class="title">Shoot me a message!</h2>
-      <h3 class="subtitle">And I'll get back to you as soon as possible.</h3>
-    </div>
+    <SectionHeader
+      title="Shoot me a message!"
+      subtitle="And I'll get back to you as soon as possible."
+      alignment="center"
+    />
     <form
       ref="formRef"
       :class="['contact-form', { loading }]"
@@ -137,31 +139,6 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-  }
-
-  .header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-bottom: var(--ja-spacing-2x-large);
-  }
-
-  .title,
-  .subtitle {
-    font-weight: var(--ja-font-weight-light);
-    line-height: var(--ja-line-height-dense);
-    color: var(--ja-color-neutral-300);
-    text-align: center;
-  }
-
-  .title {
-    font-size: var(--ja-font-size-x-large);
-  }
-
-  .subtitle {
-    font-size: var(--ja-font-size-medium);
   }
 
   .contact-form {

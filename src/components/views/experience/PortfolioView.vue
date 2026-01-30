@@ -9,6 +9,7 @@
 
   import ActionButton from '@/components/common/ActionButton.vue';
   import BasicCard from '@/components/common/BasicCard.vue';
+  import SectionHeader from '@/components/common/SectionHeader.vue';
 
   /* Projects /////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -189,24 +190,21 @@
 
 <template>
   <div class="portfolio-view">
-    <div class="header">
-      <div class="header-text">
-        <h2 class="title">Portfolio</h2>
-        <h3 class="subtitle">The projects I've worked on</h3>
-      </div>
-      <div class="header-actions">
-        <a
-          href="https://github.com/jaa134"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <ActionButton>
-            <ClickIcon />
-            <span>View on GitHub</span>
-          </ActionButton>
-        </a>
-      </div>
-    </div>
+    <SectionHeader
+      title="Portfolio"
+      subtitle="The projects I've worked on"
+    >
+      <a
+        href="https://github.com/jaa134"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <ActionButton>
+          <ClickIcon />
+          <span>View on GitHub</span>
+        </ActionButton>
+      </a>
+    </SectionHeader>
     <BasicCard class="portfolio-card">
       <div :class="['card-shadow', { active: scrollPosition && scrollPosition !== ScrollPosition.Top }]"></div>
       <div
@@ -271,34 +269,6 @@
     flex-direction: column;
     align-items: center;
     width: 1100px;
-  }
-
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: 100%;
-    margin-bottom: var(--ja-spacing-x-large);
-  }
-
-  .header-text {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .title,
-  .subtitle {
-    font-weight: var(--ja-font-weight-light);
-    line-height: var(--ja-line-height-dense);
-    color: var(--ja-color-neutral-300);
-  }
-
-  .title {
-    font-size: var(--ja-font-size-x-large);
-  }
-
-  .subtitle {
-    font-size: var(--ja-font-size-medium);
   }
 
   .portfolio-card {

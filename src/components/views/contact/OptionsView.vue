@@ -6,6 +6,7 @@
   import PhoneIcon from '@/assets/icons/contacts/phone.svg';
 
   import BasicCard from '@/components/common/BasicCard.vue';
+  import SectionHeader from '@/components/common/SectionHeader.vue';
 
   /* Options //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -40,10 +41,11 @@
 
 <template>
   <div class="options-view">
-    <div class="header">
-      <h2 class="title">Looking to get in touch?</h2>
-      <h3 class="subtitle">Here's how you can reach me.</h3>
-    </div>
+    <SectionHeader
+      title="Looking to get in touch?"
+      subtitle="Here's how you can reach me."
+      alignment="center"
+    />
     <div class="options-grid">
       <a
         v-for="option in options"
@@ -71,31 +73,6 @@
 </template>
 
 <style scoped>
-  .header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-bottom: var(--ja-spacing-2x-large);
-  }
-
-  .title,
-  .subtitle {
-    font-weight: var(--ja-font-weight-light);
-    line-height: var(--ja-line-height-dense);
-    color: var(--ja-color-neutral-300);
-    text-align: center;
-  }
-
-  .title {
-    font-size: var(--ja-font-size-x-large);
-  }
-
-  .subtitle {
-    font-size: var(--ja-font-size-medium);
-  }
-
   .options-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

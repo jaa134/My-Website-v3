@@ -6,6 +6,8 @@
 
   import { useGlobe } from '@/composables/useGlobe.js';
 
+  import SectionHeader from '@/components/common/SectionHeader.vue';
+
   /* Globe ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   const globeSize = 650;
@@ -82,11 +84,11 @@
 
 <template>
   <div class="form-view">
-    <div class="header">
-      <h2 class="title">Trying to find me?</h2>
-      <h3 class="subtitle">I'm probably working from home right now.</h3>
-    </div>
-
+    <SectionHeader
+      title="Trying to find me?"
+      subtitle="I'm probably working from home right now."
+      alignment="center"
+    />
     <div
       ref="globeContainer"
       class="globe-container"
@@ -95,28 +97,8 @@
 </template>
 
 <style scoped>
-  .header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-
-  .title,
-  .subtitle {
-    font-weight: var(--ja-font-weight-light);
-    line-height: var(--ja-line-height-dense);
-    color: var(--ja-color-neutral-300);
-    text-align: center;
-  }
-
-  .title {
-    font-size: var(--ja-font-size-x-large);
-  }
-
-  .subtitle {
-    font-size: var(--ja-font-size-medium);
+  .section-header {
+    margin-bottom: 0;
   }
 
   .globe-container {
