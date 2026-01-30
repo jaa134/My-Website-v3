@@ -1,13 +1,13 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import BasicCard from '@/components/common/BasicCard.vue';
-
   import FacebookIcon from '@/assets/icons/socials/facebook.svg';
   import GithubIcon from '@/assets/icons/socials/github.svg';
   import InstagramIcon from '@/assets/icons/socials/instagram.svg';
   import LinkedinIcon from '@/assets/icons/socials/linkedin.svg';
   import TwitterIcon from '@/assets/icons/socials/twitter.svg';
+
+  import BasicCard from '@/components/common/BasicCard.vue';
 
   /* Socials //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 

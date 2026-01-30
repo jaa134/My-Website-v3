@@ -3,9 +3,9 @@
 
   import { shallowRef } from 'vue';
 
-  import BasicCard from '@/components/common/BasicCard.vue';
-
   import DownloadIcon from '@/assets/icons/actions/download.svg';
+
+  import BasicCard from '@/components/common/BasicCard.vue';
 
   /* Experience ///////////////////////////////////////////////////////////////////////////////////////////////////// */
 

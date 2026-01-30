@@ -6,8 +6,6 @@
   import { Group, Mesh, MeshLambertMaterial, SphereGeometry } from 'three';
   import { onBeforeUnmount, onMounted, ref } from 'vue';
 
-  import BasicCard from '@/components/common/BasicCard.vue';
-
   import ApolloIcon from '@/assets/icons/skills/apollo.svg';
   import CssIcon from '@/assets/icons/skills/css.svg';
   import CursorIcon from '@/assets/icons/skills/cursor.svg';
@@ -23,7 +21,10 @@
   import ViteIcon from '@/assets/icons/skills/vite.svg';
   import VitestIcon from '@/assets/icons/skills/vitest.svg';
   import VueIcon from '@/assets/icons/skills/vue.svg';
+
   import { useGlobe } from '@/composables/useGlobe.js';
+
+  import BasicCard from '@/components/common/BasicCard.vue';
 
   /* Tools ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 

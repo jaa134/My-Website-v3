@@ -3,10 +3,10 @@
 
   import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 
-  import BasicCard from '@/components/common/BasicCard.vue';
-
   import NextIcon from '@/assets/icons/actions/next.svg';
   import PreviousIcon from '@/assets/icons/actions/previous.svg';
+
+  import BasicCard from '@/components/common/BasicCard.vue';
 
   /* Achievements //////////////////////////////////////////////////////////////////////////////////////////////////// */
 

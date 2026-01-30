@@ -1,11 +1,11 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import BasicCard from '@/components/common/BasicCard.vue';
-
   import EmailIcon from '@/assets/icons/contacts/email.svg';
   import LocationIcon from '@/assets/icons/contacts/location.svg';
   import PhoneIcon from '@/assets/icons/contacts/phone.svg';
+
+  import BasicCard from '@/components/common/BasicCard.vue';
 
   /* Options //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 

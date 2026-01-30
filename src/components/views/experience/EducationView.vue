@@ -1,11 +1,11 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import BasicCard from '@/components/common/BasicCard.vue';
-
   import DownloadIcon from '@/assets/icons/actions/download.svg';
   import CwruIcon from '@/assets/icons/education/cwru.svg';
   import UctIcon from '@/assets/icons/education/uct.svg';
+
+  import BasicCard from '@/components/common/BasicCard.vue';
 
   /* Education ////////////////////////////////////////////////////////////////////////////////////////////////////// */
 

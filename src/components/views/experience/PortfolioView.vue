@@ -3,11 +3,11 @@
 
   import { nextTick, onBeforeUnmount, onMounted, ref, shallowRef } from 'vue';
 
-  import BasicCard from '@/components/common/BasicCard.vue';
-
   import ClickIcon from '@/assets/icons/actions/click.svg';
   import ExpandIcon from '@/assets/icons/actions/expand.svg';
   import NavigateIcon from '@/assets/icons/actions/navigate.svg';
+
+  import BasicCard from '@/components/common/BasicCard.vue';
 
   /* Projects /////////////////////////////////////////////////////////////////////////////////////////////////////// */
 

@@ -3,9 +3,9 @@
 
   import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 
-  import { Route } from '@/router/index.js';
-
   import LogoIcon from '@/assets/icons/logos/main.svg';
+
+  import { Route } from '@/router/index.js';
 
   /* Scroll tracking //////////////////////////////////////////////////////////////////////////////////////////////// */
 
