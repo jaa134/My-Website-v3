@@ -4,9 +4,7 @@
   import { computed, ref } from 'vue';
   import { PhotoAlbum } from 'vue-photo-album';
 
-  import NextIcon from '@/assets/icons/actions/next.svg';
-  import PreviousIcon from '@/assets/icons/actions/previous.svg';
-
+  import PageControls from '@/components/common/PageControls.vue';
   import SectionHeader from '@/components/common/SectionHeader.vue';
 
   /* Photos ///////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -598,10 +596,9 @@
 
   /* Display //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
+  const spacing = 12;
   const photosPerPage = 8;
   const pageCount = Math.ceil(photos.length / photosPerPage);
-
-  const spacing = 12;
 
   const page = ref(0);
 
@@ -610,10 +607,6 @@
     const endIndex = (page.value + 1) * photosPerPage;
     return photos.slice(startIndex, endIndex);
   });
-
-  const goToPage = (index: number) => {
-    page.value = (index + pageCount) % pageCount;
-  };
 </script>
 
 <template>
@@ -628,28 +621,10 @@
       layout="rows"
       :spacing="spacing"
     />
-    <div class="page-controls">
-      <button
-        class="navigation-button"
-        @click="goToPage(page - 1)"
-      >
-        <PreviousIcon />
-      </button>
-      <div class="dots-container">
-        <button
-          v-for="index in pageCount"
-          :key="index"
-          :class="['dot', { current: page === index - 1 }]"
-          @click="goToPage(index - 1)"
-        ></button>
-      </div>
-      <button
-        class="navigation-button"
-        @click="goToPage(page + 1)"
-      >
-        <NextIcon />
-      </button>
-    </div>
+    <PageControls
+      v-model="page"
+      :page-count="pageCount"
+    />
   </div>
 </template>
 
@@ -671,59 +646,6 @@
   }
 
   .page-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--ja-spacing-large);
     margin-top: var(--ja-spacing-2x-large);
-  }
-
-  .navigation-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border: 1px solid color-mix(in srgb, var(--ja-color-purple-400) 35%, transparent);
-    border-radius: var(--ja-border-radius-circle);
-    background: transparent;
-    color: var(--ja-color-neutral-300);
-
-    &:hover {
-      border-color: color-mix(in srgb, var(--ja-color-purple-400) 65%, transparent);
-      background-color: color-mix(in srgb, var(--ja-color-purple-400) 15%, transparent);
-      color: var(--ja-color-neutral-0);
-    }
-
-    svg {
-      width: 20px;
-      height: 20px;
-    }
-  }
-
-  .dots-container {
-    display: flex;
-    align-items: center;
-    gap: var(--ja-spacing-small);
-  }
-
-  .dot {
-    width: 10px;
-    height: 10px;
-    border: none;
-    border-radius: var(--ja-border-radius-circle);
-    background-color: var(--ja-color-neutral-500);
-    cursor: pointer;
-    transition: background-color var(--ja-transition-fast) ease transform var(--ja-transition-fast) ease;
-
-    &:hover {
-      background-color: color-mix(in srgb, var(--ja-color-purple-400) 50%, transparent);
-      transform: scale(1.2);
-    }
-
-    &.current {
-      background-color: var(--ja-color-purple-400);
-      transform: scale(1.3);
-    }
   }
 </style>
