@@ -9,72 +9,39 @@
   import BasicCard from '@/components/common/BasicCard.vue';
   import SectionHeader from '@/components/common/SectionHeader.vue';
 
-  /* Achievements //////////////////////////////////////////////////////////////////////////////////////////////////// */
+  /* Hobbies //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  interface Achievement {
-    date: string;
-    summary: string;
+  interface Hobby {
+    name: string;
     description: string;
   }
 
-  const achievements: Achievement[] = [
+  const hobbies: Hobby[] = [
     {
-      date: '2022 - Present',
-      summary: 'Satellite Pilot Certification',
+      name: 'Climbing',
+      description: "I've summitted peaks like the Grand Teton and have done multiple climbs over 1500 feet in height.",
+    },
+    {
+      name: 'Running',
+      description: 'My best 5k time is 17:50 and I once ran a marathon by myself in 3:10:00. It helps calm my mind.',
+    },
+    {
+      name: 'Swimming',
       description:
-        'Piloted and controlled satellites in orbit after completing satellite pilot training and certification. Routinely assists with anomaly response to maintain mission continuity.',
+        'I swam competitively for 15 years and in college. For many years I was training in a pool for 22 hours a week.',
     },
     {
-      date: '2019 - 2022',
-      summary: '90% Defect Reduction',
-      description: 'Reduced known UI defects in our product backlog by over 90% in less than 10 months.',
+      name: 'Hiking',
+      description: 'My longest day-hike is 35 miles along the ridgeline of 3 peaks in South Africa.',
     },
     {
-      date: '2024-2026',
-      summary: 'Vue Migration',
-      description: 'Migrated 650+ components from Vue 2 to Vue 3, modernizing tooling and reducing maintenance risk.',
+      name: 'Traveling',
+      description: "My goal is the visit a new place every year. In my adult life, I've travelled to 15+ countries.",
     },
     {
-      date: '2020',
-      summary: '125x Performance Improvement',
+      name: 'Skiing',
       description:
-        'Identified and fixed various performance traps that resulted in web pages rendering up to 125x faster.',
-    },
-    {
-      date: '2019 - 2022',
-      summary: 'Frontend Team Management',
-      description:
-        'Managed a small team of developers responsible for producing, maintaining, and modifying web front-end code for enterprise level software.',
-    },
-    {
-      date: '2019 - 2022',
-      summary: 'High-Profile Client Relations',
-      description:
-        'Maintained personal relationships with high-profile customer accounts that need a dedicated advocate to meet SLA on issues that impact millions of dollars in financial investments.',
-    },
-    {
-      date: '2019 - 2022',
-      summary: 'Distinguished Performances',
-      description:
-        'Exceeded expectations and received distinguished honors during all performance reviews as a full-stack developer and front-end lead at IBM UrbanCode and HCL Software.',
-    },
-    {
-      date: '2018',
-      summary: 'Grant Recipient',
-      description:
-        'Awarded a $25,000 grant from the Innovation Fund to continue development of medical diagnostic equipment.',
-    },
-    {
-      date: '2019',
-      summary: 'EECS Department Award',
-      description:
-        'Recognized by the electrical engineering and computer science department for the most outstanding capstone project.',
-    },
-    {
-      date: '2016 - 2019',
-      summary: 'Company Founder',
-      description:
-        'Devised a data-driven service, website, and mobile application with senior university faculty to compute and convey real-time "busyness" metrics for various locations around campus.',
+        'I tore my ACL skiing in 2023. Two seasons later, I was fully recovered and skied 35 days with 600k+ feet of vertical in ~650 miles.',
     },
   ];
 
@@ -83,30 +50,30 @@
   interface Slide {
     position: 'prev' | 'current' | 'next';
     index: number;
-    data: Achievement;
+    data: Hobby;
   }
 
   const currentIndex = ref(0);
 
   const slides = computed<Slide[]>(() => {
-    const previousIndex = (currentIndex.value + achievements.length - 1) % achievements.length;
-    const nextIndex = (currentIndex.value + achievements.length + 1) % achievements.length;
+    const previousIndex = (currentIndex.value + hobbies.length - 1) % hobbies.length;
+    const nextIndex = (currentIndex.value + hobbies.length + 1) % hobbies.length;
 
     return [
       {
         position: 'prev',
         index: previousIndex,
-        data: achievements[previousIndex]!,
+        data: hobbies[previousIndex]!,
       },
       {
         position: 'current',
         index: currentIndex.value,
-        data: achievements[currentIndex.value]!,
+        data: hobbies[currentIndex.value]!,
       },
       {
         position: 'next',
         index: nextIndex,
-        data: achievements[nextIndex]!,
+        data: hobbies[nextIndex]!,
       },
     ];
   });
@@ -119,7 +86,7 @@
     }
 
     autoAdvanceInterval.value = window.setInterval(() => {
-      currentIndex.value = (currentIndex.value + 1) % achievements.length;
+      currentIndex.value = (currentIndex.value + 1) % hobbies.length;
     }, 5000);
   };
 
@@ -132,9 +99,9 @@
     autoAdvanceInterval.value = null;
   };
 
-  const goToAchievement = (index: number) => {
+  const goToHobby = (index: number) => {
     stopAutoAdvance();
-    currentIndex.value = (index + achievements.length) % achievements.length;
+    currentIndex.value = (index + hobbies.length) % hobbies.length;
   };
 
   onMounted(() => {
@@ -147,10 +114,10 @@
 </script>
 
 <template>
-  <div class="achievements-view">
+  <div class="hobbies-view">
     <SectionHeader
-      title="Achievements"
-      subtitle="What I'm most proud of to date"
+      title="Hobbies"
+      subtitle="Pushing it to the extreme"
     />
     <div class="slideshow-container">
       <div class="slides-placeholder">
@@ -158,14 +125,13 @@
           <BasicCard
             v-for="slide in slides"
             :key="`${slide.position}-${slide.index}`"
-            :class="['achievement-card', slide.position]"
+            :class="['hobby-card', slide.position]"
             interactive
-            @click="goToAchievement(slide.index)"
+            @click="goToHobby(slide.index)"
           >
-            <div class="achievement-content">
-              <div class="achievement-date">{{ slide.data.date }}</div>
-              <h3 class="achievement-summary">{{ slide.data.summary }}</h3>
-              <p class="achievement-description">{{ slide.data.description }}</p>
+            <div class="hobby-content">
+              <h3 class="hobby-name">{{ slide.data.name }}</h3>
+              <p class="hobby-description">{{ slide.data.description }}</p>
             </div>
           </BasicCard>
         </div>
@@ -173,21 +139,21 @@
       <div class="slideshow-controls">
         <button
           class="navigation-button"
-          @click="goToAchievement(currentIndex - 1)"
+          @click="goToHobby(currentIndex - 1)"
         >
           <PreviousIcon />
         </button>
         <div class="dots-container">
           <button
-            v-for="index in achievements.length"
+            v-for="index in hobbies.length"
             :key="index"
             :class="['dot', { current: currentIndex === index - 1 }]"
-            @click="goToAchievement(index - 1)"
+            @click="goToHobby(index - 1)"
           ></button>
         </div>
         <button
           class="navigation-button"
-          @click="goToAchievement(currentIndex + 1)"
+          @click="goToHobby(currentIndex + 1)"
         >
           <NextIcon />
         </button>
@@ -197,7 +163,7 @@
 </template>
 
 <style scoped>
-  .achievements-view {
+  .hobbies-view {
     --slide-height: 250px;
 
     display: flex;
@@ -228,7 +194,7 @@
     align-items: stretch;
   }
 
-  .achievement-card {
+  .hobby-card {
     padding: var(--ja-spacing-2x-large);
     height: var(--slide-height);
     width: 600px;
@@ -251,27 +217,20 @@
     }
   }
 
-  .achievement-content {
+  .hobby-content {
     display: flex;
     flex-direction: column;
     gap: var(--ja-spacing-small);
   }
 
-  .achievement-date {
-    font-family: var(--ja-font-mono);
-    font-size: var(--ja-font-size-small);
-    font-weight: var(--ja-font-weight-medium);
-    color: var(--ja-color-teal-400);
-  }
-
-  .achievement-summary {
+  .hobby-name {
     font-size: var(--ja-font-size-large);
     font-weight: var(--ja-font-weight-normal);
     line-height: var(--ja-line-height-normal);
     color: var(--ja-color-neutral-200);
   }
 
-  .achievement-description {
+  .hobby-description {
     font-size: var(--ja-font-size-medium);
     color: var(--ja-color-neutral-200);
     line-height: var(--ja-line-height-relaxed);

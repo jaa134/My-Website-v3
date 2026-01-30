@@ -83,7 +83,7 @@
 </script>
 
 <template>
-  <div class="form-view">
+  <div class="places-view">
     <SectionHeader
       title="Trying to find me?"
       subtitle="I'm probably working from home right now."
