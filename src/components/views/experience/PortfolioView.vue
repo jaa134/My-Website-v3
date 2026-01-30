@@ -320,7 +320,7 @@
     display: flex;
     align-items: center;
     gap: var(--ja-spacing-medium);
-    padding: var(--ja-spacing-small) var(--ja-spacing-medium);
+    padding: var(--ja-spacing-medium) var(--ja-spacing-medium);
     border-radius: var(--ja-border-radius-large);
     color: var(--ja-color-neutral-0);
     text-decoration: none;
@@ -386,7 +386,7 @@
 
   .expanded-content {
     margin: 0 var(--ja-spacing-medium);
-    padding: var(--ja-spacing-small) 0 var(--ja-spacing-small) var(--ja-spacing-3x-large);
+    padding: var(--ja-spacing-medium) 0 var(--ja-spacing-medium) var(--ja-spacing-3x-large);
   }
 
   .project-description {
