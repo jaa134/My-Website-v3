@@ -1,14 +1,11 @@
 <script setup lang="ts">
   /* Imorts ///////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import { shallowRef } from 'vue';
-
   import DownloadIcon from '@/assets/icons/actions/download.svg';
 
   import ActionButton from '@/components/common/ActionButton.vue';
-  import BasicCard from '@/components/common/BasicCard.vue';
   import SectionHeader from '@/components/common/SectionHeader.vue';
-  import SelectionMenu from '@/components/common/SelectionMenu.vue';
+  import SelectionDisplay from '@/components/common/SelectionDisplay.vue';
 
   /* Experience ///////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -80,10 +77,6 @@
       ],
     },
   ];
-
-  /* Selection ////////////////////////////////////////////////////////////////////////////////////////////////////// */
-
-  const selectedExperience = shallowRef<Experience>(experiences[0]!);
 </script>
 
 <template>
@@ -102,22 +95,21 @@
         </ActionButton>
       </a>
     </SectionHeader>
-    <div class="career-content">
-      <SelectionMenu
-        v-model="selectedExperience"
-        :options="experiences"
-      />
-      <BasicCard max-height="525px">
+    <SelectionDisplay
+      :options="experiences"
+      max-content-height="525px"
+    >
+      <template #default="{ selection }">
         <div class="details">
           <div class="time">
-            <span class="date-range">{{ selectedExperience.dateRange }}</span>
-            <span class="duration">({{ selectedExperience.duration }})</span>
+            <span class="date-range">{{ selection.dateRange }}</span>
+            <span class="duration">({{ selection.duration }})</span>
           </div>
-          <h3 class="company-name">{{ selectedExperience.id }}</h3>
-          <p class="roles">{{ selectedExperience.roles.join(' · ') }}</p>
+          <h3 class="company-name">{{ selection.id }}</h3>
+          <p class="roles">{{ selection.roles.join(' · ') }}</p>
           <ul class="description-list">
             <li
-              v-for="(item, index) in selectedExperience.description"
+              v-for="(item, index) in selection.description"
               :key="index"
               class="description-item"
             >
@@ -125,8 +117,8 @@
             </li>
           </ul>
         </div>
-      </BasicCard>
-    </div>
+      </template>
+    </SelectionDisplay>
   </div>
 </template>
 
@@ -136,14 +128,6 @@
     flex-direction: column;
     align-items: center;
     width: 1100px;
-  }
-
-  .career-content {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    align-items: flex-start;
-    gap: var(--ja-spacing-2x-large);
-    width: 100%;
   }
 
   .details {

@@ -16,7 +16,7 @@
 
   /* Model ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  const selectedItem = defineModel<T>({
+  const selectedOption = defineModel<T>({
     type: Object as PropType<T>,
     required: true,
   });
@@ -24,7 +24,7 @@
   /* Methods //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   const selectOption = (option: T) => {
-    selectedItem.value = option;
+    selectedOption.value = option;
   };
 </script>
 
@@ -39,7 +39,7 @@
       <button
         v-for="option in options"
         :key="option.id"
-        :class="['navigation-item', { active: option.id === selectedItem.id }]"
+        :class="['navigation-item', { active: option.id === selectedOption.id }]"
         @click="selectOption(option)"
       >
         <div class="selection-indicator">
