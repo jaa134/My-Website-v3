@@ -230,6 +230,7 @@
     &:not(.current) {
       opacity: 0.6;
       transform: scale(0.9);
+      user-select: none;
       cursor: pointer;
     }
 

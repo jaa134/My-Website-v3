@@ -22,10 +22,10 @@
       link: 'https://case.edu',
       icon: CwruIcon,
       description: [
-        'Undergraduate Degree in Computer Science',
+        'B.S. in Computer Science',
         'August 2014 - May 2019',
-        'GPA: 3.63 / 4.00',
-        'Graduated with honors - Cum Laude',
+        'GPA: 3.63 / 4.00 - Cum Laude',
+        'Awarded best senior project by faculty',
       ],
     },
     {
