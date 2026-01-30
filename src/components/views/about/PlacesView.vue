@@ -528,6 +528,7 @@
 <style scoped>
   .places-view {
     width: 100%;
+    margin-bottom: calc(var(--ja-spacing-3x-large) * -1);
   }
 
   .section-header {
