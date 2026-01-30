@@ -461,6 +461,7 @@
       alignment="center"
     />
     <div class="layout">
+      <div class="connection-line"></div>
       <div class="navigation-list">
         <div class="navigation-list-header">Select a place</div>
         <BasicCard height="300px">
@@ -534,10 +535,18 @@
   }
 
   .layout {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: var(--ja-spacing-x-large);
+  }
+
+  .connection-line {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    border: 1px dashed var(--ja-color-neutral-400);
   }
 
   .basic-card {
@@ -549,13 +558,14 @@
   }
 
   .navigation-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--ja-spacing-small);
+    position: relative;
   }
 
   .navigation-list-header {
+    position: absolute;
+    top: calc(var(--ja-spacing-2x-large) * -1);
+    left: 50%;
+    transform: translateX(-50%);
     font-family: var(--ja-font-mono);
     font-size: var(--ja-font-size-small);
     font-weight: var(--ja-font-weight-light);
