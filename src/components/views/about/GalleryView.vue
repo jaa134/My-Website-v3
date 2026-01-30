@@ -621,6 +621,7 @@
     <SectionHeader
       title="Gallery"
       subtitle="A glimpse into my life."
+      alignment="center"
     />
     <PhotoAlbum
       :photos="displayedPhotos"

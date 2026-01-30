@@ -118,6 +118,7 @@
     <SectionHeader
       title="Hobbies"
       subtitle="Pushing it to the extreme"
+      alignment="center"
     />
     <div class="slideshow-container">
       <div class="slides-placeholder">
