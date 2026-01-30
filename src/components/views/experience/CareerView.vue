@@ -280,7 +280,8 @@
     &::before {
       position: absolute;
       left: 0;
-      content: '-';
+      content: '•';
+      font-weight: var(--ja-font-weight-bold);
       color: var(--ja-color-purple-300);
     }
   }
