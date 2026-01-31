@@ -14,74 +14,74 @@
 
   interface Tool {
     name: string;
-    icon: string;
+    src: string;
   }
 
   const toolGroups: Tool[][] = [
     [
       {
         name: 'TypeScript',
-        icon: '/assets/icons/skills/typescript.svg',
+        src: '/assets/icons/skills/typescript.svg',
       },
       {
         name: 'HTML',
-        icon: '/assets/icons/skills/html.svg',
+        src: '/assets/icons/skills/html.svg',
       },
       {
         name: 'CSS',
-        icon: '/assets/icons/skills/css.svg',
+        src: '/assets/icons/skills/css.svg',
       },
       {
         name: 'Vue',
-        icon: '/assets/icons/skills/vue.svg',
+        src: '/assets/icons/skills/vue.svg',
       },
       {
         name: 'React',
-        icon: '/assets/icons/skills/react.svg',
+        src: '/assets/icons/skills/react.svg',
       },
     ],
     [
       {
         name: 'Vite',
-        icon: '/assets/icons/skills/vite.svg',
+        src: '/assets/icons/skills/vite.svg',
       },
       {
         name: 'Vitest',
-        icon: '/assets/icons/skills/vitest.svg',
+        src: '/assets/icons/skills/vitest.svg',
       },
       {
         name: 'GraphQL',
-        icon: '/assets/icons/skills/graphql.svg',
+        src: '/assets/icons/skills/graphql.svg',
       },
       {
         name: 'Apollo',
-        icon: '/assets/icons/skills/apollo.svg',
+        src: '/assets/icons/skills/apollo.svg',
       },
       {
         name: 'Pinia',
-        icon: '/assets/icons/skills/pinia.svg',
+        src: '/assets/icons/skills/pinia.svg',
       },
     ],
     [
       {
         name: 'Git',
-        icon: '/assets/icons/skills/git.svg',
+        src: '/assets/icons/skills/git.svg',
       },
       {
         name: 'Docker',
-        icon: '/assets/icons/skills/docker.svg',
+        src: '/assets/icons/skills/docker.svg',
       },
       {
         name: 'Cursor',
-        icon: '/assets/icons/skills/cursor.svg',
+        src: '/assets/icons/skills/cursor.svg',
       },
       {
         name: 'Figma',
-        icon: '/assets/icons/skills/figma.svg',
+        src: '/assets/icons/skills/figma.svg',
       },
       {
         name: 'Jira',
-        icon: '/assets/icons/skills/jira.svg',
+        src: '/assets/icons/skills/jira.svg',
       },
     ],
   ];
@@ -247,7 +247,7 @@
             v-for="tool in toolGroup"
             :key="tool.name"
             v-tooltip="tool.name"
-            :src="tool.icon"
+            :src="tool.src"
             :alt="tool.name"
           />
         </div>
