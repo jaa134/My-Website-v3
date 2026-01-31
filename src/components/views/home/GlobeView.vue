@@ -6,22 +6,6 @@
   import { Group, Mesh, MeshLambertMaterial, SphereGeometry } from 'three';
   import { onBeforeUnmount, onMounted, ref } from 'vue';
 
-  import ApolloIcon from '@/assets/icons/skills/apollo.svg';
-  import CssIcon from '@/assets/icons/skills/css.svg';
-  import CursorIcon from '@/assets/icons/skills/cursor.svg';
-  import DockerIcon from '@/assets/icons/skills/docker.svg';
-  import FigmaIcon from '@/assets/icons/skills/figma.svg';
-  import GitIcon from '@/assets/icons/skills/git.svg';
-  import GraphqlIcon from '@/assets/icons/skills/graphql.svg';
-  import HtmlIcon from '@/assets/icons/skills/html.svg';
-  import JiraIcon from '@/assets/icons/skills/jira.svg';
-  import PiniaIcon from '@/assets/icons/skills/pinia.svg';
-  import ReactIcon from '@/assets/icons/skills/react.svg';
-  import TypescriptIcon from '@/assets/icons/skills/typescript.svg';
-  import ViteIcon from '@/assets/icons/skills/vite.svg';
-  import VitestIcon from '@/assets/icons/skills/vitest.svg';
-  import VueIcon from '@/assets/icons/skills/vue.svg';
-
   import { useGlobe } from '@/composables/useGlobe.js';
 
   import BasicCard from '@/components/common/BasicCard.vue';
@@ -35,25 +19,70 @@
 
   const toolGroups: Tool[][] = [
     [
-      { name: 'TypeScript', icon: TypescriptIcon },
-      { name: 'HTML', icon: HtmlIcon },
-      { name: 'CSS', icon: CssIcon },
-      { name: 'Vue', icon: VueIcon },
-      { name: 'React', icon: ReactIcon },
+      {
+        name: 'TypeScript',
+        icon: '/assets/icons/skills/typescript.svg',
+      },
+      {
+        name: 'HTML',
+        icon: '/assets/icons/skills/html.svg',
+      },
+      {
+        name: 'CSS',
+        icon: '/assets/icons/skills/css.svg',
+      },
+      {
+        name: 'Vue',
+        icon: '/assets/icons/skills/vue.svg',
+      },
+      {
+        name: 'React',
+        icon: '/assets/icons/skills/react.svg',
+      },
     ],
     [
-      { name: 'Vite', icon: ViteIcon },
-      { name: 'Vitest', icon: VitestIcon },
-      { name: 'GraphQL', icon: GraphqlIcon },
-      { name: 'Apollo', icon: ApolloIcon },
-      { name: 'Pinia', icon: PiniaIcon },
+      {
+        name: 'Vite',
+        icon: '/assets/icons/skills/vite.svg',
+      },
+      {
+        name: 'Vitest',
+        icon: '/assets/icons/skills/vitest.svg',
+      },
+      {
+        name: 'GraphQL',
+        icon: '/assets/icons/skills/graphql.svg',
+      },
+      {
+        name: 'Apollo',
+        icon: '/assets/icons/skills/apollo.svg',
+      },
+      {
+        name: 'Pinia',
+        icon: '/assets/icons/skills/pinia.svg',
+      },
     ],
     [
-      { name: 'Git', icon: GitIcon },
-      { name: 'Docker', icon: DockerIcon },
-      { name: 'Cursor', icon: CursorIcon },
-      { name: 'Figma', icon: FigmaIcon },
-      { name: 'Jira', icon: JiraIcon },
+      {
+        name: 'Git',
+        icon: '/assets/icons/skills/git.svg',
+      },
+      {
+        name: 'Docker',
+        icon: '/assets/icons/skills/docker.svg',
+      },
+      {
+        name: 'Cursor',
+        icon: '/assets/icons/skills/cursor.svg',
+      },
+      {
+        name: 'Figma',
+        icon: '/assets/icons/skills/figma.svg',
+      },
+      {
+        name: 'Jira',
+        icon: '/assets/icons/skills/jira.svg',
+      },
     ],
   ];
 
@@ -214,11 +243,12 @@
         :key="index"
       >
         <div class="tech-icons">
-          <component
-            :is="tool.icon"
+          <img
             v-for="tool in toolGroup"
             :key="tool.name"
             v-tooltip="tool.name"
+            :src="tool.icon"
+            :alt="tool.name"
           />
         </div>
       </BasicCard>
@@ -273,7 +303,7 @@
     height: 100px;
     padding: 0 var(--ja-spacing-2x-large);
 
-    svg {
+    img {
       width: 60px;
       height: 60px;
     }
