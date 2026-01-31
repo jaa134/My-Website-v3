@@ -173,8 +173,9 @@
         </div>
       </div>
       <PageControls
-        v-model="currentIndex"
+        :model-value="currentIndex"
         :page-count="achievements.length"
+        @update:model-value="goToAchievement"
       />
     </div>
   </div>

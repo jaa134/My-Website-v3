@@ -154,8 +154,9 @@
         </div>
       </div>
       <PageControls
-        v-model="currentIndex"
+        :model-value="currentIndex"
         :page-count="hobbies.length"
+        @update:model-value="goToHobby"
       />
     </div>
   </div>
