@@ -73,7 +73,7 @@
     height: 100px;
     min-height: 100px;
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 1fr 600px 1fr;
     grid-template-rows: 1fr;
     gap: var(--ja-spacing-x-large);
     padding: 0 var(--ja-spacing-x-large);
