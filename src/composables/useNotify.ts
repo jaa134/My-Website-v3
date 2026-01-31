@@ -42,7 +42,7 @@ const notify = (type: NotifyType, message: string) => {
   const toastElement = createToastElement(type, message);
   containerElement.appendChild(toastElement);
 
-  window.setTimeout(() => {
+  setTimeout(() => {
     toastElement.remove();
   }, showDuration);
 };

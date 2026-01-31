@@ -12,34 +12,41 @@
   interface Hobby {
     name: string;
     description: string;
+    link: string;
   }
 
   const hobbies: Hobby[] = [
     {
       name: 'Climbing',
       description: "I've summitted peaks like the Grand Teton and have done multiple climbs over 1500 feet in height.",
+      link: '/assets/images/hobbies/climbing.webp',
     },
     {
       name: 'Running',
       description: 'My best 5k time is 17:50 and I once ran a marathon by myself in 3:10:00. It helps calm my mind.',
+      link: '/assets/images/hobbies/running.webp',
     },
     {
       name: 'Swimming',
       description:
         'I swam competitively for 15 years and in college. For many years I was training in a pool for 22 hours a week.',
+      link: '/assets/images/hobbies/swimming.webp',
     },
     {
       name: 'Hiking',
       description: 'My longest day-hike is 35 miles along the ridgeline of 3 peaks in South Africa.',
+      link: '/assets/images/hobbies/hiking.webp',
     },
     {
       name: 'Traveling',
       description: "My goal is the visit a new place every year. In my adult life, I've travelled to 15+ countries.",
+      link: '/assets/images/hobbies/traveling.webp',
     },
     {
       name: 'Skiing',
       description:
         'I tore my ACL skiing in 2023. Two seasons later, I was fully recovered and skied 35 days with 600k+ feet of vertical in ~650 miles.',
+      link: '/assets/images/hobbies/skiing.webp',
     },
   ];
 
@@ -53,9 +60,13 @@
 
   const currentIndex = ref(0);
 
+  const normalizeIndex = (index: number) => {
+    return (index + hobbies.length) % hobbies.length;
+  };
+
   const slides = computed<Slide[]>(() => {
-    const previousIndex = (currentIndex.value + hobbies.length - 1) % hobbies.length;
-    const nextIndex = (currentIndex.value + hobbies.length + 1) % hobbies.length;
+    const previousIndex = normalizeIndex(currentIndex.value - 1);
+    const nextIndex = normalizeIndex(currentIndex.value + 1);
 
     return [
       {
@@ -79,17 +90,17 @@
   const autoAdvanceInterval = ref<number | null>(null);
 
   const startAutoAdvance = () => {
-    if (autoAdvanceInterval.value !== null) {
+    if (typeof autoAdvanceInterval.value === 'number') {
       return;
     }
 
-    autoAdvanceInterval.value = window.setInterval(() => {
-      currentIndex.value = (currentIndex.value + 1) % hobbies.length;
+    autoAdvanceInterval.value = setInterval(() => {
+      currentIndex.value = normalizeIndex(currentIndex.value + 1);
     }, 5000);
   };
 
   const stopAutoAdvance = () => {
-    if (autoAdvanceInterval.value === null) {
+    if (!(typeof autoAdvanceInterval.value === 'number')) {
       return;
     }
 
@@ -99,7 +110,7 @@
 
   const goToHobby = (index: number) => {
     stopAutoAdvance();
-    currentIndex.value = (index + hobbies.length) % hobbies.length;
+    currentIndex.value = normalizeIndex(index);
   };
 
   onMounted(() => {
@@ -129,8 +140,15 @@
             @click="goToHobby(slide.index)"
           >
             <div class="hobby-content">
-              <h3 class="hobby-name">{{ slide.data.name }}</h3>
-              <p class="hobby-description">{{ slide.data.description }}</p>
+              <div class="hobby-text">
+                <h3 class="hobby-name">{{ slide.data.name }}</h3>
+                <p class="hobby-description">{{ slide.data.description }}</p>
+              </div>
+              <img
+                class="hobby-image"
+                :src="slide.data.link"
+                :alt="slide.data.name"
+              />
             </div>
           </BasicCard>
         </div>
@@ -176,8 +194,6 @@
   }
 
   .hobby-card {
-    padding: var(--ja-spacing-2x-large);
-    height: var(--slide-height);
     width: 600px;
 
     &:not(.current) {
@@ -200,8 +216,15 @@
 
   .hobby-content {
     display: flex;
+    align-items: flex-start;
+    height: var(--slide-height);
+  }
+
+  .hobby-text {
+    display: flex;
     flex-direction: column;
     gap: var(--ja-spacing-small);
+    padding: var(--ja-spacing-2x-large);
   }
 
   .hobby-name {
@@ -216,5 +239,13 @@
     color: var(--ja-color-neutral-200);
     line-height: var(--ja-line-height-relaxed);
     margin: 0;
+  }
+
+  .hobby-image {
+    flex: 0 0 auto;
+    width: calc(var(--slide-height) * 0.75);
+    height: var(--slide-height);
+    background: color-mix(in srgb, var(--ja-color-neutral-900) 75%, transparent);
+    object-fit: cover;
   }
 </style>

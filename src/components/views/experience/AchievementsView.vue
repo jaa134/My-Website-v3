@@ -86,9 +86,13 @@
 
   const currentIndex = ref(0);
 
+  const normalizeIndex = (index: number) => {
+    return (index + achievements.length) % achievements.length;
+  };
+
   const slides = computed<Slide[]>(() => {
-    const previousIndex = (currentIndex.value + achievements.length - 1) % achievements.length;
-    const nextIndex = (currentIndex.value + achievements.length + 1) % achievements.length;
+    const previousIndex = normalizeIndex(currentIndex.value - 1);
+    const nextIndex = normalizeIndex(currentIndex.value + 1);
 
     return [
       {
@@ -112,17 +116,17 @@
   const autoAdvanceInterval = ref<number | null>(null);
 
   const startAutoAdvance = () => {
-    if (autoAdvanceInterval.value !== null) {
+    if (typeof autoAdvanceInterval.value === 'number') {
       return;
     }
 
-    autoAdvanceInterval.value = window.setInterval(() => {
-      currentIndex.value = (currentIndex.value + 1) % achievements.length;
+    autoAdvanceInterval.value = setInterval(() => {
+      currentIndex.value = normalizeIndex(currentIndex.value + 1);
     }, 5000);
   };
 
   const stopAutoAdvance = () => {
-    if (autoAdvanceInterval.value === null) {
+    if (!(typeof autoAdvanceInterval.value === 'number')) {
       return;
     }
 
@@ -132,7 +136,7 @@
 
   const goToAchievement = (index: number) => {
     stopAutoAdvance();
-    currentIndex.value = (index + achievements.length) % achievements.length;
+    currentIndex.value = normalizeIndex(index);
   };
 
   onMounted(() => {
@@ -209,8 +213,6 @@
   }
 
   .achievement-card {
-    padding: var(--ja-spacing-2x-large);
-    height: var(--slide-height);
     width: 600px;
 
     &:not(.current) {
@@ -235,6 +237,8 @@
     display: flex;
     flex-direction: column;
     gap: var(--ja-spacing-small);
+    height: var(--slide-height);
+    padding: var(--ja-spacing-2x-large);
   }
 
   .achievement-date {
