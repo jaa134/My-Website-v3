@@ -12,6 +12,7 @@
 
   interface Experience {
     id: string;
+    displayName?: string;
     roles: string[];
     dateRange: string;
     duration: string;
@@ -67,6 +68,7 @@
     },
     {
       id: 'CWRU',
+      displayName: 'Case Western Reserve',
       roles: ['Teaching Assistant', 'Peer Tutor'],
       dateRange: 'August 2016 - May 2019',
       duration: createDurationString(new Date('2016-08-01'), new Date('2019-05-15')),
@@ -114,7 +116,7 @@
             <span class="date-range">{{ selection.dateRange }}</span>
             <span class="duration">({{ selection.duration }})</span>
           </div>
-          <h3 class="company-name">{{ selection.id }}</h3>
+          <h3 class="company-name">{{ selection.displayName || selection.id }}</h3>
           <p class="roles">{{ selection.roles.join(' · ') }}</p>
           <ul class="description-list">
             <li
@@ -207,7 +209,7 @@
     font-family: var(--ja-font-mono);
     font-size: var(--ja-font-size-2x-large);
     font-weight: var(--ja-font-weight-medium);
-    color: var(--ja-color-purple-300);
+    color: var(--ja-color-neutral-300);
     margin-bottom: var(--ja-spacing-small);
   }
 
