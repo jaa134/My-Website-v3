@@ -4,6 +4,7 @@
   export interface ActionButtonProps {
     loading?: boolean;
     disabled?: boolean;
+    pulsing?: boolean;
   }
 
   defineProps<ActionButtonProps>();
@@ -11,7 +12,7 @@
 
 <template>
   <button
-    :class="['action-button', { loading }]"
+    :class="['action-button', { loading, pulsing }]"
     :disabled="disabled"
   >
     <slot></slot>
@@ -47,10 +48,26 @@
       cursor: progress;
     }
 
+    &.pulsing {
+      animation: action-button-pulse 1.8s ease-in-out infinite;
+    }
+
     &:deep(svg) {
       flex-shrink: 0;
       width: 20px;
       height: 20px;
+    }
+  }
+
+  @keyframes action-button-pulse {
+    0% {
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--ja-color-purple-300) 35%, transparent);
+    }
+    50% {
+      box-shadow: 0 0 10px 15px color-mix(in srgb, var(--ja-color-purple-300) 15%, transparent);
+    }
+    100% {
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--ja-color-purple-300) 35%, transparent);
     }
   }
 </style>

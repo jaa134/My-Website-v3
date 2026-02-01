@@ -81,6 +81,11 @@
 
 <template>
   <div class="career-view">
+    <div class="title">You'll want to see this</div>
+    <div class="line">
+      <div class="line-arm"></div>
+      <div class="line-arm"></div>
+    </div>
     <SectionHeader
       title="Career Path"
       subtitle="All of the cool places I have worked"
@@ -89,7 +94,7 @@
         href="/documents/Alspaw-Jacob-Resume.pdf"
         download
       >
-        <ActionButton>
+        <ActionButton pulsing>
           <DownloadIcon />
           <span>Download Resume</span>
         </ActionButton>
@@ -124,10 +129,50 @@
 
 <style scoped>
   .career-view {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 1100px;
+  }
+
+  .title {
+    margin-bottom: var(--ja-spacing-large);
+    font-size: var(--ja-font-size-2x-large);
+    font-weight: var(--ja-font-weight-light);
+    color: var(--ja-color-neutral-200);
+    text-decoration: underline;
+    text-underline-offset: var(--ja-spacing-medium);
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--ja-color-neutral-400);
+  }
+
+  .line {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 150px;
+    width: 100%;
+  }
+
+  .line-arm {
+    position: absolute;
+    border: 1px dashed var(--ja-color-neutral-400);
+
+    &:first-child {
+      top: 65px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 54px;
+    }
+
+    &:last-child {
+      top: 117px;
+      left: calc(50% + 3px);
+      width: 304px;
+      height: 1px;
+    }
   }
 
   .details {
