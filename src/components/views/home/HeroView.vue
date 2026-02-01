@@ -3,6 +3,10 @@
 
   import { onBeforeUnmount, onMounted, ref } from 'vue';
 
+  /* Roles ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+  const tags = ['Frontend', 'Team Lead', 'Satellite Operator'];
+
   /* Slideshow ////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   const photos = [
@@ -39,11 +43,21 @@
       </div>
       <div class="hero-title">
         <span class="title-name">Jacob Alspaw</span>
+        <span class="title-description">My name is Jacob. Get to know me!</span>
         <span class="title-divider"></span>
-        <span class="title-roles">Frontend Developer · Team Lead</span>
-        <span class="title-roles">Satellite Operator</span>
       </div>
-      <p class="hero-subtitle">Building digital experiences on Earth and monitoring systems in orbit</p>
+      <p class="hero-subtitle">
+        I build digital experiences on Earth that monitor systems in orbit. Here's want you want to know about me.
+      </p>
+      <div class="hero-tags">
+        <div
+          v-for="tag in tags"
+          :key="tag"
+          class="hero-tag"
+        >
+          {{ tag }}
+        </div>
+      </div>
     </div>
     <div class="hero-photo">
       <img
@@ -60,8 +74,8 @@
 <style scoped>
   .hero-view {
     display: grid;
-    grid-template-columns: 1fr 400px;
-    align-items: center;
+    grid-template-columns: 1fr 500px;
+    align-items: flex-end;
     gap: var(--ja-spacing-4x-large);
     max-width: 1100px;
   }
@@ -98,7 +112,6 @@
   .hero-title {
     display: flex;
     flex-direction: column;
-    margin-bottom: var(--ja-spacing-large);
     font-size: var(--ja-font-size-3x-large);
     font-weight: var(--ja-font-weight-light);
     line-height: var(--ja-line-height-dense);
@@ -109,25 +122,44 @@
     font-family: var(--ja-font-mono);
   }
 
+  .title-description {
+    font-family: var(--ja-font-mono);
+    font-size: var(--ja-font-size-medium);
+    color: var(--ja-color-neutral-300);
+  }
+
   .title-divider {
     width: 200px;
     height: 1px;
     background: linear-gradient(to right, var(--ja-color-violet-700), transparent);
-    margin: var(--ja-spacing-large) 0 var(--ja-spacing-x-large) 0;
-  }
-
-  .title-roles {
-    font-family: var(--ja-font-mono);
-    font-size: var(--ja-font-size-large);
-    font-weight: var(--ja-font-weight-light);
-    color: var(--ja-color-violet-300);
+    margin: var(--ja-spacing-2x-large) 0;
   }
 
   .hero-subtitle {
-    font-size: var(--ja-font-size-medium);
-    font-weight: var(--ja-font-weight-light);
-    letter-spacing: var(--ja-letter-spacing-loose);
-    color: var(--ja-color-neutral-200);
+    width: 500px;
+    font-size: var(--ja-font-size-large);
+    line-height: var(--ja-line-height-relaxed);
+    color: var(--ja-color-neutral-300);
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ja-spacing-small);
+    margin-top: var(--ja-spacing-large);
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ja-spacing-small);
+    padding: var(--ja-spacing-x-small) var(--ja-spacing-large);
+    border: 1px solid color-mix(in srgb, var(--ja-color-purple-400) 35%, transparent);
+    border-radius: var(--ja-border-radius-pill);
+    background: linear-gradient(135deg, var(--ja-color-violet-950), var(--ja-color-purple-900));
+    box-shadow: 0 0 10px color-mix(in srgb, var(--ja-color-purple-400) 15%, transparent);
+    font-family: var(--ja-font-mono);
+    font-size: var(--ja-font-size-small);
   }
 
   .hero-photo {
@@ -135,7 +167,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 300px;
+    height: 350px;
     overflow: hidden;
 
     * {

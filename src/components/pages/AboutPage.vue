@@ -3,11 +3,13 @@
 
   import GalleryView from '@/components/views/about/GalleryView.vue';
   import HobbiesView from '@/components/views/about/HobbiesView.vue';
+  import IntroductionView from '@/components/views/about/IntroductionView.vue';
   import PlacesView from '@/components/views/about/PlacesView.vue';
 </script>
 
 <template>
   <div class="about-page">
+    <IntroductionView />
     <HobbiesView />
     <PlacesView />
     <GalleryView />
@@ -21,6 +23,6 @@
     align-items: center;
     justify-content: center;
     gap: var(--ja-spacing-6x-large);
-    padding: var(--ja-spacing-5x-large) var(--ja-spacing-2x-large);
+    padding: var(--ja-spacing-6x-large) var(--ja-spacing-2x-large);
   }
 </style>
