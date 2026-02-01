@@ -47,7 +47,7 @@
         <span class="title-divider"></span>
       </div>
       <p class="hero-subtitle">
-        I build digital experiences on Earth that monitor systems in orbit. Here's want you want to know about me.
+        I build digital experiences on Earth that monitor systems in orbit. Here's what you should know about me.
       </p>
       <div class="hero-tags">
         <div

@@ -384,7 +384,7 @@
     },
     {
       title: 'Golden Gate - 2022',
-      description: "Aemilee's first time visting San Francisco.",
+      description: "Aemilee's first time visiting San Francisco.",
       src: '/assets/images/gallery/nae3Oojash.webp',
       width: 3088,
       height: 2316,
@@ -419,7 +419,7 @@
     },
     {
       title: 'Mt. Evans - 2022',
-      description: 'First 14er summitted enitrely by hiking. Zach is our expert guide.',
+      description: 'First 14er summited entirely by hiking. Zach is our expert guide.',
       src: '/assets/images/gallery/oniebua7Oh.webp',
       width: 4032,
       height: 3024,
@@ -447,7 +447,7 @@
     },
     {
       title: "Grandma's House - 2022",
-      description: 'My neice is adorable. She loves to pose for the camera.',
+      description: 'My niece is adorable. She loves to pose for the camera.',
       src: '/assets/images/gallery/quahTee1ux.webp',
       width: 3024,
       height: 4032,

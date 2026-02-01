@@ -13,7 +13,7 @@
     'Won a nationally televised dance-off at a rodeo',
     'Has swam 10,000+ lifetime miles in pools',
     'Lived in Cape Town, South Africa for 7 months',
-    'Hates cucumbers but loves pickles',
+    'Hates cucumbers, but loves pickles',
   ];
 </script>
 

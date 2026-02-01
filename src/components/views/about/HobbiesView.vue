@@ -18,7 +18,7 @@
   const hobbies: Hobby[] = [
     {
       name: 'Climbing',
-      description: "I've summitted peaks like the Grand Teton and have done multiple climbs over 1500 feet in height.",
+      description: "I've summited peaks like the Grand Teton and have done multiple climbs over 1500 feet in height.",
       link: '/assets/images/hobbies/climbing.webp',
     },
     {
@@ -29,7 +29,7 @@
     {
       name: 'Swimming',
       description:
-        'I swam competitively for 15 years and in college. For many years I was training in a pool for 22 hours a week.',
+        'I swam competitively for 15 years, including at the collegiate level. For many years I was training in a pool for 22 hours a week.',
       link: '/assets/images/hobbies/swimming.webp',
     },
     {
@@ -39,7 +39,7 @@
     },
     {
       name: 'Traveling',
-      description: "My goal is the visit a new place every year. In my adult life, I've travelled to 15+ countries.",
+      description: "My goal is to visit a new place every year. In my adult life, I've traveled to 15+ countries.",
       link: '/assets/images/hobbies/traveling.webp',
     },
     {

@@ -144,7 +144,7 @@
     },
     {
       id: 'Joshua Tree',
-      title: '30th Bithdays',
+      title: '30th Birthdays',
       date: 'Winter of 2025',
       image: '/assets/images/places/joshuaTree.webp',
       lat: 36.5323,
@@ -159,10 +159,10 @@
       lng: -87.8212,
     },
     {
-      id: 'Krueger National Park',
+      id: 'Kruger National Park',
       title: 'Safari Trip',
       date: 'Spring of 2017',
-      image: '/assets/images/places/krueger.webp',
+      image: '/assets/images/places/kruger.webp',
       lat: -23.9884,
       lng: 31.5547,
     },
@@ -319,7 +319,7 @@
       lng: -108.3781,
     },
     {
-      id: 'Vencie',
+      id: 'Venice',
       title: 'Italian Tour Guide',
       date: 'Summer of 2025',
       image: '/assets/images/places/venice.webp',
