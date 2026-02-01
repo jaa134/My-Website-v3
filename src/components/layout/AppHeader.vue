@@ -41,6 +41,12 @@
     };
   });
 
+  const linkStyles = computed(() => {
+    return {
+      activeBackgroundColor: `color-mix(in srgb, var(--ja-color-purple-700) ${100 - scrollProgress.value * 100}%, var(--ja-color-neutral-300) ${scrollProgress.value * 100}%)`,
+    };
+  });
+
   const callToActionButtonStyles = computed(() => {
     return {
       borderColor: `color-mix(in srgb, var(--ja-color-purple-600) ${100 - scrollProgress.value * 100}%, var(--ja-color-neutral-300) ${scrollProgress.value * 100}%)`,
@@ -127,11 +133,31 @@
 
   .navigation {
     a {
+      position: relative;
       display: inline-block;
       padding: var(--ja-spacing-small) var(--ja-spacing-medium);
       font-size: var(--ja-font-size-large);
       font-weight: var(--ja-font-weight-semibold);
       font-family: var(--ja-font-mono);
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: var(--ja-spacing-medium);
+        right: var(--ja-spacing-medium);
+        bottom: calc(var(--ja-spacing-x-small));
+        height: 2px;
+        background-color: v-bind('linkStyles.activeBackgroundColor');
+        transform: scaleX(0);
+        transform-origin: center;
+        transition:
+          background-color var(--ja-transition-fast) ease-in-out,
+          transform var(--ja-transition-fast) ease;
+      }
+
+      &.router-link-active::after {
+        transform: scaleX(1);
+      }
     }
   }
 
