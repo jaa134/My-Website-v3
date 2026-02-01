@@ -49,7 +49,7 @@
 
   const callToActionButtonStyles = computed(() => {
     return {
-      borderColor: `color-mix(in srgb, var(--ja-color-purple-600) ${100 - scrollProgress.value * 100}%, var(--ja-color-neutral-300) ${scrollProgress.value * 100}%)`,
+      borderColor: `color-mix(in srgb, var(--ja-color-purple-700) ${100 - scrollProgress.value * 100}%, var(--ja-color-neutral-300) ${scrollProgress.value * 100}%)`,
       borderColorHover: `color-mix(in srgb, var(--ja-color-purple-400) ${100 - scrollProgress.value * 100}%, var(--ja-color-neutral-0) ${scrollProgress.value * 100}%)`,
     };
   });
@@ -165,7 +165,7 @@
     button {
       padding: var(--ja-spacing-x-small) var(--ja-spacing-x-large);
       background: transparent;
-      border: 1px solid v-bind('callToActionButtonStyles.borderColor');
+      border: 2px solid v-bind('callToActionButtonStyles.borderColor');
       border-radius: var(--ja-border-radius-pill);
       font-size: var(--ja-font-size-large);
       font-weight: var(--ja-font-weight-semibold);
