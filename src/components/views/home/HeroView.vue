@@ -1,9 +1,7 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import { onBeforeUnmount, onMounted, ref } from 'vue';
-
-  import BasicCard from '@/components/common/BasicCard.vue';
+  import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 
   /* Roles ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -11,15 +9,11 @@
 
   /* Slideshow ////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  const photos = [
-    '/assets/images/profiles/1.webp',
-    '/assets/images/profiles/2.webp',
-    '/assets/images/profiles/3.webp',
-    '/assets/images/profiles/4.webp',
-    '/assets/images/profiles/5.webp',
-  ];
+  const photos = ['/assets/images/hero/1.webp', '/assets/images/hero/2.webp', '/assets/images/hero/3.webp'];
 
   const currentIndex = ref(0);
+
+  const currentPhoto = computed(() => photos[currentIndex.value]!);
 
   let slideshowInterval: ReturnType<typeof setInterval> | null = null;
 
@@ -59,24 +53,25 @@
         </div>
       </div>
     </div>
-    <BasicCard class="hero-photo">
-      <div class="hero-photo-slideshow">
+    <div class="hero-photo">
+      <Transition name="hero-slide">
         <img
-          v-for="(photo, index) in photos"
-          :key="index"
-          :class="[{ active: index === currentIndex }]"
-          :src="photo"
+          :key="currentPhoto"
+          class="hero-image"
+          :src="currentPhoto"
           alt="Jacob Alspaw"
         />
-      </div>
-    </BasicCard>
+      </Transition>
+    </div>
   </div>
 </template>
 
 <style scoped>
   .hero-view {
+    --hero-image-width: 500px;
+
     display: grid;
-    grid-template-columns: repeat(2, 500px);
+    grid-template-columns: repeat(2, var(--hero-image-width));
     align-items: flex-end;
     gap: var(--ja-spacing-4x-large);
     max-width: 1100px;
@@ -100,7 +95,7 @@
   .status-dot {
     width: 10px;
     height: 10px;
-    border-radius: 50%;
+    border-radius: var(--ja-border-radius-circle);
     background: var(--ja-color-emerald-400);
     animation: pulse 2s ease-in-out infinite;
   }
@@ -132,7 +127,6 @@
   }
 
   .hero-subtitle {
-    width: 500px;
     font-size: var(--ja-font-size-large);
     line-height: var(--ja-line-height-relaxed);
     color: var(--ja-color-neutral-200);
@@ -159,31 +153,40 @@
   }
 
   .hero-photo {
-    * {
-      pointer-events: none;
-      user-select: none;
-    }
-  }
-
-  .hero-photo-slideshow {
     position: relative;
     width: 100%;
-    height: 350px;
+    height: 320px;
+    border-radius: var(--ja-border-radius-2x-large);
+    overflow: hidden;
   }
 
-  img {
+  .hero-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0;
-    transition: opacity var(--ja-transition-slow) ease-in-out;
+    pointer-events: none;
+    user-select: none;
+  }
 
-    &.active {
-      opacity: 1;
-    }
+  .hero-slide-enter-active,
+  .hero-slide-leave-active {
+    transition: left var(--ja-transition-x-slow) ease-in-out;
+  }
+
+  .hero-slide-enter-from {
+    left: calc(var(--hero-image-width) * -1);
+  }
+
+  .hero-slide-enter-to,
+  .hero-slide-leave-from {
+    left: 0;
+  }
+
+  .hero-slide-leave-to {
+    left: var(--hero-image-width);
   }
 
   @keyframes pulse {
