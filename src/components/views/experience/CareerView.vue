@@ -4,6 +4,7 @@
   import DownloadIcon from '@/assets/icons/actions/download.svg';
 
   import ActionButton from '@/components/common/ActionButton.vue';
+  import MainHeader from '@/components/common/MainHeader.vue';
   import SectionHeader from '@/components/common/SectionHeader.vue';
   import SelectionDisplay from '@/components/common/SelectionDisplay.vue';
 
@@ -81,7 +82,10 @@
 
 <template>
   <div class="career-view">
-    <div class="title">You'll want to see this</div>
+    <MainHeader
+      title="10 years in web-dev"
+      subtitle="You'll want to see this"
+    />
     <div class="line">
       <div class="line-arm"></div>
       <div class="line-arm"></div>
@@ -136,15 +140,13 @@
     width: 1100px;
   }
 
-  .title {
-    margin-bottom: var(--ja-spacing-large);
-    font-size: var(--ja-font-size-2x-large);
-    font-weight: var(--ja-font-weight-light);
-    color: var(--ja-color-neutral-200);
-    text-decoration: underline;
-    text-underline-offset: var(--ja-spacing-medium);
-    text-decoration-thickness: 1px;
-    text-decoration-color: var(--ja-color-neutral-400);
+  .main-header {
+    &:deep(.subtitle) {
+      text-decoration: underline;
+      text-underline-offset: var(--ja-spacing-large);
+      text-decoration-thickness: 1px;
+      text-decoration-color: var(--ja-color-neutral-400);
+    }
   }
 
   .line {
@@ -160,15 +162,15 @@
     border: 1px dashed var(--ja-color-neutral-400);
 
     &:first-child {
-      top: 65px;
+      top: 98px;
       left: 50%;
       transform: translateX(-50%);
       width: 1px;
-      height: 54px;
+      height: 58px;
     }
 
     &:last-child {
-      top: 117px;
+      top: 154px;
       left: calc(50% + 3px);
       width: 304px;
       height: 1px;

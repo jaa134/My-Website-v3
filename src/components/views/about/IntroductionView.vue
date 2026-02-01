@@ -5,6 +5,7 @@
 
   import ActionButton from '@/components/common/ActionButton.vue';
   import BasicCard from '@/components/common/BasicCard.vue';
+  import MainHeader from '@/components/common/MainHeader.vue';
 
   /* Facts ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -20,8 +21,10 @@
 <template>
   <section class="introduction-view">
     <div class="text-section">
-      <h1 class="title">You're on my website!</h1>
-      <p class="subtitle">But photos and text only go so far...</p>
+      <MainHeader
+        title="You're on my website!"
+        subtitle="But photos and text only go so far..."
+      />
       <div class="call-to-action">
         <router-link :to="{ name: Route.Contact }">
           <ActionButton>
@@ -56,28 +59,14 @@
 <style scoped>
   .introduction-view {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 400px);
     align-items: center;
     gap: var(--ja-spacing-4x-large);
-    width: 1100px;
+    margin: 0 auto;
   }
 
   .text-section {
-    justify-self: flex-end;
-    text-align: right;
-  }
-
-  .title {
-    font-size: var(--ja-font-size-2x-large);
-    font-weight: var(--ja-font-weight-light);
-    color: var(--ja-color-neutral-300);
-    margin-bottom: var(--ja-spacing-small);
-  }
-
-  .subtitle {
-    font-size: var(--ja-font-size-large);
-    color: var(--ja-color-neutral-300);
-    margin-bottom: var(--ja-spacing-2x-large);
+    justify-self: center;
   }
 
   .call-to-action {
@@ -98,10 +87,9 @@
   }
 
   .facts-title {
-    font-family: var(--ja-font-mono);
     font-size: var(--ja-font-size-small);
-    font-weight: var(--ja-font-weight-bold);
-    color: var(--ja-color-purple-200);
+    font-weight: var(--ja-font-weight-semibold);
+    color: var(--ja-color-neutral-200);
     text-transform: uppercase;
     margin-bottom: var(--ja-spacing-2x-small);
   }

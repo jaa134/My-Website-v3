@@ -358,12 +358,12 @@
 
     & > :first-child {
       font-size: var(--ja-font-size-medium);
-      color: var(--ja-color-neutral-300);
+      color: var(--ja-color-neutral-200);
     }
 
     & > :last-child {
       font-size: var(--ja-font-size-x-small);
-      color: var(--ja-color-neutral-300);
+      color: var(--ja-color-neutral-200);
       text-decoration: underline var(--ja-color-neutral-400);
       text-underline-offset: var(--ja-spacing-small);
     }

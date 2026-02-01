@@ -3,6 +3,8 @@
 
   import { onBeforeUnmount, onMounted, ref } from 'vue';
 
+  import BasicCard from '@/components/common/BasicCard.vue';
+
   /* Roles ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   const tags = ['Frontend', 'Team Lead', 'Satellite Operator'];
@@ -41,11 +43,9 @@
         <span class="status-dot"></span>
         <span class="status-text">ONLINE</span>
       </div>
-      <div class="hero-title">
-        <span class="title-name">Jacob Alspaw</span>
-        <span class="title-description">My name is Jacob. Get to know me!</span>
-        <span class="title-divider"></span>
-      </div>
+      <h1 class="title-name">Jacob Alspaw</h1>
+      <h2 class="title-description">My name is Jacob. Get to know me!</h2>
+      <div class="title-divider"></div>
       <p class="hero-subtitle">
         I build digital experiences on Earth that monitor systems in orbit. Here's what you should know about me.
       </p>
@@ -59,22 +59,24 @@
         </div>
       </div>
     </div>
-    <div class="hero-photo">
-      <img
-        v-for="(photo, index) in photos"
-        :key="index"
-        :class="[{ active: index === currentIndex }]"
-        :src="photo"
-        alt="Jacob Alspaw"
-      />
-    </div>
+    <BasicCard class="hero-photo">
+      <div class="hero-photo-slideshow">
+        <img
+          v-for="(photo, index) in photos"
+          :key="index"
+          :class="[{ active: index === currentIndex }]"
+          :src="photo"
+          alt="Jacob Alspaw"
+        />
+      </div>
+    </BasicCard>
   </div>
 </template>
 
 <style scoped>
   .hero-view {
     display: grid;
-    grid-template-columns: 1fr 500px;
+    grid-template-columns: repeat(2, 500px);
     align-items: flex-end;
     gap: var(--ja-spacing-4x-large);
     max-width: 1100px;
@@ -96,50 +98,44 @@
   }
 
   .status-dot {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: var(--ja-color-emerald-400);
     animation: pulse 2s ease-in-out infinite;
-    margin-bottom: var(--ja-spacing-3x-small);
   }
 
   .status-text {
     color: var(--ja-color-emerald-300);
-    opacity: 0.8;
   }
 
-  .hero-title {
-    display: flex;
-    flex-direction: column;
+  .title-name {
+    font-family: var(--ja-font-mono);
     font-size: var(--ja-font-size-3x-large);
     font-weight: var(--ja-font-weight-light);
     line-height: var(--ja-line-height-dense);
     color: var(--ja-color-neutral-100);
   }
 
-  .title-name {
-    font-family: var(--ja-font-mono);
-  }
-
   .title-description {
     font-family: var(--ja-font-mono);
     font-size: var(--ja-font-size-medium);
-    color: var(--ja-color-neutral-300);
+    font-weight: var(--ja-font-weight-light);
+    color: var(--ja-color-neutral-200);
   }
 
   .title-divider {
     width: 200px;
     height: 1px;
     background: linear-gradient(to right, var(--ja-color-violet-700), transparent);
-    margin: var(--ja-spacing-2x-large) 0;
+    margin: var(--ja-spacing-x-large) 0;
   }
 
   .hero-subtitle {
     width: 500px;
     font-size: var(--ja-font-size-large);
     line-height: var(--ja-line-height-relaxed);
-    color: var(--ja-color-neutral-300);
+    color: var(--ja-color-neutral-200);
   }
 
   .hero-tags {
@@ -163,17 +159,16 @@
   }
 
   .hero-photo {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 350px;
-    overflow: hidden;
-
     * {
       pointer-events: none;
       user-select: none;
     }
+  }
+
+  .hero-photo-slideshow {
+    position: relative;
+    width: 100%;
+    height: 350px;
   }
 
   img {
@@ -183,48 +178,12 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border: 2px solid color-mix(in srgb, var(--ja-color-violet-400) 20%, transparent);
-    border-radius: var(--ja-border-radius-large);
-    background: color-mix(in srgb, var(--ja-color-violet-950) 20%, transparent);
-    backdrop-filter: blur(10px);
-    overflow: hidden;
     opacity: 0;
     transition: opacity var(--ja-transition-slow) ease-in-out;
 
     &.active {
       opacity: 1;
     }
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(
-        135deg,
-        color-mix(in srgb, var(--ja-color-violet-400) 5%, transparent) 0%,
-        transparent 50%,
-        color-mix(in srgb, var(--ja-color-purple-500) 5%, transparent) 100%
-      );
-    }
-  }
-
-  .photo-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: var(--ja-border-radius-large);
-    border: 2px solid color-mix(in srgb, var(--ja-color-violet-400) 20%, transparent);
-  }
-
-  .roles-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--ja-spacing-3x-large);
-    max-width: 1200px;
-    margin: 0 auto;
   }
 
   @keyframes pulse {

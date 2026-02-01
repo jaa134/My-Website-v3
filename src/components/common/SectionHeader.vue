@@ -83,7 +83,7 @@
     text-align: v-bind('textAlign');
     font-weight: var(--ja-font-weight-light);
     line-height: var(--ja-line-height-dense);
-    color: var(--ja-color-neutral-300);
+    color: var(--ja-color-neutral-200);
   }
 
   .title {

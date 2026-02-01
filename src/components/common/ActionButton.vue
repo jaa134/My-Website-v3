@@ -49,7 +49,7 @@
     }
 
     &.pulsing {
-      animation: action-button-pulse 1.8s ease-in-out infinite;
+      animation: action-button-pulse 2s ease-in-out infinite;
     }
 
     &:deep(svg) {

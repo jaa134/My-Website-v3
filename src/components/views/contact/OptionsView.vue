@@ -6,7 +6,7 @@
   import PhoneIcon from '@/assets/icons/contacts/phone.svg';
 
   import BasicCard from '@/components/common/BasicCard.vue';
-  import SectionHeader from '@/components/common/SectionHeader.vue';
+  import MainHeader from '@/components/common/MainHeader.vue';
 
   /* Options //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -41,10 +41,9 @@
 
 <template>
   <div class="options-view">
-    <SectionHeader
+    <MainHeader
       title="Looking to get in touch?"
       subtitle="Here's how you can reach me."
-      alignment="center"
     />
     <div class="options-grid">
       <a
