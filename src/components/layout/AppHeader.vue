@@ -7,6 +7,10 @@
 
   import { Route } from '@/router/index.js';
 
+  /* Route ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+  const routes = [Route.Home, Route.About, Route.Experience, Route.Contact];
+
   /* Scroll tracking //////////////////////////////////////////////////////////////////////////////////////////////// */
 
   const scrollY = ref(0);
@@ -52,10 +56,13 @@
       <h1 class="name">J. Alspaw</h1>
     </div>
     <div class="section navigation">
-      <RouterLink :to="{ name: Route.Home }">Home</RouterLink>
-      <RouterLink :to="{ name: Route.About }">About</RouterLink>
-      <RouterLink :to="{ name: Route.Experience }">Experience</RouterLink>
-      <RouterLink :to="{ name: Route.Contact }">Contact</RouterLink>
+      <RouterLink
+        v-for="route in routes"
+        :key="route"
+        :to="{ name: route }"
+      >
+        {{ route }}
+      </RouterLink>
     </div>
     <div class="section call-to-action">
       <RouterLink :to="{ name: Route.Contact }">
