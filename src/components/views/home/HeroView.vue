@@ -9,7 +9,7 @@
 
   /* Slideshow ////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  const photos = ['/assets/images/hero/1.webp', '/assets/images/hero/2.webp', '/assets/images/hero/3.webp'];
+  const photos = ['/images/hero/1.webp', '/images/hero/2.webp', '/images/hero/3.webp'];
 
   const currentIndex = ref(0);
 

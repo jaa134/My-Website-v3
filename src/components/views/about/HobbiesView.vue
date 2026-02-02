@@ -12,41 +12,41 @@
   interface Hobby {
     name: string;
     description: string;
-    link: string;
+    image: string;
   }
 
   const hobbies: Hobby[] = [
     {
       name: 'Climbing',
       description: "I've summited peaks like the Grand Teton and have done multiple climbs over 1500 feet in height.",
-      link: '/assets/images/hobbies/climbing.webp',
+      image: '/images/hobbies/climbing.webp',
     },
     {
       name: 'Running',
       description: 'My best 5k time is 17:50 and I once ran a marathon by myself in 3:10:00. It helps calm my mind.',
-      link: '/assets/images/hobbies/running.webp',
+      image: '/images/hobbies/running.webp',
     },
     {
       name: 'Swimming',
       description:
         'I swam competitively for 15 years, including at the collegiate level. For many years I was training in a pool for 22 hours a week.',
-      link: '/assets/images/hobbies/swimming.webp',
+      image: '/images/hobbies/swimming.webp',
     },
     {
       name: 'Hiking',
       description: 'My longest day-hike is 35 miles along the ridgeline of 3 peaks in South Africa.',
-      link: '/assets/images/hobbies/hiking.webp',
+      image: '/images/hobbies/hiking.webp',
     },
     {
       name: 'Traveling',
       description: "My goal is to visit a new place every year. In my adult life, I've traveled to 15+ countries.",
-      link: '/assets/images/hobbies/traveling.webp',
+      image: '/images/hobbies/traveling.webp',
     },
     {
       name: 'Skiing',
       description:
         'I tore my ACL skiing in 2023. Two seasons later, I was fully recovered and skied 35 days with 600k+ feet of vertical in ~650 miles.',
-      link: '/assets/images/hobbies/skiing.webp',
+      image: '/images/hobbies/skiing.webp',
     },
   ];
 
@@ -146,7 +146,7 @@
               </div>
               <img
                 class="hobby-image"
-                :src="slide.data.link"
+                :src="slide.data.image"
                 :alt="slide.data.name"
               />
             </div>

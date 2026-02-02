@@ -122,6 +122,7 @@
         :disabled="loading"
       ></textarea>
       <ActionButton
+        class="submit-button"
         type="submit"
         :loading="loading"
         :disabled="loading"
@@ -206,5 +207,9 @@
   .textarea {
     resize: vertical;
     min-height: 180px;
+  }
+
+  .submit-button {
+    margin-top: var(--ja-spacing-medium);
   }
 </style>

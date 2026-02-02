@@ -23,8 +23,10 @@
   .action-button {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: var(--ja-spacing-small);
-    padding: var(--ja-spacing-x-small) var(--ja-spacing-2x-large);
+    min-width: 110px;
+    padding: var(--ja-spacing-x-small) var(--ja-spacing-x-large);
     border: 1px solid color-mix(in srgb, var(--ja-color-purple-400) 35%, transparent);
     border-radius: var(--ja-border-radius-pill);
     background: linear-gradient(135deg, var(--ja-color-purple-600), var(--ja-color-violet-600));

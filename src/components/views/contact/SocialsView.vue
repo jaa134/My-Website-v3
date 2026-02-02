@@ -1,54 +1,49 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import FacebookIcon from '@/assets/icons/socials/facebook.svg';
-  import GithubIcon from '@/assets/icons/socials/github.svg';
-  import InstagramIcon from '@/assets/icons/socials/instagram.svg';
-  import LinkedinIcon from '@/assets/icons/socials/linkedin.svg';
-  import TwitterIcon from '@/assets/icons/socials/twitter.svg';
-
   import BasicCard from '@/components/common/BasicCard.vue';
   import SectionHeader from '@/components/common/SectionHeader.vue';
+  import SvgIcon from '@/components/common/SvgIcon.vue';
 
   /* Socials //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   interface Social {
     name: string;
     handle: string;
-    url: string;
-    icon: typeof import('*.svg').default;
+    link: string;
+    icon: string;
   }
 
   const socials: Social[] = [
     {
       name: 'LinkedIn',
       handle: '@Jacob Alspaw',
-      url: 'https://www.linkedin.com/in/jacob-alspaw',
-      icon: LinkedinIcon,
+      link: 'https://www.linkedin.com/in/jacob-alspaw',
+      icon: '/icons/socials/linkedin.svg',
     },
     {
       name: 'GitHub',
       handle: '@jaa134',
-      url: 'https://github.com/jaa134',
-      icon: GithubIcon,
+      link: 'https://github.com/jaa134',
+      icon: '/icons/socials/github.svg',
     },
     {
       name: 'Facebook',
       handle: '@jacobalexander.alspaw',
-      url: 'https://www.facebook.com/jacobalexander.alspaw',
-      icon: FacebookIcon,
+      link: 'https://www.facebook.com/jacobalexander.alspaw',
+      icon: '/icons/socials/facebook.svg',
     },
     {
       name: 'Instagram',
       handle: '@jacobalspaw',
-      url: 'https://www.instagram.com/jacobalspaw/',
-      icon: InstagramIcon,
+      link: 'https://www.instagram.com/jacobalspaw/',
+      icon: '/icons/socials/instagram.svg',
     },
     {
       name: 'Twitter',
       handle: '@JacobAlspaw',
-      url: 'https://twitter.com/JacobAlspaw',
-      icon: TwitterIcon,
+      link: 'https://twitter.com/JacobAlspaw',
+      icon: '/icons/socials/twitter.svg',
     },
   ];
 </script>
@@ -64,7 +59,7 @@
       <a
         v-for="social in socials"
         :key="social.name"
-        :href="social.url"
+        :href="social.link"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -73,9 +68,9 @@
           interactive
         >
           <div class="social">
-            <component
-              :is="social.icon"
+            <SvgIcon
               class="social-icon"
+              :href="social.icon"
             />
             <span class="social-handle">{{ social.handle }}</span>
           </div>

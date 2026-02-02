@@ -3,9 +3,9 @@
 
   import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 
-  import LogoIcon from '@/assets/icons/logos/main.svg';
-
   import { Route } from '@/router/index.js';
+
+  import SvgIcon from '@/components/common/SvgIcon.vue';
 
   /* Route ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -58,7 +58,10 @@
 <template>
   <div class="app-header">
     <div class="section title">
-      <LogoIcon class="logo" />
+      <SvgIcon
+        class="logo"
+        href="/icons/logos/main.svg"
+      />
       <h1 class="name">J. Alspaw</h1>
     </div>
     <div class="section navigation">

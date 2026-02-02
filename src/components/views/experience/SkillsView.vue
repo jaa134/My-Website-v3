@@ -3,12 +3,13 @@
 
   import SectionHeader from '@/components/common/SectionHeader.vue';
   import SelectionDisplay from '@/components/common/SelectionDisplay.vue';
+  import SvgIcon from '@/components/common/SvgIcon.vue';
 
   /* Skills ///////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   interface Skill {
     name: string;
-    src: string;
+    icon: string;
     link: string;
   }
 
@@ -23,72 +24,72 @@
       skills: [
         {
           name: 'Bash',
-          src: '/assets/icons/skills/bash.svg',
+          icon: '/icons/skills/bash.svg',
           link: 'https://www.gnu.org/software/bash/',
         },
         {
           name: 'C#',
-          src: '/assets/icons/skills/cSharp.svg',
+          icon: '/icons/skills/cSharp.svg',
           link: 'https://dotnet.microsoft.com/',
         },
         {
           name: 'C++',
-          src: '/assets/icons/skills/c++.svg',
+          icon: '/icons/skills/c++.svg',
           link: 'https://isocpp.org/',
         },
         {
           name: 'CSS',
-          src: '/assets/icons/skills/css.svg',
+          icon: '/icons/skills/css.svg',
           link: 'https://www.w3.org/Style/CSS/',
         },
         {
           name: 'GraphQL',
-          src: '/assets/icons/skills/graphql.svg',
+          icon: '/icons/skills/graphql.svg',
           link: 'https://graphql.org/',
         },
         {
           name: 'HTML',
-          src: '/assets/icons/skills/html.svg',
+          icon: '/icons/skills/html.svg',
           link: 'https://html.spec.whatwg.org/',
         },
         {
           name: 'Java',
-          src: '/assets/icons/skills/java.svg',
+          icon: '/icons/skills/java.svg',
           link: 'https://www.java.com/',
         },
         {
           name: 'JavaScript',
-          src: '/assets/icons/skills/javaScript.svg',
+          icon: '/icons/skills/javaScript.svg',
           link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
         },
         {
           name: 'MATLAB',
-          src: '/assets/icons/skills/matlab.svg',
+          icon: '/icons/skills/matlab.svg',
           link: 'https://www.mathworks.com/products/matlab.html',
         },
         {
           name: 'R',
-          src: '/assets/icons/skills/r.svg',
+          icon: '/icons/skills/r.svg',
           link: 'https://www.r-project.org/',
         },
         {
           name: 'Sass',
-          src: '/assets/icons/skills/sass.svg',
+          icon: '/icons/skills/sass.svg',
           link: 'https://sass-lang.com/',
         },
         {
           name: 'SQL',
-          src: '/assets/icons/skills/sql.svg',
+          icon: '/icons/skills/sql.svg',
           link: 'https://en.wikipedia.org/wiki/SQL',
         },
         {
           name: 'Swift',
-          src: '/assets/icons/skills/swift.svg',
+          icon: '/icons/skills/swift.svg',
           link: 'https://www.swift.org/',
         },
         {
           name: 'TypeScript',
-          src: '/assets/icons/skills/typescript.svg',
+          icon: '/icons/skills/typescript.svg',
           link: 'https://www.typescriptlang.org/',
         },
       ],
@@ -98,172 +99,172 @@
       skills: [
         {
           name: 'Ant',
-          src: '/assets/icons/skills/ant.svg',
+          icon: '/icons/skills/ant.svg',
           link: 'https://ant.design/',
         },
         {
           name: 'Apollo',
-          src: '/assets/icons/skills/apollo.svg',
+          icon: '/icons/skills/apollo.svg',
           link: 'https://www.apollographql.com/',
         },
         {
           name: 'Babel',
-          src: '/assets/icons/skills/babel.svg',
+          icon: '/icons/skills/babel.svg',
           link: 'https://babeljs.io/',
         },
         {
           name: 'Cesium',
-          src: '/assets/icons/skills/cesium.svg',
+          icon: '/icons/skills/cesium.svg',
           link: 'https://cesium.com/',
         },
         {
           name: 'Cursor',
-          src: '/assets/icons/skills/cursor.svg',
+          icon: '/icons/skills/cursor.svg',
           link: 'https://cursor.sh/',
         },
         {
           name: 'D3',
-          src: '/assets/icons/skills/d3.svg',
+          icon: '/icons/skills/d3.svg',
           link: 'https://d3js.org/',
         },
         {
           name: 'Docker',
-          src: '/assets/icons/skills/docker.svg',
+          icon: '/icons/skills/docker.svg',
           link: 'https://www.docker.com/',
         },
         {
           name: 'Dojo',
-          src: '/assets/icons/skills/dojo.svg',
+          icon: '/icons/skills/dojo.svg',
           link: 'https://dojo.io/',
         },
         {
           name: 'ESLint',
-          src: '/assets/icons/skills/eslint.svg',
+          icon: '/icons/skills/eslint.svg',
           link: 'https://eslint.org/',
         },
         {
           name: 'Express',
-          src: '/assets/icons/skills/express.svg',
+          icon: '/icons/skills/express.svg',
           link: 'https://expressjs.com/',
         },
         {
           name: 'Git',
-          src: '/assets/icons/skills/git.svg',
+          icon: '/icons/skills/git.svg',
           link: 'https://git-scm.com/',
         },
         {
           name: 'Hibernate',
-          src: '/assets/icons/skills/hibernate.svg',
+          icon: '/icons/skills/hibernate.svg',
           link: 'https://hibernate.org/',
         },
         {
           name: 'IcoMoon',
-          src: '/assets/icons/skills/icoMoon.svg',
+          icon: '/icons/skills/icoMoon.svg',
           link: 'https://icomoon.io/',
         },
         {
           name: 'Jest',
-          src: '/assets/icons/skills/jest.svg',
+          icon: '/icons/skills/jest.svg',
           link: 'https://jestjs.io/',
         },
         {
           name: 'jQuery',
-          src: '/assets/icons/skills/jquery.svg',
+          icon: '/icons/skills/jquery.svg',
           link: 'https://jquery.com/',
         },
         {
           name: 'Knockout',
-          src: '/assets/icons/skills/knockout.svg',
+          icon: '/icons/skills/knockout.svg',
           link: 'https://knockoutjs.com/',
         },
         {
           name: 'MongoDB',
-          src: '/assets/icons/skills/mongoDb.svg',
+          icon: '/icons/skills/mongoDb.svg',
           link: 'https://www.mongodb.com/',
         },
         {
           name: 'Node.js',
-          src: '/assets/icons/skills/node.svg',
+          icon: '/icons/skills/node.svg',
           link: 'https://nodejs.org/',
         },
         {
           name: 'npm',
-          src: '/assets/icons/skills/npm.svg',
+          icon: '/icons/skills/npm.svg',
           link: 'https://www.npmjs.com/',
         },
         {
           name: 'OpenLayers',
-          src: '/assets/icons/skills/openLayers.svg',
+          icon: '/icons/skills/openLayers.svg',
           link: 'https://openlayers.org/',
         },
         {
           name: 'Photoshop',
-          src: '/assets/icons/skills/photoshop.svg',
+          icon: '/icons/skills/photoshop.svg',
           link: 'https://www.adobe.com/products/photoshop.html',
         },
         {
           name: 'Pinia',
-          src: '/assets/icons/skills/pinia.svg',
+          icon: '/icons/skills/pinia.svg',
           link: 'https://pinia.vuejs.org/',
         },
         {
           name: 'Qt',
-          src: '/assets/icons/skills/qt.svg',
+          icon: '/icons/skills/qt.svg',
           link: 'https://www.qt.io/',
         },
         {
           name: 'Raspberry Pi',
-          src: '/assets/icons/skills/raspberryPi.svg',
+          icon: '/icons/skills/raspberryPi.svg',
           link: 'https://www.raspberrypi.org/',
         },
         {
           name: 'React',
-          src: '/assets/icons/skills/react.svg',
+          icon: '/icons/skills/react.svg',
           link: 'https://react.dev/',
         },
         {
           name: 'SQL Server',
-          src: '/assets/icons/skills/sqlServer.svg',
+          icon: '/icons/skills/sqlServer.svg',
           link: 'https://www.microsoft.com/en-us/sql-server',
         },
         {
           name: 'Storybook',
-          src: '/assets/icons/skills/storybook.svg',
+          icon: '/icons/skills/storybook.svg',
           link: 'https://storybook.js.org/',
         },
         {
           name: 'TestCafe',
-          src: '/assets/icons/skills/testCafe.svg',
+          icon: '/icons/skills/testCafe.svg',
           link: 'https://testcafe.io/',
         },
         {
           name: 'Vite',
-          src: '/assets/icons/skills/vite.svg',
+          icon: '/icons/skills/vite.svg',
           link: 'https://vitejs.dev/',
         },
         {
           name: 'Vitest',
-          src: '/assets/icons/skills/vitest.svg',
+          icon: '/icons/skills/vitest.svg',
           link: 'https://vitest.dev/',
         },
         {
           name: 'Visual Studio',
-          src: '/assets/icons/skills/visualStudio.svg',
+          icon: '/icons/skills/visualStudio.svg',
           link: 'https://visualstudio.microsoft.com/',
         },
         {
           name: 'Vue',
-          src: '/assets/icons/skills/vue.svg',
+          icon: '/icons/skills/vue.svg',
           link: 'https://vuejs.org/',
         },
         {
           name: 'Webpack',
-          src: '/assets/icons/skills/webpack.svg',
+          icon: '/icons/skills/webpack.svg',
           link: 'https://webpack.js.org/',
         },
         {
           name: 'Yarn',
-          src: '/assets/icons/skills/yarn.svg',
+          icon: '/icons/skills/yarn.svg',
           link: 'https://yarnpkg.com/',
         },
       ],
@@ -273,52 +274,52 @@
       skills: [
         {
           name: 'Confluence',
-          src: '/assets/icons/skills/confluence.svg',
+          icon: '/icons/skills/confluence.svg',
           link: 'https://www.atlassian.com/software/confluence',
         },
         {
           name: 'Figma',
-          src: '/assets/icons/skills/figma.svg',
+          icon: '/icons/skills/figma.svg',
           link: 'https://www.figma.com/',
         },
         {
           name: 'GitHub',
-          src: '/assets/icons/skills/gitHub.svg',
+          icon: '/icons/skills/gitHub.svg',
           link: 'https://github.com/',
         },
         {
           name: 'Gitlab',
-          src: '/assets/icons/skills/gitlab.svg',
+          icon: '/icons/skills/gitlab.svg',
           link: 'https://about.gitlab.com/',
         },
         {
           name: 'Jenkins',
-          src: '/assets/icons/skills/jenkins.svg',
+          icon: '/icons/skills/jenkins.svg',
           link: 'https://www.jenkins.io/',
         },
         {
           name: 'Jira',
-          src: '/assets/icons/skills/jira.svg',
+          icon: '/icons/skills/jira.svg',
           link: 'https://www.atlassian.com/software/jira',
         },
         {
           name: 'Salesforce',
-          src: '/assets/icons/skills/salesforce.svg',
+          icon: '/icons/skills/salesforce.svg',
           link: 'https://www.salesforce.com/',
         },
         {
           name: 'Slack',
-          src: '/assets/icons/skills/slack.svg',
+          icon: '/icons/skills/slack.svg',
           link: 'https://slack.com/',
         },
         {
           name: 'SonarQube',
-          src: '/assets/icons/skills/sonarQube.svg',
+          icon: '/icons/skills/sonarQube.svg',
           link: 'https://www.sonarqube.org/',
         },
         {
           name: 'Teams',
-          src: '/assets/icons/skills/teams.svg',
+          icon: '/icons/skills/teams.svg',
           link: 'https://www.microsoft.com/en-us/microsoft-teams/group-chat-software',
         },
       ],
@@ -347,10 +348,9 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
+            <SvgIcon
               class="skill-icon"
-              :src="skill.src"
-              :alt="skill.name"
+              :href="skill.icon"
             />
             <span class="skill-name">{{ skill.name }}</span>
           </a>

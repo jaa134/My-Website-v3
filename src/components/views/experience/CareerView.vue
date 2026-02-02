@@ -1,12 +1,11 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import DownloadIcon from '@/assets/icons/actions/download.svg';
-
   import ActionButton from '@/components/common/ActionButton.vue';
   import MainHeader from '@/components/common/MainHeader.vue';
   import SectionHeader from '@/components/common/SectionHeader.vue';
   import SelectionDisplay from '@/components/common/SelectionDisplay.vue';
+  import SvgIcon from '@/components/common/SvgIcon.vue';
 
   /* Experience ///////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -101,7 +100,7 @@
         download
       >
         <ActionButton pulsing>
-          <DownloadIcon />
+          <SvgIcon href="/icons/actions/download.svg" />
           <span>Download Resume</span>
         </ActionButton>
       </a>
@@ -174,7 +173,7 @@
     &:last-child {
       top: 154px;
       left: calc(50% + 3px);
-      width: 304px;
+      width: 320px;
       height: 1px;
     }
   }

@@ -1,11 +1,43 @@
 <script setup lang="ts">
-  /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
+  /* Imorts ///////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import FacebookIcon from '@/assets/icons/socials/facebook.svg';
-  import GithubIcon from '@/assets/icons/socials/github.svg';
-  import InstagramIcon from '@/assets/icons/socials/instagram.svg';
-  import LinkedinIcon from '@/assets/icons/socials/linkedin.svg';
-  import TwitterIcon from '@/assets/icons/socials/twitter.svg';
+  import SvgIcon from '@/components/common/SvgIcon.vue';
+
+  /* Socials //////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+  interface Social {
+    name: string;
+    link: string;
+    icon: string;
+  }
+
+  const socials: Social[] = [
+    {
+      name: 'LinkedIn',
+      link: 'https://www.linkedin.com/in/jacob-alspaw',
+      icon: '/icons/socials/linkedin.svg',
+    },
+    {
+      name: 'GitHub',
+      link: 'https://github.com/jaa134',
+      icon: '/icons/socials/github.svg',
+    },
+    {
+      name: 'Facebook',
+      link: 'https://www.facebook.com/jacobalexander.alspaw',
+      icon: '/icons/socials/facebook.svg',
+    },
+    {
+      name: 'Instagram',
+      link: 'https://www.instagram.com/jacobalspaw/',
+      icon: '/icons/socials/instagram.svg',
+    },
+    {
+      name: 'Twitter',
+      link: 'https://twitter.com/JacobAlspaw',
+      icon: '/icons/socials/twitter.svg',
+    },
+  ];
 </script>
 
 <template>
@@ -113,44 +145,14 @@
           <p class="contact-description">Want to get in touch? Here's how you can reach me.</p>
           <div class="social-icons">
             <a
+              v-for="social in socials"
+              :key="social.name"
               class="social-icon"
-              href="https://www.linkedin.com/in/jacob-alspaw"
+              :href="social.link"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <LinkedinIcon />
-            </a>
-            <a
-              class="social-icon"
-              href="https://github.com/jaa134"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <GithubIcon />
-            </a>
-            <a
-              class="social-icon"
-              href="https://www.facebook.com/jacobalexander.alspaw"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FacebookIcon />
-            </a>
-            <a
-              class="social-icon"
-              href="https://www.instagram.com/jacobalspaw/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <InstagramIcon />
-            </a>
-            <a
-              class="social-icon"
-              href="https://twitter.com/JacobAlspaw"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <TwitterIcon />
+              <SvgIcon :href="social.icon" />
             </a>
           </div>
         </div>
@@ -243,7 +245,7 @@
       border-color: color-mix(in srgb, var(--ja-color-neutral-0) 20%, transparent);
     }
 
-    svg {
+    .svg-icon {
       width: 22px;
       height: 22px;
       color: var(--ja-color-neutral-0);

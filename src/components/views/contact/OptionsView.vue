@@ -1,18 +1,15 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import EmailIcon from '@/assets/icons/contacts/email.svg';
-  import LocationIcon from '@/assets/icons/contacts/location.svg';
-  import PhoneIcon from '@/assets/icons/contacts/phone.svg';
-
   import BasicCard from '@/components/common/BasicCard.vue';
   import MainHeader from '@/components/common/MainHeader.vue';
+  import SvgIcon from '@/components/common/SvgIcon.vue';
 
   /* Options //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   interface Option {
     label: string;
-    icon: typeof import('*.svg').default;
+    icon: string;
     value: string;
     link: string;
   }
@@ -20,19 +17,19 @@
   const options: Option[] = [
     {
       label: 'Phone',
-      icon: PhoneIcon,
+      icon: '/icons/contacts/phone.svg',
       value: '+1 636 699-7344',
       link: 'tel:+16366997344',
     },
     {
       label: 'Email',
-      icon: EmailIcon,
+      icon: '/icons/contacts/email.svg',
       value: 'dev@jacob-alspaw.com',
       link: 'mailto:dev@jacob-alspaw.com',
     },
     {
       label: 'In Person',
-      icon: LocationIcon,
+      icon: '/icons/contacts/location.svg',
       value: 'Lakewood, Ohio 44107',
       link: 'https://maps.app.goo.gl/Vvp1AHERZaLUxxiSA',
     },
@@ -55,9 +52,9 @@
       >
         <BasicCard interactive>
           <div class="option">
-            <component
-              :is="option.icon"
+            <SvgIcon
               class="icon"
+              :href="option.icon"
             />
             <div class="text">
               <h4 class="label">{{ option.label }}</h4>

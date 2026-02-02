@@ -9,79 +9,80 @@
   import { useGlobe } from '@/composables/useGlobe.js';
 
   import BasicCard from '@/components/common/BasicCard.vue';
+  import SvgIcon from '@/components/common/SvgIcon.vue';
 
   /* Tools ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   interface Tool {
     name: string;
-    src: string;
+    icon: string;
   }
 
   const toolGroups: Tool[][] = [
     [
       {
         name: 'TypeScript',
-        src: '/assets/icons/skills/typescript.svg',
+        icon: '/icons/skills/typescript.svg',
       },
       {
         name: 'HTML',
-        src: '/assets/icons/skills/html.svg',
+        icon: '/icons/skills/html.svg',
       },
       {
         name: 'CSS',
-        src: '/assets/icons/skills/css.svg',
+        icon: '/icons/skills/css.svg',
       },
       {
         name: 'Vue',
-        src: '/assets/icons/skills/vue.svg',
+        icon: '/icons/skills/vue.svg',
       },
       {
         name: 'React',
-        src: '/assets/icons/skills/react.svg',
+        icon: '/icons/skills/react.svg',
       },
     ],
     [
       {
         name: 'Vite',
-        src: '/assets/icons/skills/vite.svg',
+        icon: '/icons/skills/vite.svg',
       },
       {
         name: 'Vitest',
-        src: '/assets/icons/skills/vitest.svg',
+        icon: '/icons/skills/vitest.svg',
       },
       {
         name: 'GraphQL',
-        src: '/assets/icons/skills/graphql.svg',
+        icon: '/icons/skills/graphql.svg',
       },
       {
         name: 'Apollo',
-        src: '/assets/icons/skills/apollo.svg',
+        icon: '/icons/skills/apollo.svg',
       },
       {
         name: 'Pinia',
-        src: '/assets/icons/skills/pinia.svg',
+        icon: '/icons/skills/pinia.svg',
       },
     ],
     [
       {
         name: 'Git',
-        src: '/assets/icons/skills/git.svg',
+        icon: '/icons/skills/git.svg',
       },
       {
         name: 'Docker',
-        src: '/assets/icons/skills/docker.svg',
+        icon: '/icons/skills/docker.svg',
       },
       {
         name: 'Cursor',
-        src: '/assets/icons/skills/cursor.svg',
+        icon: '/icons/skills/cursor.svg',
       },
       {
         name: 'Figma',
-        src: '/assets/icons/skills/figma.svg',
+        icon: '/icons/skills/figma.svg',
       },
       {
         name: 'Jira',
-        src: '/assets/icons/skills/jira.svg',
+        icon: '/icons/skills/jira.svg',
       },
     ],
   ];
@@ -243,12 +244,11 @@
         :key="index"
       >
         <div class="tech-icons">
-          <img
+          <SvgIcon
             v-for="tool in toolGroup"
             :key="tool.name"
             v-tooltip="tool.name"
-            :src="tool.src"
-            :alt="tool.name"
+            :href="tool.icon"
           />
         </div>
       </BasicCard>
@@ -303,7 +303,7 @@
     height: 100px;
     padding: 0 var(--ja-spacing-2x-large);
 
-    img {
+    .svg-icon {
       width: 60px;
       height: 60px;
     }

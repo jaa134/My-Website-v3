@@ -1,8 +1,7 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import NextIcon from '@/assets/icons/actions/next.svg';
-  import PreviousIcon from '@/assets/icons/actions/previous.svg';
+  import SvgIcon from '@/components/common/SvgIcon.vue';
 
   /* Props ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -32,7 +31,7 @@
       class="navigation-button"
       @click="goToPage(page - 1)"
     >
-      <PreviousIcon />
+      <SvgIcon href="/icons/actions/previous.svg" />
     </button>
     <div class="dots-container">
       <button
@@ -46,7 +45,7 @@
       class="navigation-button"
       @click="goToPage(page + 1)"
     >
-      <NextIcon />
+      <SvgIcon href="/icons/actions/next.svg" />
     </button>
   </div>
 </template>
@@ -76,7 +75,7 @@
       color: var(--ja-color-neutral-0);
     }
 
-    svg {
+    .svg-icon {
       width: 20px;
       height: 20px;
     }

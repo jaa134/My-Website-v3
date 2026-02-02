@@ -3,13 +3,10 @@
 
   import { nextTick, ref, shallowRef } from 'vue';
 
-  import ClickIcon from '@/assets/icons/actions/click.svg';
-  import ExpandIcon from '@/assets/icons/actions/expand.svg';
-  import NavigateIcon from '@/assets/icons/actions/navigate.svg';
-
   import ActionButton from '@/components/common/ActionButton.vue';
   import BasicCard from '@/components/common/BasicCard.vue';
   import SectionHeader from '@/components/common/SectionHeader.vue';
+  import SvgIcon from '@/components/common/SvgIcon.vue';
 
   /* Projects /////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -157,7 +154,7 @@
         rel="noopener noreferrer"
       >
         <ActionButton>
-          <ClickIcon />
+          <SvgIcon href="/icons/actions/click.svg" />
           <span>View on GitHub</span>
         </ActionButton>
       </a>
@@ -179,7 +176,7 @@
                 class="expand-button"
                 @click="expandProject(project)"
               >
-                <ExpandIcon />
+                <SvgIcon href="/icons/actions/expand.svg" />
               </button>
               <span class="project-name">
                 {{ project.name }}
@@ -191,7 +188,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <NavigateIcon />
+                <SvgIcon href="/icons/actions/navigate.svg" />
               </a>
             </div>
             <div
@@ -273,7 +270,7 @@
       background-color: color-mix(in srgb, var(--ja-color-neutral-0) 5%, transparent);
     }
 
-    svg {
+    .svg-icon {
       width: 16px;
       height: 16px;
     }
@@ -297,7 +294,7 @@
       transform: scale(1.1);
     }
 
-    svg {
+    .svg-icon {
       width: 20px;
       height: 20px;
     }

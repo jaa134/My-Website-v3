@@ -1,26 +1,25 @@
 <script setup lang="ts">
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-  import DownloadIcon from '@/assets/icons/actions/download.svg';
-  import CwruIcon from '@/assets/icons/education/cwru.svg';
-  import UctIcon from '@/assets/icons/education/uct.svg';
-
   import ActionButton from '@/components/common/ActionButton.vue';
   import BasicCard from '@/components/common/BasicCard.vue';
   import SectionHeader from '@/components/common/SectionHeader.vue';
+  import SvgIcon from '@/components/common/SvgIcon.vue';
 
   /* Education ////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   interface Education {
+    name: string;
     link: string;
-    icon: typeof import('*.svg').default;
+    icon: string;
     description: string[];
   }
 
   const educations: Education[] = [
     {
+      name: 'Case Western Reserve University',
       link: 'https://case.edu',
-      icon: CwruIcon,
+      icon: '/icons/education/cwru.svg',
       description: [
         'B.S. in Computer Science',
         'August 2014 - May 2019',
@@ -29,8 +28,9 @@
       ],
     },
     {
+      name: 'University of Cape Town',
       link: 'https://www.uct.ac.za/',
-      icon: UctIcon,
+      icon: '/icons/education/uct.svg',
       description: [
         'IES Study Abroad Program in South Africa',
         'January 2017 - July 2017',
@@ -52,7 +52,7 @@
         download
       >
         <ActionButton>
-          <DownloadIcon />
+          <SvgIcon href="/icons/actions/download.svg" />
           <span>Download Transcript</span>
         </ActionButton>
       </a>
@@ -70,9 +70,9 @@
           interactive
         >
           <div class="education-content">
-            <component
-              :is="education.icon"
+            <SvgIcon
               class="education-logo"
+              :href="education.icon"
             />
             <ul class="description-list">
               <li
@@ -112,13 +112,15 @@
   .education-content {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     gap: var(--ja-spacing-x-large);
     padding: var(--ja-spacing-2x-large);
   }
 
   .education-logo {
-    height: 70px;
-    width: 400px;
+    height: 60px;
+    width: 350px;
   }
 
   .description-list {
