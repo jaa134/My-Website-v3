@@ -20,7 +20,12 @@
   };
 
   const fullColorScrollDistance = 300;
-  const scrollProgress = computed(() => Math.min(scrollY.value / fullColorScrollDistance, 1));
+  const scrollProgress = computed(() => {
+    console.log('scrollY', scrollY.value);
+    console.log('fullColorScrollDistance', fullColorScrollDistance);
+    console.log('scrollProgress', Math.min(scrollY.value / fullColorScrollDistance, 1));
+    return Math.min(scrollY.value / fullColorScrollDistance, 1);
+  });
 
   onMounted(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
