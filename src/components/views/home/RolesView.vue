@@ -53,7 +53,7 @@
   }
 
   .role {
-    padding: var(--ja-spacing-3x-large);
+    padding: var(--ja-spacing-2x-large) var(--ja-spacing-3x-large);
   }
 
   .title {

@@ -165,6 +165,7 @@
 <style scoped>
   .hobbies-view {
     --slide-height: 250px;
+    --slide-image-margin: var(--ja-spacing-medium);
 
     display: flex;
     flex-direction: column;
@@ -225,7 +226,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--ja-spacing-small);
-    padding: var(--ja-spacing-2x-large);
+    padding: var(--ja-spacing-x-large) var(--ja-spacing-x-large) var(--ja-spacing-x-large) var(--ja-spacing-2x-large);
   }
 
   .hobby-name {
@@ -244,8 +245,10 @@
 
   .hobby-image {
     flex: 0 0 auto;
-    width: calc(var(--slide-height) * 0.75);
-    height: var(--slide-height);
+    width: calc(var(--slide-height) * 0.85 - (2 * var(--slide-image-margin)));
+    height: calc(var(--slide-height) - (2 * var(--slide-image-margin)));
+    margin: var(--slide-image-margin);
+    border-radius: var(--ja-border-radius-x-large);
     background: color-mix(in srgb, var(--ja-color-neutral-900) 75%, transparent);
     object-fit: cover;
   }
