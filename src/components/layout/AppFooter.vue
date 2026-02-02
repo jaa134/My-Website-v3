@@ -3,6 +3,72 @@
 
   import SvgIcon from '@/components/common/SvgIcon.vue';
 
+  /* Links ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+  interface Link {
+    name: string;
+    link: string;
+  }
+
+  interface LinkCategory {
+    name: string;
+    links: Link[];
+  }
+
+  const linkCategories: LinkCategory[] = [
+    {
+      name: 'Repos',
+      links: [
+        {
+          name: 'Legacy Website',
+          link: 'https://legacy.jacob-alspaw.com/',
+        },
+        {
+          name: 'Word Games',
+          link: 'https://wordgames.jacob-alspaw.com/',
+        },
+        {
+          name: 'Planet Planner',
+          link: 'https://planetplanner.jacob-alspaw.com/',
+        },
+      ],
+    },
+    {
+      name: 'Tech Blogs',
+      links: [
+        {
+          name: 'Frontend Weekly',
+          link: 'https://frontendweekly.co/',
+        },
+        {
+          name: 'Stack Overflow',
+          link: 'https://stackoverflow.com/questions/tagged/frontend',
+        },
+        {
+          name: 'Reddit',
+          link: 'https://www.reddit.com/r/Frontend/',
+        },
+      ],
+    },
+    {
+      name: 'News',
+      links: [
+        {
+          name: 'MDC Climb',
+          link: 'https://mdc.mo.gov/newsroom/mdc-opens-first-public-outdoor-rock-climbing-bluff-st-louis-area-rockwoods-reservation',
+        },
+        {
+          name: 'College Swim',
+          link: 'https://athletics.case.edu/sports/mswimdive/2014-15/bios/alspaw_jacob_y49p',
+        },
+        {
+          name: 'Open Water',
+          link: 'https://www.newsmagazinenetwork.com/nn/2013052235407/rockwood-swim-club-places-11th-at-open-water-festival/',
+        },
+      ],
+    },
+  ];
+
   /* Socials //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   interface Social {
@@ -43,99 +109,23 @@
 <template>
   <footer class="app-footer">
     <div class="footer-content">
-      <div class="column">
-        <h3 class="column-title">Repos</h3>
+      <div
+        v-for="linkCategory in linkCategories"
+        :key="linkCategory.name"
+        class="column"
+      >
+        <h3 class="column-title">{{ linkCategory.name }}</h3>
         <ul class="column-links">
-          <li>
+          <li
+            v-for="link in linkCategory.links"
+            :key="link.name"
+          >
             <a
-              href="https://legacy.jacob-alspaw.com/"
+              :href="link.link"
               target="_blank"
               rel="noopener noreferrer"
+              >{{ link.name }}</a
             >
-              Legacy Website
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://wordgames.jacob-alspaw.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Word Games
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://planetplanner.jacob-alspaw.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Planet Planner
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="column">
-        <h3 class="column-title">Tech Blogs</h3>
-        <ul class="column-links">
-          <li>
-            <a
-              href="https://frontendweekly.co/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Frontend Weekly
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://stackoverflow.com/questions/tagged/frontend"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Stack Overflow
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.reddit.com/r/Frontend/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Reddit
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="column">
-        <h3 class="column-title">News</h3>
-        <ul class="column-links">
-          <li>
-            <a
-              href="https://mdc.mo.gov/newsroom/mdc-opens-first-public-outdoor-rock-climbing-bluff-st-louis-area-rockwoods-reservation"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              MDC Climb
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://athletics.case.edu/sports/mswimdive/2014-15/bios/alspaw_jacob_y49p"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              College Swim
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.newsmagazinenetwork.com/nn/2013052235407/rockwood-swim-club-places-11th-at-open-water-festival/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Open Water
-            </a>
           </li>
         </ul>
       </div>
