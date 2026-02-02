@@ -57,26 +57,28 @@
 
 <template>
   <div class="app-header">
-    <div class="section title">
-      <SvgIcon
-        class="logo"
-        href="/icons/logos/main.svg"
-      />
-      <h1 class="name">J. Alspaw</h1>
-    </div>
-    <div class="section navigation">
-      <RouterLink
-        v-for="route in routes"
-        :key="route"
-        :to="{ name: route }"
-      >
-        {{ route }}
-      </RouterLink>
-    </div>
-    <div class="section call-to-action">
-      <RouterLink :to="{ name: Route.Contact }">
-        <button>Let's work together</button>
-      </RouterLink>
+    <div class="app-header-content">
+      <div class="section title">
+        <SvgIcon
+          class="logo"
+          href="/icons/logos/main.svg"
+        />
+        <h1 class="name">Jacob Alspaw</h1>
+      </div>
+      <div class="section navigation">
+        <RouterLink
+          v-for="route in routes"
+          :key="route"
+          :to="{ name: route }"
+        >
+          {{ route }}
+        </RouterLink>
+      </div>
+      <div class="section call-to-action">
+        <RouterLink :to="{ name: Route.Contact }">
+          <button>Let's work together</button>
+        </RouterLink>
+      </div>
     </div>
   </div>
 </template>
@@ -86,20 +88,28 @@
     position: sticky;
     top: 0;
     z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100px;
     min-height: 100px;
+    border-bottom: 1px solid v-bind('appHeaderStyles.borderBottomColor');
+    background-color: v-bind('appHeaderStyles.backgroundColor');
+    backdrop-filter: v-bind('appHeaderStyles.backdropFilter');
+    transition:
+      border-bottom-color var(--ja-transition-fast) ease,
+      background-color var(--ja-transition-fast) ease,
+      backdrop-filter var(--ja-transition-fast) ease;
+  }
+
+  .app-header-content {
+    flex: 1;
     display: grid;
     grid-template-columns: 1fr 600px 1fr;
     grid-template-rows: 1fr;
     gap: var(--ja-spacing-x-large);
     padding: 0 var(--ja-spacing-x-large);
-    border-bottom: 1px solid v-bind('appHeaderStyles.borderBottomColor');
-    background-color: v-bind('appHeaderStyles.backgroundColor');
-    backdrop-filter: v-bind('appHeaderStyles.backdropFilter');
-    transition:
-      background-color var(--ja-transition-fast) ease,
-      backdrop-filter var(--ja-transition-fast) ease,
-      border-bottom-color var(--ja-transition-fast) ease;
+    max-width: 1700px;
   }
 
   .section {
