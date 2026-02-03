@@ -46,14 +46,14 @@
 
 <style scoped>
   .roles-view {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--ja-spacing-2x-large) var(--ja-spacing-3x-large);
-    max-width: 1400px;
+    display: flex;
+    gap: var(--ja-spacing-x-large);
   }
 
   .role {
-    padding: var(--ja-spacing-2x-large) var(--ja-spacing-3x-large);
+    flex: 1;
+    width: 400px;
+    padding: var(--ja-spacing-x-large) var(--ja-spacing-2x-large);
   }
 
   .title {

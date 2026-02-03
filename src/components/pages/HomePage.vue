@@ -21,6 +21,6 @@
     align-items: center;
     justify-content: center;
     gap: var(--ja-spacing-6x-large);
-    padding: var(--ja-spacing-6x-large) var(--ja-spacing-2x-large);
+    padding: var(--ja-spacing-4x-large) var(--ja-spacing-large) var(--ja-spacing-6x-large) var(--ja-spacing-large);
   }
 </style>

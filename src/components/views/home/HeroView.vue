@@ -3,6 +3,8 @@
 
   import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 
+  import ConstructionAlert from '@/components/common/ConstructionAlert.vue';
+
   /* Roles ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   const tags = ['Frontend', 'Team Lead', 'Satellite Operator'];
@@ -32,36 +34,34 @@
 
 <template>
   <div class="hero-view">
-    <div class="hero-text">
-      <div class="status-indicator">
-        <span class="status-dot"></span>
-        <span class="status-text">ONLINE</span>
-      </div>
-      <h1 class="title-name">Jacob Alspaw</h1>
-      <h2 class="title-description">My name is Jacob. Get to know me!</h2>
-      <div class="title-divider"></div>
-      <p class="hero-subtitle">
-        I build digital experiences on Earth that monitor systems in orbit. Here's what you should know about me.
-      </p>
-      <div class="hero-tags">
-        <div
-          v-for="tag in tags"
-          :key="tag"
-          class="hero-tag"
-        >
-          {{ tag }}
+    <ConstructionAlert />
+    <div class="content">
+      <div class="text-section">
+        <h1 class="title">Jacob Alspaw</h1>
+        <h2 class="subtitle">My name is Jacob. Click around to learn more!</h2>
+        <div class="divider"></div>
+        <p class="description">
+          I build digital experiences on Earth that monitor systems in orbit. Here's what you should know about me.
+        </p>
+        <div class="tags">
+          <div
+            v-for="tag in tags"
+            :key="tag"
+            class="tag"
+          >
+            {{ tag }}
+          </div>
         </div>
       </div>
-    </div>
-    <div class="hero-photo">
-      <Transition name="hero-slide">
-        <img
-          :key="currentPhoto"
-          class="hero-image"
-          :src="currentPhoto"
-          alt="Jacob Alspaw"
-        />
-      </Transition>
+      <div class="photo-section">
+        <Transition name="slide">
+          <img
+            :key="currentPhoto"
+            :src="currentPhoto"
+            alt="Jacob Alspaw"
+          />
+        </Transition>
+      </div>
     </div>
   </div>
 </template>
@@ -70,76 +70,85 @@
   .hero-view {
     --hero-image-width: 500px;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 1100px;
+  }
+
+  .construction-alert {
+    width: 600px;
+    margin-bottom: var(--ja-spacing-4x-large);
+  }
+
+  .content {
     display: grid;
     grid-template-columns: repeat(2, var(--hero-image-width));
     align-items: flex-end;
     gap: var(--ja-spacing-4x-large);
-    max-width: 1100px;
   }
 
-  .hero-text {
+  .text-section {
     display: flex;
     flex-direction: column;
   }
 
-  .status-indicator {
-    display: flex;
-    align-items: center;
-    gap: var(--ja-spacing-small);
-    margin-bottom: var(--ja-spacing-medium);
-    font-family: var(--ja-font-mono);
-    font-size: var(--ja-font-size-small);
-    letter-spacing: var(--ja-letter-spacing-loose);
-  }
-
-  .status-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: var(--ja-border-radius-circle);
-    background: var(--ja-color-emerald-400);
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  .status-text {
-    color: var(--ja-color-emerald-300);
-  }
-
-  .title-name {
+  .title {
     font-family: var(--ja-font-mono);
     font-size: var(--ja-font-size-3x-large);
     font-weight: var(--ja-font-weight-light);
-    line-height: var(--ja-line-height-dense);
-    color: var(--ja-color-neutral-100);
+    line-height: var(--ja-line-height-denser);
+    text-shadow: 0 0 18px color-mix(in srgb, var(--ja-color-violet-300) 25%, transparent);
+    color: transparent;
+    background: linear-gradient(120deg, var(--ja-color-neutral-0), var(--ja-color-violet-200));
+    background-clip: text;
+    margin-bottom: var(--ja-spacing-large);
   }
 
-  .title-description {
+  .subtitle {
     font-family: var(--ja-font-mono);
     font-size: var(--ja-font-size-medium);
     font-weight: var(--ja-font-weight-light);
+    line-height: var(--ja-line-height-denser);
     color: var(--ja-color-neutral-200);
   }
 
-  .title-divider {
+  .divider {
     width: 200px;
     height: 1px;
     background: linear-gradient(to right, var(--ja-color-violet-700), transparent);
-    margin: var(--ja-spacing-x-large) 0;
+    margin: var(--ja-spacing-2x-large) 0 var(--ja-spacing-x-large) 0;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -30%;
+      width: 30%;
+      height: 100%;
+      background: linear-gradient(to right, transparent, var(--ja-color-violet-300), transparent);
+      animation: divider-sheen 3.6s ease-in-out infinite;
+    }
   }
 
-  .hero-subtitle {
+  .description {
     font-size: var(--ja-font-size-large);
     line-height: var(--ja-line-height-relaxed);
     color: var(--ja-color-neutral-200);
+    margin-bottom: var(--ja-spacing-medium);
   }
 
-  .hero-tags {
+  .tags {
     display: flex;
     flex-wrap: wrap;
     gap: var(--ja-spacing-small);
     margin-top: var(--ja-spacing-large);
   }
 
-  .hero-tag {
+  .tag {
     display: inline-flex;
     align-items: center;
     gap: var(--ja-spacing-small);
@@ -152,52 +161,98 @@
     font-size: var(--ja-font-size-small);
   }
 
-  .hero-photo {
+  .photo-section {
     position: relative;
     width: 100%;
     height: 320px;
     border-radius: var(--ja-border-radius-2x-large);
     overflow: hidden;
+    background: color-mix(in srgb, var(--ja-color-purple-900) 65%, var(--ja-color-violet-950));
+    box-shadow: 0 0 120px 20px color-mix(in srgb, var(--ja-color-purple-400) 30%, transparent);
+    animation: photo-glow-shadow 6s ease-in-out infinite;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -30%;
+      background: radial-gradient(
+        circle at 50% 40%,
+        color-mix(in srgb, var(--ja-color-purple-300) 70%, transparent),
+        transparent 65%
+      );
+      opacity: 0.75;
+      filter: blur(30px);
+      animation: photo-glow 6s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      filter: brightness(0.9);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .slide-enter-active,
+    .slide-leave-active {
+      transition: left var(--ja-transition-x-slow) ease;
+    }
+
+    .slide-enter-from {
+      left: calc(var(--hero-image-width) * -1);
+    }
+
+    .slide-enter-to,
+    .slide-leave-from {
+      left: 0;
+    }
+
+    .slide-leave-to {
+      left: calc(var(--hero-image-width) + 1px);
+    }
   }
 
-  .hero-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-    user-select: none;
+  @keyframes divider-sheen {
+    0% {
+      transform: translateX(0);
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    50%,
+    100% {
+      transform: translateX(360%);
+      opacity: 0;
+    }
   }
 
-  .hero-slide-enter-active,
-  .hero-slide-leave-active {
-    transition: left var(--ja-transition-x-slow) ease-in-out;
-  }
-
-  .hero-slide-enter-from {
-    left: calc(var(--hero-image-width) * -1);
-  }
-
-  .hero-slide-enter-to,
-  .hero-slide-leave-from {
-    left: 0;
-  }
-
-  .hero-slide-leave-to {
-    left: var(--hero-image-width);
-  }
-
-  @keyframes pulse {
+  @keyframes photo-glow {
     0%,
     100% {
-      opacity: 1;
-      box-shadow: 0 0 8px color-mix(in srgb, var(--ja-color-emerald-400) 60%, transparent);
+      opacity: 0.45;
+      transform: scale(0.96);
     }
     50% {
-      opacity: 0.75;
-      box-shadow: 0 0 12px color-mix(in srgb, var(--ja-color-emerald-400) 80%, transparent);
+      opacity: 1;
+      transform: scale(1.08);
+    }
+  }
+
+  @keyframes photo-glow-shadow {
+    0%,
+    100% {
+      box-shadow: 0 0 120px 20px color-mix(in srgb, var(--ja-color-purple-400) 25%, transparent);
+    }
+    50% {
+      box-shadow: 0 0 200px 40px color-mix(in srgb, var(--ja-color-purple-300) 45%, transparent);
     }
   }
 </style>
