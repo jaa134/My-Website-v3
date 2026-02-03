@@ -21,20 +21,19 @@
       name: 'CWRUded',
       link: 'https://github.com/jaa134/CWRUded-iOS_App',
       description: [
-        'Founded first company in college to surface real-time campus "busyness" metrics',
-        'Led development of a data-driven web service (Node.js, MongoDB, React) and iOS app',
-        'Leveraged address resolution protocol (ARP) and Cisco Prime Infrastructure API to aggregate active clients across campus wireless access points',
-        'Devised algorithms to infer and forecast crowd levels across campus',
-        'Planned and led meetings with deans, network admins, and IT marketing to pilot and promote the product',
+        'Founded and led development of a data-driven web service (Node.js, MongoDB, React) and iOS app (Swift) surfacing real-time campus “busyness” metrics',
+        'Aggregated unique active wireless clients across campus access points using ARP and Cisco Prime Infrastructure APIs to power real-time analytics',
+        'Devised algorithms to forecast crowd levels at campus points of interest, enabling predictive insights for users',
+        'Planned and led meetings with deans, network admins, and IT marketing teams to drive product adoption and campus engagement',
       ],
     },
     {
       name: 'Synchrony',
       link: 'https://github.com/jaa134/Synchrony',
       description: [
-        'Led development of a synchronized streaming service (piggy-backing off Spotify API) enabling shared playlist collaboration and discovery',
-        'Designed and implemented an accessible, mobile-optimized user interface, meeting accessibility standards while prioritizing usability on smartphones',
-        'Recognized with academic honors for the year’s most outstanding electrical engineering and computer science department capstone project',
+        'Led development of a synchronized streaming service using Django, Python, TypeScript, and Angular, enabling real-time shared playlist collaboration and discovery via the Spotify API',
+        'Designed and implemented a responsive, mobile-first interface with real-time updates and seamless playback, enhancing user engagement and collaboration',
+        'Awarded departmental honors for the most outstanding capstone project in Electrical Engineering and Computer Science',
       ],
     },
     {
