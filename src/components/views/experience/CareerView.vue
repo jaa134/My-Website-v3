@@ -15,6 +15,7 @@
     roles: string[];
     dateRange: string;
     duration: string;
+    link: string;
     description: string[];
   }
 
@@ -30,6 +31,7 @@
       roles: ['Staff Frontend Developer', 'Satellite Operator'],
       dateRange: 'Jan 2022 - Present',
       duration: createDurationString(new Date('2022-01-01'), new Date()),
+      link: 'https://loftorbital.com/',
       description: [
         'Defined frontend architecture and technical direction across multiple Vue applications, aligning shared UI systems with product strategy and execution',
         'Led a Vue 2 to Vue 3 migration across 650+ components, modernizing TypeScript usage, build tooling, and architectural patterns to reduce technical debt',
@@ -45,6 +47,7 @@
       roles: ['Frontend Lead', 'Full-Stack Software Engineer'],
       dateRange: 'May 2019 - Jan 2022',
       duration: createDurationString(new Date('2019-05-01'), new Date('2022-01-01')),
+      link: 'https://www.ibm.com/products/urbancode',
       description: [
         'Led the frontend team for two enterprise DevOps products built with React and GraphQL, owning UI roadmap execution, code quality, and release readiness',
         'Improved frontend performance by up to 15x by identifying and eliminating critical rendering bottlenecks',
@@ -59,6 +62,7 @@
       roles: ['Full-Stack Software Engineer'],
       dateRange: 'May 2016 - May 2019',
       duration: createDurationString(new Date('2016-05-01'), new Date('2019-05-15')),
+      link: 'https://www.pointeblank.net/',
       description: [
         'Contributed to an enterprise suite of web applications streamlining the justice process, integrating agencies across 50+ Ohio counties',
         'Built and delivered full-stack features using React, TypeScript, C#, .NET, and SQL Server, implementing CI/CD pipelines, automated tests, and robust client- and server-side functionality',
@@ -71,6 +75,7 @@
       roles: ['Teaching Assistant', 'Peer Tutor'],
       dateRange: 'August 2016 - May 2019',
       duration: createDurationString(new Date('2016-08-01'), new Date('2019-05-15')),
+      link: 'https://case.edu/studentlife/academicresources/peer-led-programs/peer-tutoring',
       description: [
         'Led recitations and tutoring workshops for computer science and electrical engineering courses, improving student comprehension and outcomes',
         'Customized instruction to accommodate diverse learning styles and skill levels',
@@ -115,7 +120,18 @@
             <span class="date-range">{{ selection.dateRange }}</span>
             <span class="duration">({{ selection.duration }})</span>
           </div>
-          <h3 class="company-name">{{ selection.displayName || selection.id }}</h3>
+          <div class="company">
+            <h3 class="name">{{ selection.displayName || selection.id }}</h3>
+            <a
+              v-tooltip="'Open company site'"
+              class="link"
+              :href="selection.link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <SvgIcon href="/icons/actions/navigate.svg" />
+            </a>
+          </div>
           <p class="roles">{{ selection.roles.join(' · ') }}</p>
           <ul class="description-list">
             <li
@@ -204,12 +220,32 @@
     color: var(--ja-color-neutral-300);
   }
 
-  .company-name {
+  .company {
+    display: flex;
+    align-items: center;
+    gap: var(--ja-spacing-small);
+    margin-bottom: var(--ja-spacing-small);
+  }
+
+  .name {
     font-family: var(--ja-font-mono);
     font-size: var(--ja-font-size-2x-large);
     font-weight: var(--ja-font-weight-medium);
-    color: var(--ja-color-neutral-300);
-    margin-bottom: var(--ja-spacing-small);
+    color: var(--ja-color-neutral-200);
+  }
+
+  .link {
+    padding: var(--ja-spacing-x-small);
+    color: var(--ja-color-primary-400);
+
+    &:hover {
+      color: var(--ja-color-primary-300);
+    }
+
+    .svg-icon {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   .roles {
