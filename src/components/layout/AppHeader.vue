@@ -91,8 +91,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
-    min-height: 100px;
+    height: var(--app-header-height);
+    min-height: var(--app-header-height);
     border-bottom: 1px solid v-bind('appHeaderStyles.borderBottomColor');
     background-color: v-bind('appHeaderStyles.backgroundColor');
     backdrop-filter: v-bind('appHeaderStyles.backdropFilter');

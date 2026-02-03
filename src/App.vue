@@ -18,6 +18,8 @@
 
 <style scoped>
   .app {
+    --app-header-height: 100px;
+
     display: flex;
     flex-direction: column;
     min-height: 100%;

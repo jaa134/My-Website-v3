@@ -200,6 +200,7 @@
 
   .slides-placeholder {
     position: relative;
+    contain: layout;
     width: 100%;
     height: var(--slide-height);
   }
