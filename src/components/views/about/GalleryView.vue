@@ -776,11 +776,17 @@
       subtitle="A glimpse into my life."
       alignment="center"
     />
-    <PhotoAlbum
-      :photos="displayedPhotos"
-      layout="rows"
-      :spacing="spacing"
-    />
+    <Transition
+      name="fade"
+      mode="out-in"
+    >
+      <PhotoAlbum
+        :key="page"
+        :photos="displayedPhotos"
+        layout="rows"
+        :spacing="spacing"
+      />
+    </Transition>
     <PageControls
       v-model="page"
       :page-count="pageCount"

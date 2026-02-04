@@ -5,3 +5,38 @@
   --ja-transition-fast: 150ms;
   --ja-transition-x-fast: 50ms;
 }
+
+/* Fade ///////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity var(--ja-transition-fast) ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+}
+
+/* Fade In Slow ///////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+.fade-in-slow-enter-active {
+  transition: opacity var(--ja-transition-x-slow) ease-in;
+}
+
+.fade-in-slow-leave-active {
+  transition: opacity var(--ja-transition-medium) ease-out;
+}
+
+.fade-in-slow-enter-from {
+  opacity: 0;
+}
+
+.fade-in-slow-leave-to {
+  opacity: 0;
+}

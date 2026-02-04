@@ -59,7 +59,15 @@
       :min-height="minContentHeight"
       :max-height="maxContentHeight"
     >
-      <slot :selection="selectedOption"></slot>
+      <Transition
+        name="fade"
+        mode="out-in"
+      >
+        <slot
+          :key="selectedOption.id"
+          :selection="selectedOption"
+        ></slot>
+      </Transition>
     </BasicCard>
   </div>
 </template>

@@ -514,7 +514,7 @@
       ></div>
       <div class="place">
         <Transition
-          name="place-fade"
+          name="fade"
           mode="out-in"
         >
           <div
@@ -529,7 +529,7 @@
           height="300px"
         >
           <Transition
-            name="place-fade"
+            name="fade"
             mode="out-in"
           >
             <img
@@ -541,7 +541,7 @@
           </Transition>
         </BasicCard>
         <Transition
-          name="place-fade"
+          name="fade"
           mode="out-in"
         >
           <div
@@ -637,15 +637,5 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-
-  .place-fade-enter-active,
-  .place-fade-leave-active {
-    transition: opacity var(--ja-transition-fast) ease;
-  }
-
-  .place-fade-enter-from,
-  .place-fade-leave-to {
-    opacity: 0;
   }
 </style>

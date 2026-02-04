@@ -259,7 +259,10 @@
 </script>
 
 <template>
-  <Transition name="fade-in-out">
+  <Transition
+    name="fade-in-slow"
+    mode="out-in"
+  >
     <div
       v-if="!isResizing"
       class="starry-background"
@@ -436,22 +439,6 @@
     animation: cloud-drift var(--cloud-duration) linear infinite;
     animation-delay: var(--cloud-delay);
     will-change: transform, opacity;
-  }
-
-  .fade-in-out-enter-active {
-    transition: opacity 1s ease-in;
-  }
-
-  .fade-in-out-leave-active {
-    transition: opacity 0.3s ease-out;
-  }
-
-  .fade-in-out-enter-from {
-    opacity: 0;
-  }
-
-  .fade-in-out-leave-to {
-    opacity: 0;
   }
 
   @keyframes twinkle {
