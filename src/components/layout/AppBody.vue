@@ -2,6 +2,14 @@
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   import { RouterView } from 'vue-router';
+
+  import { useRouterLoading } from '@/composables/useRouterLoading.js';
+
+  import PlanetLoadingIndicator from '@/components/common/PlanetLoadingIndicator.vue';
+
+  /* Router loading ///////////////////////////////////////////////////////////////////////////////////////////////// */
+
+  const routerLoading = useRouterLoading();
 </script>
 
 <template>
@@ -11,7 +19,11 @@
         name="page-change"
         mode="out-in"
       >
-        <component :is="Component" />
+        <PlanetLoadingIndicator v-if="routerLoading" />
+        <component
+          :is="Component"
+          v-else
+        />
       </Transition>
     </RouterView>
   </div>

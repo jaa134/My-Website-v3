@@ -28,6 +28,9 @@
   let planetGeometry: SphereGeometry | null = null;
   let planetMaterial: MeshPhysicalMaterial | null = null;
 
+  let atmosphereGeometry: SphereGeometry | null = null;
+  let atmosphereMaterial: MeshStandardMaterial | null = null;
+
   let moonGeometry: SphereGeometry | null = null;
   let moonMaterial: MeshStandardMaterial | null = null;
 
@@ -53,13 +56,24 @@
     renderer.setSize(container.value.clientWidth, container.value.clientHeight, false);
     container.value.appendChild(renderer.domElement);
 
-    planetGeometry = new SphereGeometry(2, 64, 64);
+    planetGeometry = new SphereGeometry(1.8, 64, 64);
     planetMaterial = new MeshPhysicalMaterial({
       color: 0x2a0f5f,
       emissive: 0x2a0f5f,
       emissiveIntensity: 0.7,
     });
     const planet = new Mesh(planetGeometry, planetMaterial);
+
+    atmosphereGeometry = new SphereGeometry(1.9, 64, 64);
+    atmosphereMaterial = new MeshStandardMaterial({
+      color: 0x2a0f5f,
+      emissive: 0x2a0f5f,
+      emissiveIntensity: 1,
+      transparent: true,
+      opacity: 0.25,
+      depthWrite: false,
+    });
+    const atmosphere = new Mesh(atmosphereGeometry, atmosphereMaterial);
 
     moonGeometry = new SphereGeometry(0.15, 32, 32);
     moonMaterial = new MeshStandardMaterial({
@@ -83,7 +97,7 @@
     moon.position.set(3.5, 0, 0);
     orbitGroup.rotation.x = MathUtils.degToRad(60);
 
-    scene.add(planet, orbitGroup);
+    scene.add(planet, atmosphere, orbitGroup);
 
     const animate = () => {
       frameId = requestAnimationFrame(animate);
@@ -111,6 +125,9 @@
     planetMaterial?.dispose();
     planetGeometry?.dispose();
 
+    atmosphereMaterial?.dispose();
+    atmosphereGeometry?.dispose();
+
     moonMaterial?.dispose();
     moonGeometry?.dispose();
 
@@ -125,7 +142,7 @@
       ref="container"
       class="canvas"
     ></div>
-    <div class="label">Loading</div>
+    <div class="label">LOADING</div>
   </div>
 </template>
 
@@ -145,30 +162,54 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
     font-size: var(--ja-font-size-large);
-    letter-spacing: var(--ja-letter-spacing-loose);
-    background: linear-gradient(90deg, var(--ja-color-violet-400), var(--ja-color-neutral-400));
+    font-weight: var(--ja-font-weight-semibold);
+    letter-spacing: var(--ja-letter-spacing-looser);
+    text-shadow:
+      0 0 12px color-mix(in srgb, var(--ja-color-violet-300) 70%, transparent),
+      0 0 24px color-mix(in srgb, var(--ja-color-violet-500) 45%, transparent);
+    background: linear-gradient(
+      90deg,
+      var(--ja-color-violet-200),
+      var(--ja-color-neutral-100),
+      var(--ja-color-violet-400)
+    );
     background-size: 200% 100%;
     background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 6px color-mix(in srgb, var(--ja-color-violet-500) 30%, transparent));
-    animation: gradient-shift 4s ease-in-out infinite;
+    animation:
+      gradient-shift 4s ease-in-out infinite,
+      loading-pulse 3s ease-in-out infinite;
   }
 
   @keyframes gradient-shift {
     0% {
       background-position: 0% 50%;
-      filter: drop-shadow(0 0 6px color-mix(in srgb, var(--ja-color-violet-500) 30%, transparent));
+      filter: drop-shadow(0 0 6px color-mix(in srgb, var(--ja-color-violet-500) 50%, transparent));
     }
     50% {
       background-position: 100% 50%;
-      filter: drop-shadow(0 0 8px color-mix(in srgb, var(--ja-color-violet-500) 40%, transparent));
+      filter: drop-shadow(0 0 8px color-mix(in srgb, var(--ja-color-violet-500) 60%, transparent));
     }
     100% {
       background-position: 0% 50%;
-      filter: drop-shadow(0 0 6px color-mix(in srgb, var(--ja-color-violet-500) 30%, transparent));
+      filter: drop-shadow(0 0 6px color-mix(in srgb, var(--ja-color-violet-500) 50%, transparent));
+    }
+  }
+
+  @keyframes loading-pulse {
+    0%,
+    100% {
+      opacity: 0.75;
+      transform: translate(-50%, -50%) scale(0.96);
+    }
+    12.5%,
+    88.5% {
+      opacity: 0.75;
+      transform: translate(-50%, -50%) scale(0.96);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.04);
     }
   }
 </style>

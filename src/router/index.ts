@@ -3,6 +3,8 @@
 import type { RouteRecordRaw } from 'vue-router';
 import { createRouter, createWebHistory } from 'vue-router';
 
+import { setRouterLoading } from '@/composables/useRouterLoading.js';
+
 /* Routes /////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 export enum Route {
@@ -49,6 +51,14 @@ const router = createRouter({
   scrollBehavior() {
     return { top: 0 };
   },
+});
+
+router.beforeEach(() => {
+  setRouterLoading(true);
+});
+
+router.afterEach(() => {
+  setRouterLoading(false);
 });
 
 export default router;
