@@ -121,6 +121,98 @@
     }, duration + 1000);
   };
 
+  /* Cloud generation ////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+  interface Cloud {
+    id: number;
+    image: string;
+    width: number;
+    height: number;
+    scale: number;
+    rotate: number;
+    stretch: number;
+    squish: number;
+    opacity: number;
+    blur: number;
+    brightness: number;
+    duration: number;
+    delay: number;
+    drift: number;
+    top: number;
+    startX: number;
+    endX: number;
+  }
+
+  const cloudImageCount = 9;
+
+  const clouds = ref<Array<Cloud>>([]);
+
+  const resetClouds = () => {
+    clouds.value = [];
+  };
+
+  const calculateCloudCount = (): number => {
+    const area = window.innerWidth * window.innerHeight;
+    const density = 0.0000022;
+    return Math.min(14, Math.max(6, Math.round(area * density)));
+  };
+
+  const generateClouds = () => {
+    const cloudCount = calculateCloudCount();
+    const newClouds: Cloud[] = [];
+
+    for (let id = 0; id < cloudCount; id++) {
+      const image = `/images/clouds/${Math.floor(Math.random() * cloudImageCount) + 1}.webp`;
+
+      const width = 18 + Math.random() * 20;
+      const height = width * (0.25 + Math.random() * 0.28);
+
+      const scale = 1 + Math.random() * 0.75;
+      const rotate = (Math.random() * 2 - 1) * 2;
+      const stretch = 0.95 + Math.random() * 0.15;
+      const squish = 0.95 + Math.random() * 0.1;
+      const opacity = 0.2 + Math.random() * 0.6;
+      const blur = 3 + Math.random() * 2;
+      const brightness = 0.5 + Math.random() * 0.1;
+
+      const duration = 160 + Math.random() * 220;
+      const delay = -Math.random() * duration;
+
+      const drift = (Math.random() * 2 - 1) * 10;
+      const top = 6 + Math.random() * 75;
+      let startX, endX;
+      if (Math.random() > 0.5) {
+        startX = -30 - Math.random() * 25;
+        endX = 110 + Math.random() * 25;
+      } else {
+        startX = 110 + Math.random() * 25;
+        endX = -30 - Math.random() * 25;
+      }
+
+      newClouds.push({
+        id,
+        image,
+        width,
+        height,
+        scale,
+        rotate,
+        stretch,
+        squish,
+        opacity,
+        blur,
+        brightness,
+        duration,
+        delay,
+        drift,
+        top,
+        startX,
+        endX,
+      });
+    }
+
+    clouds.value = newClouds;
+  };
+
   /* Resize ///////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   const isResizing = ref(false);
@@ -132,6 +224,7 @@
 
     resetStaticStars();
     resetShootingStar();
+    resetClouds();
 
     if (resizeTimeout) {
       clearTimeout(resizeTimeout);
@@ -140,6 +233,7 @@
     resizeTimeout = setTimeout(() => {
       generateStaticStars();
       scheduleShootingStar();
+      generateClouds();
       isResizing.value = false;
     }, 250);
   };
@@ -150,6 +244,7 @@
     window.addEventListener('resize', handleResize);
     generateStaticStars();
     scheduleShootingStar();
+    generateClouds();
   });
 
   onBeforeUnmount(() => {
@@ -159,11 +254,12 @@
     }
     resetStaticStars();
     resetShootingStar();
+    resetClouds();
   });
 </script>
 
 <template>
-  <transition name="fade-in-out">
+  <Transition name="fade-in-out">
     <div
       v-if="!isResizing"
       class="starry-background"
@@ -181,6 +277,7 @@
           animationDuration: `${staticStar.duration}s`,
         }"
       ></div>
+
       <svg
         v-if="shootingStar"
         class="shooting-star"
@@ -241,8 +338,32 @@
           fill-opacity="0.9"
         />
       </svg>
+
+      <div
+        v-for="cloud in clouds"
+        :key="cloud.id"
+        class="cloud"
+        :style="{
+          '--cloud-scale': cloud.scale.toString(),
+          '--cloud-rotate': `${cloud.rotate}deg`,
+          '--cloud-stretch': cloud.stretch.toString(),
+          '--cloud-squish': cloud.squish.toString(),
+          '--cloud-opacity': cloud.opacity.toString(),
+          '--cloud-blur': `${cloud.blur}px`,
+          '--cloud-brightness': cloud.brightness.toString(),
+          '--cloud-duration': `${cloud.duration}s`,
+          '--cloud-delay': `${cloud.delay}s`,
+          '--cloud-drift': `${cloud.drift}px`,
+          '--cloud-start-x': `${cloud.startX}vw`,
+          '--cloud-end-x': `${cloud.endX}vw`,
+          top: `${cloud.top}%`,
+          width: `${cloud.width}vw`,
+          height: `${cloud.height}vw`,
+          backgroundImage: `url(${cloud.image})`,
+        }"
+      ></div>
     </div>
-  </transition>
+  </Transition>
 </template>
 
 <style scoped>
@@ -302,6 +423,21 @@
     will-change: opacity, transform;
   }
 
+  .cloud {
+    position: absolute;
+    left: 0;
+    opacity: var(--cloud-opacity);
+    filter: blur(var(--cloud-blur)) brightness(var(--cloud-brightness)) saturate(0.85);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transform: translate3d(var(--cloud-start-x), 0, 0) scale(var(--cloud-scale)) scaleX(var(--cloud-stretch))
+      scaleY(var(--cloud-squish)) rotate(var(--cloud-rotate));
+    animation: cloud-drift var(--cloud-duration) linear infinite;
+    animation-delay: var(--cloud-delay);
+    will-change: transform, opacity;
+  }
+
   .fade-in-out-enter-active {
     transition: opacity 1s ease-in;
   }
@@ -341,6 +477,21 @@
     100% {
       opacity: 0;
       transform: translate(var(--end-x), var(--end-y)) rotate(var(--angle));
+    }
+  }
+
+  @keyframes cloud-drift {
+    0% {
+      transform: translate3d(var(--cloud-start-x), 0, 0) scale(var(--cloud-scale)) scaleX(var(--cloud-stretch))
+        scaleY(var(--cloud-squish)) rotate(var(--cloud-rotate));
+    }
+    50% {
+      transform: translate3d(calc((var(--cloud-start-x) + var(--cloud-end-x)) / 2), var(--cloud-drift), 0)
+        scale(var(--cloud-scale)) scaleX(var(--cloud-stretch)) scaleY(var(--cloud-squish)) rotate(var(--cloud-rotate));
+    }
+    100% {
+      transform: translate3d(var(--cloud-end-x), 0, 0) scale(var(--cloud-scale)) scaleX(var(--cloud-stretch))
+        scaleY(var(--cloud-squish)) rotate(var(--cloud-rotate));
     }
   }
 </style>

@@ -169,7 +169,7 @@
     overflow: hidden;
     background: color-mix(in srgb, var(--ja-color-purple-900) 65%, var(--ja-color-violet-950));
     box-shadow: 0 0 120px 20px color-mix(in srgb, var(--ja-color-purple-400) 30%, transparent);
-    animation: photo-glow-shadow 6s ease-in-out infinite;
+    animation: photo-glow-shadow 10s ease-in-out infinite;
 
     &::before {
       content: '';
@@ -249,10 +249,10 @@
   @keyframes photo-glow-shadow {
     0%,
     100% {
-      box-shadow: 0 0 120px 20px color-mix(in srgb, var(--ja-color-purple-400) 25%, transparent);
+      box-shadow: 0 0 60px 10px color-mix(in srgb, var(--ja-color-purple-400) 25%, transparent);
     }
     50% {
-      box-shadow: 0 0 200px 40px color-mix(in srgb, var(--ja-color-purple-300) 45%, transparent);
+      box-shadow: 0 0 150px 10px color-mix(in srgb, var(--ja-color-purple-300) 45%, transparent);
     }
   }
 </style>
