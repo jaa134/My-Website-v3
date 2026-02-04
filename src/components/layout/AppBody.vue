@@ -2,20 +2,18 @@
   /* Imports //////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
   import { RouterView } from 'vue-router';
-
-  import PlanetLoadingIndicator from '@/components/common/PlanetLoadingIndicator.vue';
 </script>
 
 <template>
   <div class="app-body">
-    <Suspense>
-      <RouterView />
-      <template #fallback>
-        <div class="router-loading-container">
-          <PlanetLoadingIndicator />
-        </div>
-      </template>
-    </Suspense>
+    <RouterView v-slot="{ Component }">
+      <Transition
+        name="page-change"
+        mode="out-in"
+      >
+        <component :is="Component" />
+      </Transition>
+    </RouterView>
   </div>
 </template>
 
@@ -28,10 +26,25 @@
     min-height: calc(100vh - var(--app-header-height));
   }
 
-  .router-loading-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  .page-change-enter-active,
+  .page-change-leave-active {
+    transition: opacity var(--ja-transition-fast) ease;
+    will-change: opacity;
+  }
+
+  .page-change-enter-from {
+    opacity: 0;
+  }
+
+  .page-change-enter-to {
+    opacity: 1;
+  }
+
+  .page-change-leave-from {
+    opacity: 1;
+  }
+
+  .page-change-leave-to {
+    opacity: 0;
   }
 </style>
