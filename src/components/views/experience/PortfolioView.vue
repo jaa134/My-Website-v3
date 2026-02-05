@@ -87,6 +87,15 @@
       ],
     },
     {
+      name: 'LizTok',
+      link: 'https://github.com/jaa134/LizTok',
+      description: [
+        'Built a TikTok-like social media platform that allows users to see AI generated videos of my friend Liz',
+        'This was a fun hackathon project that I shared with friends for a 30th birthday party',
+        'Built in a rush with Vite, Vue, and TypeScript',
+      ],
+    },
+    {
       name: 'Email Spoofer',
       link: 'https://github.com/jaa134/Email-Spoofer',
       description: [
