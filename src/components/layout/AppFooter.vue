@@ -28,8 +28,8 @@
           link: 'https://wordgames.jacob-alspaw.com/',
         },
         {
-          name: 'Planet Planner',
-          link: 'https://planetplanner.jacob-alspaw.com/',
+          name: 'Norad Track',
+          link: 'https://noradtrack.jacob-alspaw.com/',
         },
       ],
     },

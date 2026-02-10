@@ -18,6 +18,17 @@
 
   const projects: Project[] = [
     {
+      name: 'Norad Track',
+      link: 'https://noradtrack.jacob-alspaw.com/',
+      description: [
+        'Built a web application that helps users visualize the real-timeposition of objects in orbit',
+        'Inspired by star gazing at night and wondering what was above me',
+        'Used the Celestrak API to get the position of the satellites',
+        'Displayed the position of the satellites in globe.gl and OpenLayers',
+        'Optimized for performance and scalability on mobile devices',
+      ],
+    },
+    {
       name: 'CWRUded',
       link: 'https://github.com/jaa134/CWRUded-iOS_App',
       description: [
