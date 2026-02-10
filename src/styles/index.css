@@ -2,6 +2,7 @@
 
 @import '@/styles/theme/border-radius.css';
 @import '@/styles/theme/color.css';
+@import '@/styles/theme/shadow.css';
 @import '@/styles/theme/spacing.css';
 @import '@/styles/theme/transition.css';
 @import '@/styles/theme/typography.css';

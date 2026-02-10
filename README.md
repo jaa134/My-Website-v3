@@ -27,7 +27,7 @@ This setup enforces consistent code style, clean commits, and high-quality stand
 
 - **Single Page Application (SPA)**
 - Modular, component-driven design
-- Shared core logic with **platform-specific build outputs**
+- Shared core logic (DRY)
 - Fast local development and optimized production builds via Vite
 
 ---

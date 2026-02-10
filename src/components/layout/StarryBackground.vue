@@ -252,9 +252,6 @@
     if (resizeTimeout) {
       clearTimeout(resizeTimeout);
     }
-    resetStaticStars();
-    resetShootingStar();
-    resetClouds();
   });
 </script>
 

@@ -39,14 +39,14 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/:pathMatch(.*)*',
     name: Route.NotFound,
-    redirect: '/',
+    redirect: { name: Route.Home },
   },
 ];
 
 /* Router initialization //////////////////////////////////////////////////////////////////////////////////////////// */
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes,
   scrollBehavior() {
     return { top: 0 };
